@@ -9,7 +9,7 @@
       "flags": [ "map", "pins" ],
       "required_app_version": "2.3.6.5",
       "uid": "CT_Jot_TheBigSalarius",
-      "link": "https://github.com/Aeralis/Jets-of-Time-Tracker/raw/master/CT_Jot_TheBigSalarius.zip",
+      "link": "https://github.com/Aeralis/Jets-of-Time-Tracker/raw/master/CT_JoT_TheBigSalarius.zip",
       "variants": [
         {
           "name": "Item Tracker"
