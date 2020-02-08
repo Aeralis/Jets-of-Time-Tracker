@@ -1,5 +1,5 @@
-v0.1.0:
-	- Initial Attempts
+v1.0.0:
+	- Initial Release
 	
 - Huge thanks go out to Aeralis for the Wings of Time tracker that was the core basis for this tracker.
 - Special thank you to Astharis for asset creation/modification and support.
