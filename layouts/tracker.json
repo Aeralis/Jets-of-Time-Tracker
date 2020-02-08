@@ -1,0 +1,183 @@
+{
+	"shared_item_grid":
+	{
+		"type": "array",
+		"orientation": "vertical",
+		"margin": "0,0",
+		"content":
+		[
+			{
+				"type": "array",
+				"orientation": "horizontal",
+				"margin": "0,0",
+				"content":
+				[
+					{
+						"type": "itemgrid",
+						"h_alignment": "center",
+						"item_margin": "1,1",
+						"rows":
+						[
+							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
+							[ "heromedal", "benthilt", "bentsword", "masamune", "gatekey", "dreamstone" ],
+							[ "tomapop", "pendant", "prismshard", "moonstone", "jerky", "roboribbon" ],
+							[ "magic", "tools", "clone", "ctrigger", "rubyknife", "gomode" ]
+						]
+					},
+					{
+						"type": "itemgrid",
+						"h_alignment": "center",
+						"item_margin": "1,1",
+						"rows":
+						[
+							[ "yakraboss", "yakraxiiiboss", "dragontankboss","zomborboss", "retiniteboss", "heckranboss" ],
+							[ "blacktyranoboss", "rusttyranoboss", "guardianboss", "rseriesboss", "masamuneboss", "nizbelboss" ],
+							[ "magusboss", "gigagaiaboss", "motherbrainboss", "sonofsunboss","zealboss", "golemboss" ],
+							
+						]
+					}
+				]
+			}
+		]
+	},
+	"tracker_capture_item":
+	{
+		"type": "container",
+		"content":
+		{
+			"type": "itemgrid",
+			"h_alignment": "center",
+			"item_margin": "1,1",
+			"rows":
+			[
+							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
+							[ "heromedal", "benthilt", "bentsword", "masamune", "gatekey", "dreamstone" ],
+							[ "tomapop", "pendant", "prismshard", "moonstone", "jerky", "roboribbon" ],
+							[ "magic", "tools", "clone", "ctrigger", "rubyknife", "gomode" ]
+			]	
+		}
+	},
+	"tracker_default":
+	{
+		"type": "container",
+		"background": "#101010",
+		"content":
+		{
+			"type": "dock",
+			"dropshadow": true,
+			"content":
+			[
+				{
+					"type": "dock",
+					"dock": "bottom",
+					"h_alignment": "stretch",
+					"content":
+					[
+						{
+							"type": "dock",
+							"dock": "left",
+							"content":
+							[
+								{
+									"type": "group",
+									"header": "Items",
+									"dock": "top",
+									"content":
+									{
+										"type": "layout",
+										"key": "shared_item_grid"
+									}
+								}
+							]
+						}//,
+//						{
+//							"type": "group",
+//							"header": "Pinned Locations",
+//							"content":
+//							{
+//								"type": "recentpins",
+//								"style": "wrap",
+//								"h_alignment": "stretch",
+//								"v_alignment": "stretch",
+//								"orientation": "horizontal",
+//								"compact": true
+//							}
+//						}
+					]
+				},
+				{
+					"type": "tabbed",
+					"tabs":
+					[
+						{
+							"title": "Prehistory",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"Prehistory"
+								]
+							}
+						},
+						{
+							"title": "Dark Ages",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"Dark Ages"
+								]
+							}
+						},
+						{
+							"title": "Middle Ages",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"Middle Ages"
+								]
+							}
+						},
+						{
+							"title": "Present",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"Present"
+								]
+							}
+						},
+						{
+							"title": "Future",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"Future"
+								]
+							}
+						},
+						{
+							"title": "End Of Time",
+							"content":
+							{
+								"type": "map",
+								"maps":
+								[
+									"End Of Time"
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+}

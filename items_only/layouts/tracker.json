@@ -1,0 +1,65 @@
+{
+	"shared_item_grid":
+	{
+		"type": "array",
+		"orientation": "vertical",
+		"margin": "0,0",
+		"content":
+		[
+			{
+				"type": "array",
+				"orientation": "horizontal",
+				"margin": "0,0",
+				"content":
+				[
+					{
+						"type": "itemgrid",
+						"h_alignment": "center",
+						"item_margin": "1,1",
+						"rows":
+						[
+							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
+							[ "heromedal", "benthilt", "bentsword", "masamune", "gatekey", "dreamstone" ],
+							[ "tomapop", "pendant", "prismshard", "moonstone", "jerky", "roboribbon" ],
+							[ "magic", "tools", "clone", "ctrigger", "rubyknife", "gomode" ]
+						]
+					},
+					{
+						"type": "itemgrid",
+						"h_alignment": "center",
+						"item_margin": "1,1",
+						"rows":
+						[
+							[ "yakraboss", "yakraxiiiboss", "dragontankboss","zomborboss", "retiniteboss", "heckranboss" ],
+							[ "blacktyranoboss", "rusttyranoboss", "guardianboss", "rseriesboss", "masamuneboss", "nizbelboss" ],
+							[ "magusboss", "gigagaiaboss", "motherbrainboss", "sonofsunboss","zealboss", "golemboss" ],
+						]
+					}
+				]
+			}
+		]
+	},
+	"tracker_capture_item":
+	{
+		"type": "container",
+		"content":
+		{
+			"type": "layout",
+			"key": "shared_item_grid"
+		}
+	},
+	"tracker_default":
+	{
+		"type": "container",
+		"width": 470,
+		"height": 155,
+		"background": "#101010",
+		"content":
+		{
+			"type": "layout",
+			"dropshadow": true,
+			"margin": 1,
+			"key": "shared_item_grid"
+		}
+	}
+}
