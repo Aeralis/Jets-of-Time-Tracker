@@ -4,7 +4,7 @@
     {
       "name": "Jets of Time Map Tracker",
       "author": "TheBigSalarius, Aeralis",
-      "game_name": "Chrono Trigger",
+      "game_name": "Chrono Trigger Randomizer",
       "version": "1.0.0",
       "flags": [ "map", "pins" ],
       "required_app_version": "2.3.6.5",
