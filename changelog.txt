@@ -1,3 +1,6 @@
+Upcoming changes:
+ - Indication of ChatHUD functionality.
+
 v1.0.0:
 	- Initial Release
 	
