@@ -1,6 +1,9 @@
 Upcoming changes:
  - Indication of ChatHUD functionality.
 
+v1.0.1
+ - Changed from character portraits to character menu icons.
+
 v1.0.0:
 	- Initial Release
 	
