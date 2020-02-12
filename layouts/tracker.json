@@ -97,13 +97,13 @@
 					"tabs":
 					[
 						{
-							"title": "All Maps",
+							"title": "All Eras",
 							"content":
 							{
 								"type": "map",
 								"maps":
 								[
-									"All Maps"
+									"All Eras"
 								]
 							}
 						},

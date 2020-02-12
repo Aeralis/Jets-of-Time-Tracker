@@ -35,7 +35,7 @@
 								"y": 258
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 518,
 								"y": 258
 							}
@@ -68,7 +68,7 @@
 								"y": 826
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 543,
 								"y": 826
 							}
@@ -100,12 +100,12 @@
 								"y": 132
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1295,
 								"y": 135
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 4367,
 								"y": 135
 							}
@@ -132,7 +132,7 @@
 								"y": 565
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 848,
 								"y": 565
 							}
@@ -176,7 +176,7 @@
 								"y": 462
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 424,
 								"y": 1486
 							}
@@ -203,7 +203,7 @@
 								"y": 340
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 720,
 								"y": 1364
 							}
@@ -247,7 +247,7 @@
 								"y": 270
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1736,
 								"y": 270
 							}
@@ -291,7 +291,7 @@
 								"y": 748
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1784,
 								"y": 748
 							}
@@ -324,7 +324,7 @@
 								"y": 454
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1783,
 								"y": 454
 							}
@@ -351,7 +351,7 @@
 								"y": 714
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1895,
 								"y": 714
 							}
@@ -380,7 +380,7 @@
 								"y": 668
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1946,
 								"y": 668
 							}
@@ -413,7 +413,7 @@
 								"y": 566
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1952,
 								"y": 566
 							}
@@ -446,7 +446,7 @@
 								"y": 195
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1816,
 								"y": 195
 							}
@@ -479,7 +479,7 @@
 								"y": 588
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 2490,
 								"y": 588
 							}
@@ -506,7 +506,7 @@
 								"y": 466
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 2208,
 								"y": 466
 							}
@@ -576,7 +576,7 @@
 								"y": 192
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1816,
 								"y": 1216
 							}
@@ -606,7 +606,7 @@
 								"y": 860
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1977,
 								"y": 1884
 							}
@@ -633,7 +633,7 @@
 								"y": 444
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 2218,
 								"y": 1468
 							}
@@ -662,7 +662,7 @@
 								"y": 853
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 2681,
 								"y": 1877
 							}
@@ -689,7 +689,7 @@
 								"y": 506
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 2232,
 								"y": 1530
 							}
@@ -718,7 +718,7 @@
 								"y": 419
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 1880,
 								"y": 1443
 							}
@@ -762,7 +762,7 @@
 								"y": 359
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 3519,
 								"y": 359
 							}
@@ -791,7 +791,7 @@
 								"y": 410
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 3984,
 								"y": 410
 							}
@@ -818,7 +818,7 @@
 								"y": 288
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 3992,
 								"y": 288
 							}
@@ -851,7 +851,7 @@
 								"y": 734
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 4232,
 								"y": 734
 							}
@@ -884,7 +884,7 @@
 								"y": 883
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 3559,
 								"y": 883
 							}
@@ -911,7 +911,7 @@
 								"y": 551
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 3748,
 								"y": 551
 							}
@@ -949,7 +949,7 @@
 								"y": 287
 							},
 							{
-								"map": "All Maps",
+								"map": "All Eras",
 								"x": 4185,
 								"y": 1311
 							}
