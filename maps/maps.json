@@ -1,11 +1,5 @@
 [
 	{
-		"name": "All Eras",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/alleras.png"
-	},
-	{
 		"name": "Prehistory",
 		"location_size": 40,
 		"location_border_thickness": 5,
@@ -37,7 +31,7 @@
 	},
 	{
 		"name": "End Of Time",
-		"location_size": 40,
+		"location_size": 27,
 		"location_border_thickness": 4,
 		"img": "images/maps/endoftime.png"
 	}

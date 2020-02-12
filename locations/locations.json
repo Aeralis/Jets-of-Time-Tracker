@@ -16,7 +16,7 @@
 						"name": "Dactyl Nest",
 						"access_rules":
 						[
-							""
+							"Flag_CharLock_on,dreamstone", "Flag_CharLock_off"
 						],
 						"sections":
 						[
@@ -31,11 +31,6 @@
 						[
 							{
 								"map": "Prehistory",
-								"x": 518,
-								"y": 258
-							},
-							{
-								"map": "All Eras",
 								"x": 518,
 								"y": 258
 							}
@@ -66,11 +61,6 @@
 								"map": "Prehistory",
 								"x": 543,
 								"y": 826
-							},
-							{
-								"map": "All Eras",
-								"x": 543,
-								"y": 826
 							}
 						]
 					},
@@ -98,16 +88,6 @@
 								"map": "Future",
 								"x": 1257,
 								"y": 132
-							},
-							{
-								"map": "All Eras",
-								"x": 1295,
-								"y": 135
-							},
-							{
-								"map": "All Eras",
-								"x": 4367,
-								"y": 135
 							}
 						]
 					},
@@ -128,11 +108,6 @@
 						[
 							{
 								"map": "Prehistory",
-								"x": 848,
-								"y": 565
-							},
-							{
-								"map": "All Eras",
 								"x": 848,
 								"y": 565
 							}
@@ -174,11 +149,6 @@
 								"map": "Dark Ages",
 								"x": 424,
 								"y": 462
-							},
-							{
-								"map": "All Eras",
-								"x": 424,
-								"y": 1486
 							}
 						]
 					},
@@ -201,11 +171,6 @@
 								"map": "Dark Ages",
 								"x": 720,
 								"y": 340
-							},
-							{
-								"map": "All Eras",
-								"x": 720,
-								"y": 1364
 							}
 						]
 					}
@@ -244,11 +209,6 @@
 							{
 								"map": "Middle Ages",
 								"x": 200,
-								"y": 270
-							},
-							{
-								"map": "All Eras",
-								"x": 1736,
 								"y": 270
 							}
 						]
@@ -289,11 +249,6 @@
 								"map": "Middle Ages",
 								"x": 248,
 								"y": 748
-							},
-							{
-								"map": "All Eras",
-								"x": 1784,
-								"y": 748
 							}
 						]
 					},
@@ -322,11 +277,6 @@
 								"map": "Middle Ages",
 								"x": 247,
 								"y": 454
-							},
-							{
-								"map": "All Eras",
-								"x": 1783,
-								"y": 454
 							}
 						]
 					},
@@ -348,11 +298,6 @@
 							{
 								"map": "Middle Ages",
 								"x": 359,
-								"y": 714
-							},
-							{
-								"map": "All Eras",
-								"x": 1895,
 								"y": 714
 							}
 						]
@@ -377,11 +322,6 @@
 							{
 								"map": "Middle Ages",
 								"x": 410,
-								"y": 668
-							},
-							{
-								"map": "All Eras",
-								"x": 1946,
 								"y": 668
 							}
 						]
@@ -411,11 +351,6 @@
 								"map": "Middle Ages",
 								"x": 416,
 								"y": 566
-							},
-							{
-								"map": "All Eras",
-								"x": 1952,
-								"y": 566
 							}
 						]
 					},
@@ -443,11 +378,6 @@
 							{
 								"map": "Middle Ages",
 								"x": 280,
-								"y": 195
-							},
-							{
-								"map": "All Eras",
-								"x": 1816,
 								"y": 195
 							}
 						]
@@ -477,11 +407,6 @@
 								"map": "Middle Ages",
 								"x": 954,
 								"y": 588
-							},
-							{
-								"map": "All Eras",
-								"x": 2490,
-								"y": 588
 							}
 						]
 					},
@@ -503,11 +428,6 @@
 							{
 								"map": "Middle Ages",
 								"x": 672,
-								"y": 466
-							},
-							{
-								"map": "All Eras",
-								"x": 2208,
 								"y": 466
 							}
 						]
@@ -574,11 +494,6 @@
 								"map": "Present",
 								"x": 280,
 								"y": 192
-							},
-							{
-								"map": "All Eras",
-								"x": 1816,
-								"y": 1216
 							}
 						]
 					},
@@ -591,7 +506,7 @@
 						"sections":
 						[
 							{
-								"name": "Buy for 9900G",
+								"name": "Buy for 9900gil",
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"capture_item": true,
@@ -604,11 +519,6 @@
 								"map": "Present",
 								"x": 441,
 								"y": 860
-							},
-							{
-								"map": "All Eras",
-								"x": 1977,
-								"y": 1884
 							}
 						]
 					},
@@ -631,11 +541,6 @@
 								"map": "Present",
 								"x": 682,
 								"y": 444
-							},
-							{
-								"map": "All Eras",
-								"x": 2218,
-								"y": 1468
 							}
 						]
 					},
@@ -660,11 +565,6 @@
 								"map": "Present",
 								"x": 1145,
 								"y": 853
-							},
-							{
-								"map": "All Eras",
-								"x": 2681,
-								"y": 1877
 							}
 						]
 					},
@@ -687,11 +587,6 @@
 								"map": "Present",
 								"x": 696,
 								"y": 506
-							},
-							{
-								"map": "All Eras",
-								"x": 2232,
-								"y": 1530
 							}
 						]
 					},
@@ -716,11 +611,6 @@
 								"map": "Present",
 								"x": 344,
 								"y": 419
-							},
-							{
-								"map": "All Eras",
-								"x": 1880,
-								"y": 1443
 							}
 						]
 					}
@@ -760,11 +650,6 @@
 								"map": "Future",
 								"x": 447,
 								"y": 359
-							},
-							{
-								"map": "All Eras",
-								"x": 3519,
-								"y": 359
 							}
 						]
 					},
@@ -772,7 +657,7 @@
 						"name": "Proto Dome",
 						"access_rules":
 						[
-							""
+							"Flag_CharLock_on,rseriesboss", "Flag_CharLock_off"
 						],
 						"sections":
 						[
@@ -788,11 +673,6 @@
 							{
 								"map": "Future",
 								"x": 912,
-								"y": 410
-							},
-							{
-								"map": "All Eras",
-								"x": 3984,
 								"y": 410
 							}
 						]
@@ -815,11 +695,6 @@
 							{
 								"map": "Future",
 								"x": 920,
-								"y": 288
-							},
-							{
-								"map": "All Eras",
-								"x": 3992,
 								"y": 288
 							}
 						]
@@ -849,11 +724,6 @@
 								"map": "Future",
 								"x": 1160,
 								"y": 734
-							},
-							{
-								"map": "All Eras",
-								"x": 4232,
-								"y": 734
 							}
 						]
 					},
@@ -882,11 +752,6 @@
 								"map": "Future",
 								"x": 487,
 								"y": 883
-							},
-							{
-								"map": "All Eras",
-								"x": 3559,
-								"y": 883
 							}
 						]
 					},
@@ -908,11 +773,6 @@
 							{
 								"map": "Future",
 								"x": 676,
-								"y": 551
-							},
-							{
-								"map": "All Eras",
-								"x": 3748,
 								"y": 551
 							}
 						]
@@ -945,13 +805,8 @@
 						[
 							{
 								"map": "End Of Time",
-								"x": 1113,
-								"y": 287
-							},
-							{
-								"map": "All Eras",
-								"x": 4185,
-								"y": 1311
+								"x": 525,
+								"y": 164
 							}
 						]
 					}
