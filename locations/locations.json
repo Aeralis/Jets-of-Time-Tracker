@@ -16,7 +16,7 @@
 						"name": "Dactyl Nest",
 						"access_rules":
 						[
-							""
+							"Flag_CharLock_on,dreamstone", "Flag_CharLock_off"
 						],
 						"sections":
 						[
@@ -772,7 +772,7 @@
 						"name": "Proto Dome",
 						"access_rules":
 						[
-							""
+							"Flag_CharLock_on,rseriesboss", "Flag_CharLock_off"
 						],
 						"sections":
 						[
