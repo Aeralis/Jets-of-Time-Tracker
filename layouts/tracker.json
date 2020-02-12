@@ -40,6 +40,37 @@
 			}
 		]
 	},
+		"flag_grid":
+	{
+		"type": "array",
+		"orientation": "vertical",
+		"margin": "0,0",
+		"content":
+		[
+			{
+				"type": "array",
+				"orientation": "horizontal",
+				"margin": "0,0",
+				"content":
+				[
+					{
+						"type": "array",
+						"h_alignment": "center",
+						"item_margin": "1,1",
+						"content":
+						[
+                     {
+                        "type": "item",
+						"item": "Flag_CharLock_off",
+						"scale": 0.90,
+                        "margin": "0,5"
+                     }	
+						]
+					}
+				]
+			}
+		]
+	},
 	"tracker_capture_item":
 	{
 		"type": "container",
@@ -89,6 +120,15 @@
 									}
 								}
 							]
+						},
+						{
+							"type": "group",
+							"header": "Flags",
+							"content":
+							{
+										"type": "layout",
+										"key": "flag_grid"
+							}
 						}
 					]
 				},
