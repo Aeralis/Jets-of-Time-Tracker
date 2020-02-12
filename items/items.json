@@ -317,7 +317,25 @@
 		"img": "images/bosses/golem.png",
 		"codes": "golemboss"
 	},
-// Additonal Instructions
+	// Flags
+	{
+        "name": "Character Locks",
+        "type": "progressive",
+        "allow_disabled": false,
+        "initial_stage_idx": 1,
+        "loop": true,
+        "stages": [
+          {
+            "img": "images/Flag_CharLock_on.png",
+            "codes": "Flag_CharLock_on"
+          },
+          {
+            "img": "images/Flag_CharLock_off.png",
+            "codes": "Flag_CharLock_off"
+          }
+        ]
+    	},
+	// Additonal Instructions
 	{
 		"name": "Jerky Item",
 		"type": "toggle",
