@@ -6,6 +6,7 @@ v1.1.0
  - Updated logic to match Jets version 1.5!
  - Added "All Eras" map allowing view of all locations.
  - Added "Characters Locked" flag for logic toggle.
+ - New Character Icons.
 
 v1.0.1
  - Changed from character portraits to character menu icons.
