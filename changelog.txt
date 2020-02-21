@@ -2,7 +2,7 @@ Upcoming changes:
  - Indication of ChatHUD functionality.
  - Separation of sections by quest chain.
 
-v1.1.1
+v1.2.0
  - Added Kingdom of Zeal to Dark Ages map, adjusted boss location.
 
 v1.1.0
