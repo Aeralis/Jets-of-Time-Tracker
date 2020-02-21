@@ -2,6 +2,9 @@ Upcoming changes:
  - Indication of ChatHUD functionality.
  - Separation of sections by quest chain.
 
+v1.1.1
+ - Added Kingdom of Zeal to Dark Ages map, adjusted boss location.
+
 v1.1.0
  - Updated logic to match Jets version 1.5!
  - Added "All Eras" map allowing view of all locations.
