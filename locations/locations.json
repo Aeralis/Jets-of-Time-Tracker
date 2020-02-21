@@ -191,7 +191,7 @@
 						"sections":
 						[
 							{
-								"name": "Golem Twins",
+								"name": "Golem",
 								"hosted_item": "golemboss"
 							}
 						],
@@ -199,13 +199,13 @@
 						[
 							{
 								"map": "Dark Ages",
-								"x": 720,
-								"y": 340
+								"x": 1415,
+								"y": 652
 							},
 							{
 								"map": "All Eras",
 								"x": 720,
-								"y": 1364
+								"y": 1675
 							}
 						]
 					}
