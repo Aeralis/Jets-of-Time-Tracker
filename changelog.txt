@@ -2,6 +2,9 @@ Upcoming changes:
  - Indication of ChatHUD functionality.
  - Separation of sections by quest chain.
 
+v1.2.0
+ - Added Autotracking functionality (Developed by Anguirel)
+
 v1.1.1
  - Added Kingdom of Zeal to Dark Ages map, adjusted boss location.
 

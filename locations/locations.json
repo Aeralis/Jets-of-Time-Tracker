@@ -358,7 +358,7 @@
 						]
 					},
 					{
-						"name": "Fiona's Villa/Shrine",
+						"name": "Fiona's Villa",
 						"access_rules":
 						[
 							"robo,retiniteboss"
@@ -420,7 +420,7 @@
 						]
 					},
 					{
-						"name": "Guardia Castle",
+						"name": "Guardia Castle Past",
 						"access_rules":
 						[
 							""
@@ -524,7 +524,7 @@
 				"children":
 				[
 					{
-						"name": "Guardia Castle",
+						"name": "Guardia Castle Present",
 						"access_rules":
 						[
 							""
