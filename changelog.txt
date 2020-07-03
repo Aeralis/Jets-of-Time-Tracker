@@ -2,8 +2,24 @@ Upcoming changes:
  - Indication of ChatHUD functionality.
  - Separation of sections by quest chain.
 
+v2.0.0
+
+ - Added separate trackers to support Lost Worlds mode, Map Tracker (Lost Worlds) and Item Tracker (Lost Worlds)
+ - Autotracker updates
+	- Added Lost Worlds support to the autotracker
+    - Go Mode button is now autotracked
+    - Autotracking now handles game resets
+         NOTE: When starting a new game, the old key items will remain lit up until an inventory action occurs
+
+ - Autoracker fixes:
+   - Rust Tyrano was using an incorrect memory flag
+   - Hero Medal was not being tracked when equipped by Frog
+   - Masamune wasn't being tracked correctly after it was powered up in the ruins
+   - General code refactor and cleanup
+	
+
 v1.2.0
- - Added Autotracking functionality (Developed by Anguirel)
+ - Added Autotracking functionality (Developed by Anguirel86)
 
 v1.1.1
  - Added Kingdom of Zeal to Dark Ages map, adjusted boss location.
@@ -18,7 +34,7 @@ v1.0.1
  - Changed from character portraits to character menu icons.
 
 v1.0.0:
-	- Initial Release
+ - Initial Release
 	
 - Huge thanks go out to Aeralis for the Wings of Time tracker that was the core basis for this tracker.
 - Special thank you to Astharis for asset creation/modification and support.
