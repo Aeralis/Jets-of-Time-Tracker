@@ -2,6 +2,16 @@ Upcoming changes:
  - Indication of ChatHUD functionality.
  - Separation of sections by quest chain.
 
+v1.2.1
+ - The "GO" button will now autotrack when go mode is achieved.
+ - Autotracking bugfixes
+   - Items will now be properly untracked due to deaths or resets.
+   - Fixed a bug causing Rust Tyrano to not autotrack.
+   - Fixed a bug causing hero medal to untrack if Frog was wearing it.
+   - Masamune 2 is now tracked correctly.
+   - Fixed a bug where Death Peak would not properly track with some party compositions.
+   - Fixed a bug causing magic to not track correctly in Lost Worlds mode.
+ 
 v1.2.0
  - Added Autotracking functionality (Developed by Anguirel)
 
