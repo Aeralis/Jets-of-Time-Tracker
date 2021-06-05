@@ -19,9 +19,9 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "heromedal", "benthilt", "bentsword", "masamune", "gatekey", "dreamstone" ],
-							[ "tomapop", "pendant", "prismshard", "moonstone", "jerky", "roboribbon" ],
-							[ "magic", "tools", "clone", "ctrigger", "rubyknife", "gomode" ]
+							[ "benthilt", "bentsword", "masamune",  "grandleon", "heromedal", "roboribbon"],
+							[ "gatekey", "dreamstone", "rubyknife", "prismshard", "moonstone", "jerky"],
+							[ "pendant", "clone", "ctrigger", "tomapop", "magic", "gomode"]
 						]
 					},
 					{
@@ -59,12 +59,12 @@
 						"item_margin": "1,1",
 						"content":
 						[
-                     {
-                        "type": "item",
-						"item": "Flag_CharLock_off",
-						"scale": 0.90,
-                        "margin": "0,5"
-                     }	
+              {
+                "type": "item",
+						    "item": "Flag_CharLock_off",
+						    "scale": 0.90,
+                "margin": "0,5"
+              }
 						]
 					}
 				]
@@ -126,8 +126,8 @@
 							"header": "Flags",
 							"content":
 							{
-										"type": "layout",
-										"key": "flag_grid"
+                "type": "layout",
+                "key": "flag_grid"
 							}
 						}
 					]

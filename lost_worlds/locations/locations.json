@@ -1,0 +1,315 @@
+[
+	{
+		"name": "All Locations",
+		"children":
+		[
+			{
+				"name": "Prehistory",
+				"color": "#b82800",
+				"access_rules":
+				[
+				],
+				"children":
+				[
+					{
+						"name": "Dactyl Nest",
+						"access_rules":
+						[
+							"Flag_CharLock_on,dreamstone", "Flag_CharLock_off"
+						],
+						"sections":
+						[
+							{
+								"name": "Friend to the Dactyls",
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 518,
+								"y": 258
+							}
+						]
+					},
+					{
+						"name": "Reptite Lair",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Nizbel",
+								"hosted_item": "nizbelboss"
+							},
+							{
+								"name": "Defeat Nizbel",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 543,
+								"y": 826
+							}
+						]
+					},
+					{
+						"name": "Tyrano Castle",
+						"access_rules":
+						[
+							"dreamstone"
+						],
+						"sections":
+						[
+							{
+								"name": "Black Tyrano",
+								"hosted_item": "blacktyranoboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 848,
+								"y": 565
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Dark Ages",
+				"color": "#c0c0c8",
+				"access_rules":
+				[
+				],
+				"children":
+				[
+					{
+						"name": "Mt Woe",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Giga Gaia",
+								"hosted_item": "gigagaiaboss"
+							},
+							{
+								"name": "Defeat Giga Gaia",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Dark Ages",
+								"x": 424,
+								"y": 462
+							}
+						]
+					},
+					{
+						"name": "Ocean Palace",
+						"access_rules":
+						[
+							"rubyknife,blacktyranoboss"
+						],
+						"sections":
+						[
+							{
+								"name": "Golem",
+								"hosted_item": "golemboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Dark Ages",
+								"x": 1415,
+								"y": 652
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Future",
+				"color": "#482828",
+				"access_rules":
+				[
+				],
+				"children":
+				[
+					{
+						"name": "Arris Dome",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Guardian",
+								"hosted_item": "guardianboss"
+							},
+							{
+								"name": "Activate the Computer",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 447,
+								"y": 359
+							}
+						]
+					},
+					{
+						"name": "Proto Dome",
+						"access_rules":
+						[
+							"Flag_CharLock_on,rseriesboss", "Flag_CharLock_off"
+						],
+						"sections":
+						[
+							{
+								"name": "Fix Robo",
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 912,
+								"y": 410
+							}
+						]
+					},
+					{
+						"name": "Factory",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "R-Series",
+								"hosted_item": "rseriesboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 920,
+								"y": 288
+							}
+						]
+					},
+					{
+						"name": "Geno Dome",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Mother Brain",
+								"hosted_item": "motherbrainboss"
+							},
+							{
+								"name": "Defeat Mother Brain",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 1160,
+								"y": 734
+							}
+						]
+					},
+					{
+						"name": "Sun Palace",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Son of Sun",
+								"hosted_item": "sonofsunboss"
+							},
+							{
+								"name": "Moon Stone",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 487,
+								"y": 883
+							}
+						]
+					},
+					{
+						"name": "Death Peak",
+						"access_rules":
+						[
+							"clone,ctrigger"
+						],
+						"sections":
+						[
+							{
+								"name": "Black Omen Path",
+								"hosted_item": "zealboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 676,
+								"y": 551
+							}
+						]
+					}
+				]
+			},
+		]
+	}
+]
+			
