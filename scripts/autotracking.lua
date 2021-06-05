@@ -14,7 +14,7 @@ print("")
 --
 -- Script variables
 --
-HAS_MASAMUNE = false
+CHECK_COUNTERS = {chests = 0, sealed_chests = 0, base_checks = 0}
 
 --
 -- Invoked when the auto-tracker is activated/connected
@@ -53,6 +53,15 @@ function lostWorldsMode()
 end
 
 --
+-- Check if the tracker is in Chronosanity mode
+--
+function chronosanityMode()
+
+  return string.find(Tracker.ActiveVariantUID, "chronosanity")
+  
+end
+
+--
 -- Check if the game is currently running
 --
 function inGame()
@@ -68,8 +77,11 @@ function inGame()
 -- achieved when the player has acquired the correct items and/or characters
 -- to beat the game.  There are three different paths that can be taken:
 --   - Through 65 Million BC (Gate Key, Dream Stone, Ruby Knife)
---   - Through Magus' Castle 600AD (Frog, Repaired Masamune, Ruby Knife)
+--   - Through Magus' Castle 600AD (Frog, Repaired Masamune)
 --   - Through Death Peak/Black Omen (Access to 2300AD, C. Trigger, Clone)
+--
+--  NOTE: The Ruby Knife is no longer required when accessing Ocean Palace
+--        via Magus' Castle as of version 3.0 of the randomizer.
 --
 -- In Lost Worlds mode, there are two paths:
 --   - Through Death Peak/Black Omen (C. Trigger and Clone)
@@ -94,7 +106,7 @@ function handleGoMode()
   else
     goMode = 
       (gateKey.Active and dreamStone.Active and rubyKnife.Active) or -- 65 million BC -> 12000 BC -> Ocean Palace
-      (frog.Active and masamune.Active and rubyKnife.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
+      (frog.Active and masamune.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
       (pendant.Active and cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
   end  
   local goButton = Tracker:FindObjectForCode("gomode")
@@ -108,22 +120,26 @@ end
 function updateEvent(name, segment, address, flag)
 
   local trackerItem = Tracker:FindObjectForCode(name)
+  local completed = 0
   
   if trackerItem then
     if trackerItem.Owner.ModifiedByUser then
       -- early return if the item has been modified by the user. 
-      return
+      return 0
     end
   
     local value = segment:ReadUInt8(address)
     if (value & flag) ~= 0 then
       trackerItem.AvailableChestCount = 0
+      completed = 1
     else
       trackerItem.AvailableChestCount = 1
     end
   else
     printDebug("Update Event: Unable to find tracker item: " .. name)  
   end
+  
+  return completed
   
 end
 
@@ -160,6 +176,7 @@ function handleZenanBridge(segment)
   -- NOTE: This marks complete when the battle starts, not when Zombor dies
   --       There isn't a specific memory flag for Zombor's death
   updateBoss("zomborboss", segment, 0x7F0101, 0x02)
+  local completed = 0
   
   -- If Zombor was defeated then mark the cook's item as active regardless
   -- of the flag's state.  Only track this if the tracker is not set to 
@@ -169,11 +186,14 @@ function handleZenanBridge(segment)
       local cookItem = Tracker:FindObjectForCode("@Zenan Bridge/Cook's Rations")
       if not cookItem.Owner.ModifiedByUser then
         cookItem.AvailableChestCount = 0
+        completed = 1
       end
     else
-      updateEvent("@Zenan Bridge/Cook's Rations", segment, 0x7F00A9, 0x10)
+      completed = updateEvent("@Zenan Bridge/Cook's Rations", segment, 0x7F00A9, 0x10)
     end
   end
+  
+  return completed
   
 end
 
@@ -193,6 +213,7 @@ function handleMelchiorRefinements(segment)
 
   local yakraxiii = Tracker:FindObjectForCode("yakraxiiiboss")
   local melchior = Tracker:FindObjectForCode("@Guardia Castle Present/Melchior's Refinements")
+  local completed = 0
   
   if melchior.Owner.ModifiedByUser or itemsOnlyTracking() then
     -- Break out early if the item has been modified by the user
@@ -203,6 +224,7 @@ function handleMelchiorRefinements(segment)
     local value = segment:ReadUInt8(0x7F006D)
     if (value & 0x10) == 0 then
       melchior.AvailableChestCount = 0
+      completed = 1
     else
       melchior.AvailableChestCount = 1
     end
@@ -210,31 +232,8 @@ function handleMelchiorRefinements(segment)
     melchior.AvailableChestCount = 1
   end
   
-end
-
---
--- The Masamune is a key item that can show up in either the main inventory
--- or in Frog's weapon slot.  Acquiring the Masamune also removes the Bent Sword
--- and Bent Hilt from the player's inventory.  If the Masamune is found, this 
--- function will set all three items as acquired on the tracker.
---
-function handleMasamune(keyItem)
-
-  if keyItem.name == "masamune" then
-    local frogWeapon = AutoTracker:ReadU8(0x7E2769, 0)
-    HAS_MASAMUNE = (frogWeapon == 0x3D) or (frogWeapon == 0x42) or keyItem.found
+  return completed
   
-    masamune = Tracker:FindObjectForCode("masamune")
-    if not masamune.Owner.ModifiedByUser then
-      masamune.Active = HAS_MASAMUNE
-    end
-  else
-    trackerItem = Tracker:FindObjectForCode(keyItem.name)
-    if not trackerItem.Owner.ModifiedByUser then
-      trackerItem.Active = keyItem.found or HAS_MASAMUNE
-    end
-  end
-
 end
 
 --
@@ -294,33 +293,6 @@ function handleEquippableItem(keyItem)
 end
 
 --
--- Handle the Taban's Gift event processing.
--- The Taban's Gift event doesn't have a single memory flag.
--- After taking the Heckran's Cave Whirlpool, 1F0 is set high. 
--- This triggers Taban to give the player an item. After taking
--- the item it goes back low.  
---
-function handleTabansGift(segment)
-
-  local item = Tracker:FindObjectForCode("@Lucca's House/Taban's Gift")
-  if item.Owner.ModifiedByUser then
-    return
-  end
-
-  local tookWhirlpool = segment:ReadUInt8(0x7F01A3) & 0x08 ~= 0
-  local taban = segment:ReadUInt8(0x7F01F0) & 0x01 ~= 0
-
-  
-  if tookWhirlpool and not taban then
-    -- Took the whirlpool and Taban's gift has been claimed
-    item.AvailableChestCount = 0
-  else
-    item.AvailableChestCount = 1  
-  end
-  
-end
-
---
 -- Handle items that are lost on turn-in.  Address, flag attributes 
 -- are used to determine if the turn-in event has occured.
 --
@@ -342,29 +314,34 @@ end
 -- Some items have an additional callback field.
 -- This is a callback function for special processing.
 --
+-- Values can be specified as a scalar number or as a table with multiple
+-- item IDs.  This was used to track both forms of the Masamune before
+-- the Grand Leon change that split them into separate key items.
+--
 -- NOTE: Key items must be defined after the callback
 --       functions are defined or they won't trigger properly.
---
--- NOTE: The Masamune has 2 distinct item IDs.  It starts out as 0x3D and then
---       changes to 0x42 after being powered up in the ruins in 1000AD.  
 --
 -- NOTE: The Ruby Knife is removed from the inventory when you reach the Mammon Machine
 --       at the end of Ocean Palace.  There wasn't a convenient memory flag for that 
 --       event, so instead we're checking to see if the sealed door in Zeal Palace has 
 --       been opened to meet the turn-in condition.
 --
+-- TODO: The sealed door to Ocean Palace was changed.  When going through Magus' Castle
+--       the Ruby Knife isn't required anymore.  Check to see how we handle that case now.
+--       I'm guessing the item turnin logic will cause it to be flagged as collected even
+--       if it wasn't once the door is opened.
+--
 --
 KEY_ITEMS = {
-  {value={0x3D, 0x42}, name="masamune", callback=handleMasamune},
-  {value=0x50, name="bentsword", callback=handleMasamune},
-  {value=0x51, name="benthilt", callback=handleMasamune},
+  {value=0x50, name="bentsword", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
+  {value=0x51, name="benthilt", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
   {value=0xB3, name="heromedal", callback=handleEquippableItem, address=0x7E276A},
   {value=0xB8, name="roboribbon", callback=handleEquippableItem, address=0x7E271A},
   {value=0xD6, name="pendant"},
   {value=0xD7, name="gatekey"},
   {value=0xD8, name="prismshard"},
   {value=0xD9, name="ctrigger"},
-  {value=0xDA, name="tools", callback=handleItemTurnin, address=0x7F019E, flag=0x40},
+  {value=0x42, name="grandleon", callback=handleEquippableItem, address=0x7E2769},
   {value=0xDB, name="jerky", callback=handleItemTurnin, address=0x7F01D2, flag=0x04},
   {value=0xDC, name="dreamstone"},
   {value=0xDF, name="sunstone", callback=handleMoonstone},
@@ -396,8 +373,6 @@ function updateItemsFromInventory(segment)
   end
 
   -- Loop through the inventory, determine which key items the player has found
-  -- NOTE: The Masamune has 2 distinct item IDs.  These IDs are stored as a table
-  --       so that both can be checked here at the same time.
   for i=0,0xF1 do
     local item = segment:ReadUInt8(0x7E2400 + i)
     -- Loop through the table of key items and see if the current 
@@ -409,6 +384,8 @@ function updateItemsFromInventory(segment)
         end
       elseif type(v.value) == "table" then
         -- Loop through possible IDs for items with more than one
+        -- Not used since the Masamume/Grand Leon change, but leaving this in
+        -- in case it's needed in the future.
         for k2, v2 in pairs(v.value) do
           if item == v2 then
             v.found = true
@@ -460,6 +437,7 @@ function updateEventsAndBosses(segment)
 
   -- Handle boss tracking.
   -- This is done in both Map Tracker and Item Tracker variants
+  local keyItemChecksDone = 0
   
   -- Prehistory
   updateBoss("nizbelboss", segment, 0x7F0105, 0x20)
@@ -475,7 +453,7 @@ function updateEventsAndBosses(segment)
   updateBoss("retiniteboss", segment, 0x7F01AD, 0x04)
   updateBoss("rusttyranoboss", segment, 0x7F01D2, 0x40)
   updateBoss("magusboss", segment, 0x7F01FF, 0x04)
-  handleZenanBridge(segment)
+  keyItemChecksDone = keyItemChecksDone + handleZenanBridge(segment)
   
   -- Present
   updateBoss("heckranboss", segment, 0x7F01A3, 0x08)
@@ -496,15 +474,14 @@ function updateEventsAndBosses(segment)
   -- when you reach the summit. Check to see if any of the bottom 3 bits are set
   updateBoss("zealboss", segment, 0x7F0067, 0x07)
   
-  
   -- Only track events in the "Map Tracker" variant
   if not itemsOnlyTracking() then
     -- Prehistory
-    updateEvent("@Reptite Lair/Defeat Nizbel", segment, 0x7F0105, 0x20)
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Reptite Lair/Defeat Nizbel", segment, 0x7F0105, 0x20)
     updateEvent("@Dactyl Nest/Friend to the Dactyls", segment, 0x7F0160, 0x10)
     
     -- Dark Ages
-    updateEvent("@Mt Woe/Defeat Giga Gaia", segment, 0x7F0100, 0x20) -- same as boss flag
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Mt Woe/Defeat Giga Gaia", segment, 0x7F0100, 0x20) -- same as boss flag
    
 	-- Don't check these events in Lost Worlds mode, they don't exist.
     if not lostWorldsMode() then	
@@ -514,30 +491,32 @@ function updateEventsAndBosses(segment)
       -- Middle Ages
       updateEvent("@Manoria Cathedral/Saved by Frog", segment, 0x7F0100, 0x01)
       updateEvent("@Guardia Castle Past/Rescue Marle", segment, 0x7F00A1, 0x04)
-      updateEvent("@Denadoro Mts/Defeat Masamune", segment, 0x7F0102, 0x02)
-      updateEvent("@Fiona's Villa/Replant the Forest", segment, 0x7F007C, 0x80)
-      updateEvent("@Cursed Woods/Burrow Left Chest", segment, 0x7F0106, 0x04)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Denadoro Mts/Defeat Masamune", segment, 0x7F0102, 0x02)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Fiona's Villa/Replant the Forest", segment, 0x7F007C, 0x80)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Cursed Woods/Burrow Left Chest", segment, 0x7F0106, 0x04)
       updateEvent("@Cursed Woods/Return the Masamune", segment, 0x7F00FF, 0x20)
       -- NOTE: Rainbow Shell flag is set after warping out of the cave
       --       after interacting with the Rainbow Shell
-      updateEvent("@Giant's Claw/Rainbow Shell", segment, 0x7F00A9, 0x80)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Giant's Claw/Rainbow Shell", segment, 0x7F00A9, 0x80)
     
       -- Present
-      updateEvent("@Snail Stop/Buy for 9900G", segment, 0x7F01D0, 0x10)
-      updateEvent("@Choras Inn/Borrow Carpenter's Tools", segment, 0x7F019E, 0x80)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Snail Stop/Buy for 9900G", segment, 0x7F01D0, 0x10)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Choras Inn/Borrow Carpenter's Tools", segment, 0x7F019E, 0x80)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Lucca's House/Taban's Gift", segment, 0x7F007A, 0x01)
       updateEvent("@Melchior's Hut/Reforge the Masamune", segment, 0x7F0103, 0x02)
       -- The trial is a guess. Two flags go high here and I just picked one arbitrarily
-      updateEvent("@Guardia Castle Present/King Guardia's Trial", segment, 0x7F00A2, 0x80)
-      handleMelchiorRefinements(segment)
-      handleTabansGift(segment)
+      keyItemChecksDone = keyItemChecksDone + updateEvent("@Guardia Castle Present/King Guardia's Trial", segment, 0x7F00A2, 0x80)
+      keyItemChecksDone = keyItemChecksDone + handleMelchiorRefinements(segment)
     end
     
     -- Future
     updateEvent("@Proto Dome/Fix Robo", segment, 0x7F00F3, 0x02)
-    updateEvent("@Arris Dome/Activate the Computer", segment, 0x7F00A4, 0x01)
-    updateEvent("@Sun Palace/Moon Stone", segment, 0x7F013A, 0x02) -- same as Son of Sun
-    updateEvent("@Geno Dome/Defeat Mother Brain", segment, 0x7F013B, 0x10) -- Same as Mother Brain 
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Arris Dome/Activate the Computer", segment, 0x7F00A4, 0x01)
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Sun Palace/Moon Stone", segment, 0x7F013A, 0x02) -- same as Son of Sun
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Geno Dome/Defeat Mother Brain", segment, 0x7F013B, 0x10) -- Same as Mother Brain 
   end -- end event tracking
+  
+  CHECK_COUNTERS.base_checks = keyItemChecksDone
   
   -- End of Time
   -- Track magic here. This is determined by whether or not any character 
@@ -547,6 +526,20 @@ function updateEventsAndBosses(segment)
   local spekkioByte = segment:ReadUInt8(0x7F01E0)
   if not magic.Owner.ModifiedByUser then
     magic.Active = (spekkioByte & 0x3F) ~= 0
+  end
+  
+  -- Masamune
+  -- The Masamune tracker item is activated when the player reforges the Masamune
+  -- after collecting the hilt and blade.  The original version of the tracker
+  -- tracked this via the inventory, but it can be tracked easier using the event
+  -- flag set high after Melchior reforges the sword.  Because it's part of event
+  -- memory, check for the tracker item here.
+  melchior = Tracker:FindObjectForCode("melchior")
+  melchior.Active = (segment:ReadUInt8(0x7f0103) & 0x02) ~= 0
+  
+  -- Handle sealed chest tracking if the tracker is in Chronosanity mode.
+  if chronosanityMode() then
+    handleSealedChests(segment)
   end
   
 end
@@ -648,10 +641,572 @@ function updateParty(segment)
 end
 
 --
+-- Update the total collection count from normal event checks,
+-- chest checks, and sealed treasure checks.
+-- This updates the check counter on the tracker.
+--
+function updateCollectionCount()
+
+  local counter = Tracker:FindObjectForCode("checkcounter")
+  counter.AcquiredCount = CHECK_COUNTERS.chests + CHECK_COUNTERS.sealed_chests + CHECK_COUNTERS.base_checks
+
+end
+
+--
+-- Handle a single sealed chest location.
+--
+function handleSealedChestLocation(segment, locationName, flags)
+  
+  local location = Tracker:FindObjectForCode(locationName)
+  if location == nil then
+    printDebug("Location not found: " .. locationName)
+    return 0
+  end
+  
+  local treasuresCollected = 0
+  local value = 0
+  for _, flag in pairs(flags) do
+    value = segment:ReadUInt8(flag[1])
+    if (value & flag[2]) ~= 0 then
+      treasuresCollected = treasuresCollected + 1
+    end
+  end
+  
+  location.AvailableChestCount = location.ChestCount - treasuresCollected
+  return treasuresCollected
+  
+end
+
+--
+-- Handle autotracking for the sealed chests that are part
+-- of Chronosanity mode.
+--
+function handleSealedChests(segment)
+
+  local total = 0
+  ------------
+  -- 600 AD --
+  ------------
+  total = handleSealedChestLocation(segment, "@Porre Elder's House/Sealed Chests", {{0x7F01D3, 0x10}, {0x7F01D3, 0x20}})
+  total = total + handleSealedChestLocation(segment, "@Truce Inn Past/Sealed Chest", {{0x7F014A, 0x80}})
+  total = total + handleSealedChestLocation(segment, "@Guardia Forest Past/Sealed Chest", {{0x7F01D2, 0x80}})
+  total = total + handleSealedChestLocation(segment, "@Guardia Castle Past/Sealed Chest", {{0x7F00D9, 0x02}})
+  total = total + handleSealedChestLocation(segment, "@Magic Cave/Sealed Chest", {{0x7F0079, 0x01}})
+  
+  -------------
+  -- 1000 AD --
+  -------------
+  total = total + handleSealedChestLocation(segment, "@Porre Mayor's House/Sealed Chests", {{0x7F01D1, 0x40}, {0x7F01D1, 0x80}})
+  total = total + handleSealedChestLocation(segment, "@Truce Inn Present/Sealed Chest", {{0x7F014A, 0x20}})
+  total = total + handleSealedChestLocation(segment, "@Guardia Forest Present/Sealed Chest", {{0x7F01D1, 0x20}})
+  total = total + handleSealedChestLocation(segment, "@Guardia Castle Present/Sealed Chest", {{0x7F00D9, 0x04}})
+  total = total + handleSealedChestLocation(segment, "@Heckran Cave/Sealed Chest", {{0x7F01A0, 0x04}})
+  total = total + handleSealedChestLocation(segment, "@Forest Ruins/Blue Pyramid", {{0x7F01A0, 0x01}})
+  
+  -- The "regular" Northern Ruins chests are not normal treasure chests.
+  -- They are handled internally via events just like sealed chests.
+  -- 600 AD
+  total = total + handleSealedChestLocation(segment, "@Northern Ruins Past/Chests", {{0x7F01AC, 0x02}, {0x7F01AC, 0x08}})
+  -- 1000 AD
+  total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Basement", {{0x7F01AC, 0x01}})
+  total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Upstairs", {{0x7F01AC, 0x04}})
+  
+  CHECK_COUNTERS.sealed_chests = total
+  updateCollectionCount()
+
+end 
+
+--
+-- Handle updating the chest counters for a given area.
+--
+function handleChests(segment, locationName, treasureMap)
+
+  -- Base address of the block of treasure bits
+  -- Treasure pointers are stored as offsets from this address
+  local baseAddress = 0x7F0001
+  local totalTreasures = 0
+  
+  -- Loop through each sub-location for this location
+  for locationCode,treasures in pairs(treasureMap) do
+    local location = Tracker:FindObjectForCode(locationName .. locationCode)
+    
+    -- Loop through and count the treasures in each subsection
+    --    treasure[1] - Offset from the base treasure address
+    --    treasure[2] - Bitmask flag for this treasure
+    local collectedTreasures = 0
+    for _, treasure in pairs(treasures) do
+      local address = baseAddress + treasure[1]
+      local treasureByte = segment:ReadUInt8(address)
+      if (treasureByte & treasure[2]) ~= 0 then
+        collectedTreasures = collectedTreasures + 1
+      end
+    end -- end treasure loop
+    
+    location.AvailableChestCount = location.ChestCount - collectedTreasures
+    totalTreasures = totalTreasures + collectedTreasures
+    
+  end -- End location loop
+  
+  return totalTreasures
+  
+end
+
+--
+-- Update the chests that have been collected
+-- by the player.  Only chests considered for 
+-- key item placement in Chronosanity mode are
+-- tracked here.
+--
+function updateChests(segment)
+  
+  -- Don't autotrack during gate travel:
+  -- During a gate transition the memory flags holding the chest
+  -- data  are overwritten.  After the animation, memory 
+  -- goes back to normal.
+  s1 = segment:ReadUInt16(0x7F0000)
+  s2 = segment:ReadUInt16(0x7F0002)
+  if s1 == 0x4140 and s2 == 0x4342 then
+    return
+  end
+  
+  -- 
+  -- Treasures for each loction are stored as an offset
+  -- from the base treasure address and a bit flag
+  -- for the specific chest. 
+  --
+  -- Named entries are subsections within the location.
+  --
+  local chestsOpened = 0
+  local chests = {}
+  --------------------------
+  --    65,000,000 BC     --
+  --------------------------
+  -- Mystic Mountains
+  chests = {
+    ["Chests"] = {
+      {0x13, 0x20}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Mystic Mountain/", chests)
+  
+  -- Forest Maze
+  chests = {
+    ["Chests"] = {
+      {0x13, 0x40},
+      {0x13, 0x80},
+      {0x14, 0x01},
+      {0x14, 0x02},
+      {0x14, 0x04},
+      {0x14, 0x08},
+      {0x14, 0x10},
+      {0x14, 0x20},
+      {0x14, 0x40}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Forest Maze/", chests)
+  
+  -- Dactyl Nest
+  chests = {
+    ["Chests"] = {
+      {0x15, 0x80},
+      {0x16, 0x01},
+      {0x16, 0x02}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Dactyl Nest/", chests)
+  
+  -- Reptite Lair
+  chests = {
+    ["Chests"] = {
+      {0x15, 0x20},
+      {0x15, 0x40}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Reptite Lair/", chests)
+  
+  --------------------------
+  --      12000 BC        --
+  --------------------------
+  -- Mount Woe
+  -- Screen 1 - Middle Eastern Face (0x18A)
+  -- Screen 2 - Western Face (0x188)
+  -- Screen 3 - Lower Eastern Face (0x189)
+  -- Screen 4 - Upper Eastern Face (0x18B)
+  chests = { 
+    ["Screen 1"] = {
+      {0x1B, 0x08}
+    },
+    ["Screen 2"] = {
+      {0x1A, 0x02}, -- Screen 2, Bottom Right Chest
+      {0x1A, 0x04}, -- Screen 2, Top Right Island, Top Chest
+      {0x1A, 0x08}, -- Screen 2, Top Right Island, Bottom Chest
+      {0x1A, 0x10}, -- Screen 2, Top Left Chest
+      {0x1A, 0x20}  -- Screen 2, Mid Left Chest
+    },
+    ["Screen 3"] = {
+      {0x1A, 0x40}, -- Screen 3, Right Island, Bottom chest
+      {0x1A, 0x80}, -- Screen 3, Right Island, Top chest
+      {0x1B, 0x01}, -- Screen 3, Bottom Left Chest
+      {0x1B, 0x02}, -- Screen 3, Top Left Island, Right Chest
+      {0x1B, 0x04}  -- Screen 3, Top Left Island, Left Chest
+    },
+    ["Screen 4"] = {
+      {0x1B, 0x10}, -- Screen 4, Right Chest
+      {0x1B, 0x20}  -- Screen 4, Left Chest
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Mt Woe/", chests)
+  
+  --------------------------
+  --       600 AD         --
+  --------------------------
+  -- Fiona's Villa
+  chests = {
+    ["Chests"] = {
+      {0x07, 0x40},
+      {0x07, 0x80}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Fiona's Villa/", chests)
+  
+  -- Truce Canyon
+  chests = {
+    ["Chests"] = {
+      {0x03, 0x08},
+      {0x03, 0x10}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Truce Canyon/", chests)
+
+  -- Guardia Castle Past
+  chests = {
+    ["King's Tower"] = {
+      {0x1E, 0x04},
+      {0x03, 0x20}
+    },
+    ["Queen's Tower"] = {
+      {0x1D, 0x08}
+    },
+    ["Queen's Room"] = {
+      {0x03, 0x40}
+    },
+    ["Kitchen"] = {
+      {0x03, 0x80}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Guardia Castle Past/", chests)
+  
+  -- Manoria Cathedral
+  chests = {
+    ["Front Half"] = {
+      {0x04, 0x02},
+      {0x04, 0x04},
+      {0x04, 0x08}
+    },
+    ["Bromide Room"] = {
+      {0x0C, 0x08},
+      {0x0C, 0x10},
+      {0x0C, 0x20}
+    },
+    ["Disguised Royalty"] = {
+      {0x0C, 0x02},
+      {0x0C, 0x04}
+    },
+    ["Shrine"] = {
+      {0x0C, 0x40},
+      {0x0C, 0x80}
+    },
+    ["Back Half"] = {
+      {0x04, 0x10},
+      {0x04, 0x20},
+      {0x04, 0x40},
+      {0x04, 0x80}
+    },
+    ["Final Chest"] = {
+      {0x0C, 0x01}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Manoria Cathedral/", chests)
+  
+  -- Cursed Woods
+  chests = {
+    ["Burrow Right Chest"] = {
+      {0x05, 0x04}
+    },
+    ["Forest Chests"] = {
+      {0x05, 0x01},
+      {0x05, 0x02}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Cursed Woods/", chests)
+  
+  -- Denadoro Mountains
+  chests = {
+    ["Entrance"] = {
+      {0x06, 0x40}, -- Entrance Cliff
+      {0x06, 0x80}, -- Entrance
+      {0x05, 0x20}, -- Back room from entrance
+      {0x05, 0x08}, -- Screen 2 top chest
+      {0x05, 0x10}  -- Screen 2 left chest
+    },
+    ["Right Side Climb"] = {
+      {0x06, 0x01}, -- climb, right side (rock thrower)
+      {0x07, 0x01}, -- Outlaw race chest
+      {0x07, 0x02}, -- Outlaw race chest
+      {0x07, 0x04}, -- Outlaw race chest
+      {0x07, 0x08}, -- Outlaw race chest
+      {0x07, 0x10}  -- Right side, before gauntlet
+    },
+    ["Waterfall Top"] = {
+      {0x06, 0x08}, -- Waterfall top - bottom right chest
+      {0x06, 0x10}, -- Waterfall top - top chest
+      {0x06, 0x20}  -- Waterfall top - Left Chest
+    },
+    ["Waterfall Bottom"] = {
+      {0x06, 0x02}, -- Waterfall bottom - left chest
+      {0x06, 0x04}  -- Waterfall bottom - right chest
+    },
+    ["Left Side"] = {
+      {0x05, 0x40}, -- Final screen bottom chest
+      {0x05, 0x80}, -- Final screen top chest
+      {0x07, 0x20}  -- Left side by save point
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Denadoro Mts/", chests)
+  
+  -- Giant's Claw
+  chests = {
+  -- Throne room chests are shared between here and Tyrano Lair.
+  -- They are not currently being used in Chronosanity.
+  --  ["Throne Room"] = {
+  --    {0x16, 0x04},
+  --    {0x16, 0x08}
+  --  },
+    ["Entrance"] = {
+      {0x0B, 0x04}, -- Left chest after throne room
+      {0x03, 0x04}  -- Chest north of the pit you jump down
+    },
+    ["Caverns"] = {
+      {0x0B, 0x80}, -- Caverns room 1
+      -- {0x0B, 0x40}, -- Blue Rock - Rock chests not included in Chronosanity
+      {0x0B, 0x20}, -- Caverns room 2, left side
+      {0x0B, 0x10}, -- Caverns room 2, right side
+      {0x0B, 0x08}  -- Left door of pit room
+    },
+    ["Kino's Cell"] = {
+      {0x03, 0x02}  -- Kino's Cell
+    }    
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Giant's Claw/", chests)
+  
+  -- Ozzie's Fort
+  chests = {
+    ["Front Half"] = {
+      {0x0A, 0x10},
+      {0x0A, 0x20},
+      {0x0A, 0x40},
+      {0x0A, 0x80}
+    },
+    ["Back Half"] = {
+      {0x0B, 0x01},
+      {0x0B, 0x02}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Ozzie's Fort/", chests)
+  
+  --------------------------
+  --       1000 AD        --
+  --------------------------
+  -- Guardia Castle Present 
+  chests = {
+    ["King's Tower"] = {
+      {0x1E, 0x08},
+      {0x00, 0x10}
+    },
+    ["Queen's Tower"] = {
+      {0x1E, 0x10},
+      {0x00, 0x20}
+    },
+    ["Courtroom Tower"] = {
+      {0x1E, 0x20}
+    },
+    ["Prison Tower"] = {
+      {0x1E, 0x40}
+    },
+    ["Guardia Treasury"] = {
+      {0x00, 0x40},
+      {0x00, 0x80},
+      {0x01, 0x01},
+      {0x1D, 0x01},
+      {0x1D, 0x02},
+      {0x1D, 0x04}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Guardia Castle Present/", chests)
+  
+  -- Truce Mayor's House
+  chests = {
+    ["Chests"] = {
+      {0x00, 0x04},
+      {0x00, 0x08}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Truce Mayor's House/", chests)
+  
+  -- Porre Mayor's House
+  chests = {
+    ["Chests"] = {
+      {0x01, 0x80}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Porre Mayor's House/", chests)
+  
+  -- Forest Ruins
+  chests = {
+    ["Chests"] = {
+      {0x01, 0x04}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Forest Ruins/", chests)
+  
+  -- Heckran's Cave
+  chests = {
+    ["Chests"] = {
+      {0x01, 0x08},
+      {0x01, 0x10},
+      {0x01, 0x20},
+      {0x01, 0x40}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Heckran Cave/", chests)
+  
+  --------------------------
+  --       2300 AD        --
+  --------------------------
+  -- Bangor Dome
+  chests = {
+    ["Sealed Door"] = {
+      {0x0D, 0x01},
+      {0x0D, 0x02},
+      {0x0D, 0x04}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Bangor Dome/", chests)
+  
+  -- Trann Dome
+  chests = {
+    ["Sealed Door"] = {
+      {0x0D, 0x08},
+      {0x0D, 0x10}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Trann Dome/", chests)
+  
+  -- Arris Dome 
+  chests = {
+    ["Chests"] = {
+      {0x0E, 0x02}, -- Passageway
+      {0x1A, 0x01}  -- Food Storage
+    },
+    ["Sealed Door"] = {
+      {0x0E, 0x04}, 
+      {0x0E, 0x08},
+      {0x0E, 0x10}, 
+      {0x0E, 0x20}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Arris Dome/", chests)
+  
+  -- Factory Ruins 
+  chests = {
+    ["Left Side"] = {
+      {0x0F, 0x02}, -- Auxillary computer (hatch room)
+      {0x0F, 0x04}, -- Security Center
+      {0x0F, 0x08}, -- Security Center
+      {0x10, 0x08}  -- Power Core
+    },
+    ["Right Side"] = {
+      {0x0F, 0x10},
+      {0x0F, 0x20},
+      {0x0F, 0x40},
+      {0x0F, 0x80}, -- hidden chest
+      {0x10, 0x01}, 
+      {0x10, 0x02},
+      {0x10, 0x04},
+      {0x12, 0x08},
+      {0x12, 0x10}
+      -- 7F001D   80  Inaccessible chest
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Factory/", chests)
+  
+  -- Sewers
+  chests = {
+    ["Chests"] = {
+      {0x10, 0x10}, -- Front chest
+      {0x10, 0x20}, -- Krawlie chest
+      {0x10, 0x40}  -- Back chest (left of exit)
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Sewers/", chests)
+  
+  -- Lab16
+  chests = {
+    ["Chests"] = {
+      {0x0D, 0x20}, -- Chest 2 (after 3 volcanos)
+      {0x0D, 0x40}, -- Chest 3 (Before 5 volcanos)
+      {0x0D, 0x80}, -- Chest to the right of the entrance
+      {0x0E, 0x01}  -- East side chest
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Lab16/", chests)
+  
+  -- Lab32
+  chests = {
+    ["Chests"] = {
+      {0x0E, 0x80}
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Lab32/", chests)
+  
+  -- Geno Dome 
+  chests = {
+    ["First Floor"] = {
+      {0x11, 0x08}, -- Control Room (By electricity)
+      {0x11, 0x10}, -- Robot storage top chest
+      {0x11, 0x20}, -- Robot storage bottom chest
+      {0x11, 0x40}, -- Far left chest (by 2nd doll)
+      {0x11, 0x80}, -- South electricity room, left chest
+      {0x12, 0x01}, -- South electricity room, right chest
+      {0x12, 0x02}, -- Proto 4 room, top chest
+      {0x12, 0x04}  -- Proto 4 room, bottom chest
+    },
+    ["Second Floor"] = {
+      {0x13, 0x02}, -- Back catwalk chest
+      {0x13, 0x04}, -- Laser cell chest
+      {0x13, 0x08}, -- Left catwalk chest
+      {0x13, 0x10}  -- Chest by first set of laser guards
+    }
+  }
+  chestsOpened = chestsOpened + handleChests(segment, "@Geno Dome/", chests)
+  
+  CHECK_COUNTERS.chests = chestsOpened
+  updateCollectionCount()
+  
+end
+
+--
 -- Set up memory watches on memory used for autotracking.
 --
 printDebug("Adding memory watches")
 ScriptHost:AddMemoryWatch("Party", 0x7E2980, 9, updateParty)
 ScriptHost:AddMemoryWatch("Events", 0x7F0000, 512, updateEventsAndBosses)
 ScriptHost:AddMemoryWatch("Inventory", 0x7E2400, 0xF2, updateItemsFromInventory)
+
+-- TODO - The chest memory overlaps with event memory.  Maybe combine these?
+--        Maybe leave them separate so a full chest rescan isn't done for every
+--        event update.
+if chronosanityMode() then
+  ScriptHost:AddMemoryWatch("Chests", 0x7F0000, 0x20, updateChests)
+end
 

@@ -2,7 +2,7 @@
 	"name": "Jets of Time Tracker",
 	"game_name": "Chrono Trigger Randomizer",
 	"platform": "snes",
-	"package_version": "1.2.1",
+	"package_version": "2.0.0",
 	"package_uid": "CT_JoT_TheBigSalarius",
 	"author": "TheBigSalarius, Aeralis & Anguirel",
 	"variants":
@@ -14,6 +14,18 @@
 		"items_only":
 		{
 			"display_name": "Item Tracker"
+		},
+		"lost_worlds":
+		{
+			"display_name": "Map Tracker (Lost Worlds)"
+		},
+		"lost_world_items":
+		{
+			"display_name": "Item Tracker (Lost Worlds)"
+		},
+		"chronosanity":
+		{
+			"display_name": "Chronosanity"
 		}
 	}
 }

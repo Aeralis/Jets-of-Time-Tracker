@@ -103,8 +103,8 @@
 		"name": "Masamune",
 		"type": "toggle",
 		"loop": "true",
-		"img": "images/masamune.png",
-		"codes": "masamune"
+		"img": "images/melchior.png",
+		"codes": "masamune, melchior"
 	},
 	{
 		"name": "Robo's Ribbon",
@@ -170,11 +170,11 @@
 		"codes": "tomaspop,tomapop,pop,tomassoda,tomasoda,soda"
 	},
 	{
-		"name": "Tools",
+		"name": "Grand Leon",
 		"type": "toggle",
 		"loop": "true",
-		"img": "images/tools.png",
-		"codes": "tools,carpenterstools,carpentertools"
+		"img": "images/masamune.png",
+		"codes": "grandleon"
 	},
 	{
 		"name": "Ruby Knife",
@@ -319,22 +319,39 @@
 	},
 	// Flags
 	{
-        "name": "Character Locks",
-        "type": "progressive",
-        "allow_disabled": false,
-        "initial_stage_idx": 1,
-        "loop": true,
-        "stages": [
-          {
-            "img": "images/Flag_CharLock_on.png",
-            "codes": "Flag_CharLock_on"
-          },
-          {
-            "img": "images/Flag_CharLock_off.png",
-            "codes": "Flag_CharLock_off"
-          }
-        ]
-    	},
+    "name": "Character Locks",
+    "type": "progressive",
+    "allow_disabled": false,
+    "initial_stage_idx": 1,
+    "loop": true,
+    "stages": [
+      {
+        "img": "images/Flag_CharLock_on.png",
+        "codes": "Flag_CharLock_on,earlypendant"
+      },
+      {
+        "img": "images/Flag_CharLock_off.png",
+        "codes": "Flag_CharLock_off"
+      }
+    ]
+  },
+  {
+    "name": "Early Pendant",
+    "type": "progressive",
+    "allow_disabled": false,
+    "initial_stage_idx": 1,
+    "loop": true,
+    "stages": [
+      {
+        "img": "images/Flag_EarlyPendant_on.png",
+        "codes": "Flag_EarlyPendant_on"
+      },
+      {
+        "img": "images/Flag_EarlyPendant_off.png",
+        "codes": "Flag_EarlyPendant_off"
+      }
+    ]
+  },
 	// Additonal Instructions
 	{
 		"name": "Jerky Item",
@@ -342,5 +359,13 @@
 		"loop": "true",
 		"img": "images/jerky.png",
 		"codes": "hiddenjerky"
-	}	
+	},
+  // Check Counter for Chronosanity
+  {
+    "name": "CheckCounter",
+    "type": "consumable",
+    "img": "images/kiyes.png",
+    "codes": "checkcounter",
+    "max_quantity": 183
+  }
 ]
