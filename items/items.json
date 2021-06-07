@@ -327,7 +327,7 @@
     "stages": [
       {
         "img": "images/Flag_CharLock_on.png",
-        "codes": "Flag_CharLock_on,earlypendant"
+        "codes": "Flag_CharLock_on,"
       },
       {
         "img": "images/Flag_CharLock_off.png",
@@ -339,16 +339,16 @@
     "name": "Early Pendant",
     "type": "progressive",
     "allow_disabled": false,
-    "initial_stage_idx": 1,
+    "initial_stage_idx": 0,
     "loop": true,
     "stages": [
       {
-        "img": "images/Flag_EarlyPendant_on.png",
-        "codes": "Flag_EarlyPendant_on"
-      },
-      {
         "img": "images/Flag_EarlyPendant_off.png",
         "codes": "Flag_EarlyPendant_off"
+      },
+      {
+        "img": "images/Flag_EarlyPendant_on.png",
+        "codes": "Flag_EarlyPendant_on, earlypendant"
       }
     ]
   },
