@@ -1,4 +1,9 @@
 
+v2.0.1
+  - Updated for 3.1.1 logic changes.
+  - Autotracker will activate the "GO" button when Frog and both halves of the 
+      Masamune are acquired instead of waiting for the Masamune to be reforged.
+
 v2.0.0
   - General upates for version 3.0 of the randomizer.
   - Added map tracker and items only variants for Lost Worlds.

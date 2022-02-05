@@ -145,7 +145,7 @@
 				"color": "#c0c0c8",
 				"access_rules":
 				[
-					"blacktyranoboss", "magusboss"
+					"gatekey", "rseriesboss", "magusboss"
 				],
 				"children":
 				[
@@ -186,7 +186,7 @@
 						"name": "Ocean Palace",
 						"access_rules":
 						[
-							"rubyknife"
+							"blacktyranoboss, rubyknife", "magusboss"
 						],
 						"sections":
 						[
