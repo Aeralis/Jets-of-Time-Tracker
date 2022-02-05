@@ -93,7 +93,8 @@ function handleGoMode()
   local dreamStone = Tracker:FindObjectForCode("dreamstone")
   local rubyKnife = Tracker:FindObjectForCode("rubyknife")
   local frog = Tracker:FindObjectForCode("glenn")
-  local masamune = Tracker:FindObjectForCode("masamune")
+  local hilt = Tracker:FindObjectForCode("benthilt")
+  local blade = Tracker:FindObjectForCode("bentsword")
   local pendant = Tracker:FindObjectForCode("pendant")
   local cTrigger = Tracker:FindObjectForCode("ctrigger")
   local clone = Tracker:FindObjectForCode("clone")
@@ -106,7 +107,7 @@ function handleGoMode()
   else
     goMode = 
       (gateKey.Active and dreamStone.Active and rubyKnife.Active) or -- 65 million BC -> 12000 BC -> Ocean Palace
-      (frog.Active and masamune.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
+      (frog.Active and hilt.Active and blade.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
       (pendant.Active and cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
   end  
   local goButton = Tracker:FindObjectForCode("gomode")
