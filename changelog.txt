@@ -1,4 +1,7 @@
 
+v2.0.2
+  - Bug fix for Ozzie's Fort access in chronosanity mode.
+
 v2.0.1
   - Updated for 3.1.1 logic changes.
   - Autotracker will activate the "GO" button when Frog and both halves of the 
