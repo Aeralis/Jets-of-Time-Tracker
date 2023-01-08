@@ -19,7 +19,7 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ]
 						]
 					},
 					{
@@ -56,12 +56,24 @@
 						"item_margin": "1,1",
 						"content":
 						[
-                     {
-                        "type": "item",
-						"item": "Flag_CharLock_off",
-						"scale": 0.90,
-                        "margin": "0,5"
-                     }	
+              {
+                "type": "item",
+						    "item": "Flag_CharLock_off",
+						    "scale": 0.90,
+                "margin": "0,5"
+              },
+              {
+                "type": "item",
+						    "item": "Flag_EarlyPendant_off",
+						    "scale": 0.90,
+                "margin": "0,5"
+              },
+              {
+                "type": "item",
+						    "item": "Flag_Chronosanity_off",
+						    "scale": 0.90,
+                "margin": "0,5"
+              }
 						]
 					}
 				]

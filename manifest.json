@@ -2,7 +2,7 @@
 	"name": "Jets of Time Tracker",
 	"game_name": "Chrono Trigger Randomizer",
 	"platform": "snes",
-	"package_version": "2.0.2",
+	"package_version": "2.1.0",
 	"package_uid": "CT_JoT_TheBigSalarius",
 	"author": "TheBigSalarius, Aeralis & Anguirel",
 	"variants":
@@ -23,9 +23,13 @@
 		{
 			"display_name": "Item Tracker (Lost Worlds)"
 		},
-		"chronosanity":
-		{
-			"display_name": "Chronosanity"
-		}
+    "legacy_of_cyrus":
+    {
+      "display_name": "Legacy Of Cyrus"
+    },
+    "vanilla_rando":
+    {
+      "display_name": "Vanilla Rando"
+    }
 	}
 }

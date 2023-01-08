@@ -1,0 +1,1315 @@
+[
+	{
+		"name": "All Locations",
+		"children":
+		[
+			{
+				"name": "Prehistory",
+				"color": "#b82800",
+				"access_rules":["gatekey"],
+				"children":
+				[
+					{
+						"name": "Dactyl Nest",
+						"sections":
+						[
+							{
+								"name": "Friend to the Dactyls",
+                "access_rules": ["Flag_CharLock_on,dreamstone", "Flag_CharLock_off"],
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"item_count": 1
+							},
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 3
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 518,
+								"y": 258
+							},
+							{
+								"map": "All Eras",
+								"x": 518,
+								"y": 258
+							}
+						]
+					},
+					{
+						"name": "Reptite Lair",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Nizbel",
+								"hosted_item": "nizbelboss"
+							},
+							{
+								"name": "Defeat Nizbel",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 543,
+								"y": 826
+							},
+							{
+								"map": "All Eras",
+								"x": 543,
+								"y": 826
+							}
+						]
+					},
+          {
+            "name": "Forest Maze",
+						"access_rules":[],
+						"sections":
+						[
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 9
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 543,
+								"y": 713
+							},
+							{
+								"map": "All Eras",
+								"x": 543,
+								"y": 713
+							}
+						]
+          },
+          {
+            "name": "Mystic Mountain",
+						"access_rules":[],
+						"sections":
+						[
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 391,
+								"y": 703
+							},
+							{
+								"map": "All Eras",
+								"x": 391,
+								"y": 703
+							}
+						]
+          }
+				]
+			},
+			{
+				"name": "Dark Ages",
+				"color": "#c0c0c8",
+				"access_rules":["gatekey", "rseriesboss", "magusboss"],
+				"children":
+				[
+					{
+						"name": "Mt Woe",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Giga Gaia",
+								"hosted_item": "gigagaiaboss"
+							},
+							{
+								"name": "Defeat Giga Gaia",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+							{
+								"name": "Screen 1",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+							{
+								"name": "Screen 2",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+							},
+							{
+								"name": "Screen 3",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+							},
+							{
+								"name": "Screen 4",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Dark Ages",
+								"x": 424,
+								"y": 462
+							},
+							{
+								"map": "All Eras",
+								"x": 424,
+								"y": 1486
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Middle Ages",
+				"color": "#306848",
+				"access_rules":
+				[
+					""
+				],
+				"children":
+				[
+					{
+						"name": "Manoria Cathedral",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Yakra",
+								"hosted_item": "yakraboss"
+							},
+							{
+								"name": "Saved by Frog",
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"item_count": 1
+							},
+              {
+                "name": "Front Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Bromide Room",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Disguised Royalty",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Shrine",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Back Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+              },
+              {
+                "name": "Final Chest",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 200,
+								"y": 270
+							},
+							{
+								"map": "All Eras",
+								"x": 1736,
+								"y": 270
+							}
+						]
+					},
+          {
+						"name": "Truce Canyon",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 439,
+								"y": 205
+							},
+							{
+								"map": "All Eras",
+								"x": 1970,
+								"y": 205
+							}
+						]
+					},
+					{
+						"name": "Cursed Woods",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Return the Masamune",
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"capture_item": true,
+								"access_rules":
+								[
+									"masamune"
+								],
+								"item_count": 1
+							},
+							{
+								"name": "Burrow Left Chest",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"access_rules":
+								[
+									"herosmedal"
+								],
+								"item_count": 1
+							},
+              {
+								"name": "Burrow Right Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Forest Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 248,
+								"y": 748
+							},
+							{
+								"map": "All Eras",
+								"x": 1784,
+								"y": 748
+							}
+						]
+					},
+					{
+						"name": "Zenan Bridge",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Zombor",
+								"hosted_item": "zomborboss"
+							},
+							{
+								"name": "Cook's Rations",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 247,
+								"y": 454
+							},
+							{
+								"map": "All Eras",
+								"x": 1783,
+								"y": 454
+							}
+						]
+					},
+					{
+						"name": "Sunken Desert",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Retinite",
+								"hosted_item": "retiniteboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 359,
+								"y": 714
+							},
+							{
+								"map": "All Eras",
+								"x": 1895,
+								"y": 714
+							}
+						]
+					},
+					{
+						"name": "Fiona's Villa",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Replant the Forest",
+                "access_rules": ["robo,retiniteboss"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 410,
+								"y": 668
+							},
+							{
+								"map": "All Eras",
+								"x": 1946,
+								"y": 668
+							}
+						]
+					},
+					{
+						"name": "Denadoro Mts",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Masa & Mune",
+								"hosted_item": "masamuneboss"
+							},
+							{
+								"name": "Defeat Masamune",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+                "name": "Entrance",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+              },
+              {
+                "name": "Right Side Climb",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 6
+              },
+              {
+                "name": "Waterfall Top",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Waterfall Bottom",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Left Side",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 416,
+								"y": 566
+							},
+							{
+								"map": "All Eras",
+								"x": 1952,
+								"y": 566
+							}
+						]
+					},
+					{
+						"name": "Guardia Castle Past",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Rescue Marle",
+								"chest_unopened_img": "images/charno.png",
+								"chest_opened_img": "images/charyes.png",
+								"access_rules":
+								[
+									"yakraboss"
+								],
+								"item_count": 1
+							},
+              {
+                "name": "King's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Queen's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Queen's Room",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["yakraboss"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Kitchen",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 280,
+								"y": 195
+							},
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 195
+							}
+						]
+					},
+					{
+						"name": "Giant's Claw",
+						"access_rules":["$canFly, tomaspop"],
+						"sections":
+						[
+							{
+								"name": "Rust Tyrano",
+								"hosted_item": "rusttyranoboss"
+							},
+							{
+								"name": "Rainbow Shell",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Entrance",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							},
+							{
+								"name": "Caverns",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+							},
+							{
+								"name": "Kino's Cell",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 954,
+								"y": 588
+							},
+							{
+								"map": "All Eras",
+								"x": 2490,
+								"y": 588
+							}
+						]
+					},
+          {
+						"name": "Magic Cave",
+						"access_rules": 
+            ["frog,masamune"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 534,
+								"y": 666
+							},
+							{
+								"map": "All Eras",
+								"x": 2072,
+								"y": 666
+							}
+						]
+					},
+					{
+						"name": "Magus' Castle",
+						"access_rules":["frog,masamune, magus"],
+						"sections":
+						[
+							{
+								"name": "Magus",
+								"hosted_item": "magusboss"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 672,
+								"y": 466
+							},
+							{
+								"map": "All Eras",
+								"x": 2208,
+								"y": 466
+							}
+						]
+					},
+					{
+						"name": "Ozzie's Fort",
+						"access_rules":["frog, magus, magusboss"],
+						"sections":
+						[
+              {
+								"name": "Ozzie",
+								"hosted_item": "ozzie"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 975,
+								"y": 400
+							},
+							{
+								"map": "All Eras",
+								"x": 2512,
+								"y": 400
+							}
+						]
+					},
+          {
+						"name": "Porre Elder's House",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 337,
+								"y": 852
+							},
+							{
+								"map": "All Eras",
+								"x": 1873,
+								"y": 844
+							}
+						]
+					},
+          {
+						"name": "Truce Inn Past",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 415,
+								"y": 290
+							},
+							{
+								"map": "All Eras",
+								"x": 1950,
+								"y": 290
+							}
+						]
+					},
+          {
+						"name": "Northern Ruins Past",
+						"access_rules":["$canFly, magus, frog, grandleon"],
+						"sections":
+						[
+              {
+                "name": "Cyrus Grave",
+                "hosted_item": "cyrusgrave"
+              },
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							},
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 1240,
+								"y": 684
+							},
+							{
+								"map": "All Eras",
+								"x": 2776,
+								"y": 684
+							}
+						]
+					},
+          {
+						"name": "Guardia Forest Past",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+              {
+								"map": "Middle Ages",
+								"x": 280,
+								"y": 265
+							},
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 265
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Present",
+				"color": "#609040",
+				"access_rules":
+				[
+					""
+				],
+				"children":
+				[
+					{
+						"name": "Guardia Castle Present",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Yakra XIII",
+								"access_rules":["marle,prismshard"],
+								"hosted_item": "yakraxiiiboss"
+							},
+							{
+								"name": "King Guardia's Trial",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"access_rules":["marle,prismshard, [pendant]", "marle,prismshard, [gatekey]"],
+								"item_count": 1
+							},
+              {
+                "name": "King's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Queen's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Courtroom Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Guardia Treasury",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["marle,prismshard"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 6
+              },
+              {
+                "name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 280,
+								"y": 192
+							},
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 1216
+							}
+						]
+					},
+					{
+						"name": "Snail Stop",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Buy for 9900G",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"capture_item": true,
+								"item_count": 1
+							},
+              {
+                "name": "Attach Epoch Wings",
+                "visibility_rules": ["epochfail"],
+                "access_rules":["jetsoftime"],
+								"hosted_item": "fixedepoch"
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 441,
+								"y": 860
+							},
+							{
+								"map": "All Eras",
+								"x": 1977,
+								"y": 1884
+							}
+						]
+					},
+					{
+						"name": "Heckran Cave",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Heckran",
+								"hosted_item": "heckranboss"
+							},
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+							},
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 682,
+								"y": 444
+							},
+							{
+								"map": "All Eras",
+								"x": 2218,
+								"y": 1468
+							}
+						]
+					},
+					{
+						"name": "Choras Inn",
+						"access_rules":["$canFly"],
+						"sections":
+						[
+							{
+								"name": "Borrow Carpenter's Tools",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 1145,
+								"y": 853
+							},
+							{
+								"map": "All Eras",
+								"x": 2681,
+								"y": 1877
+							}
+						]
+					},
+					{
+						"name": "Melchior's Hut",
+						"access_rules":["benthilt,bentsword"],
+						"sections":
+						[
+							{
+								"name": "Reforge the Masamune",
+								"hosted_item": "masamune"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 696,
+								"y": 506
+							},
+							{
+								"map": "All Eras",
+								"x": 2232,
+								"y": 1530
+							}
+						]
+					},
+					{
+						"name": "Lucca's House",
+						"access_rules":["heckranboss"],
+						"sections":
+						[
+							{
+								"name": "Taban's Gift",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 344,
+								"y": 419
+							},
+							{
+								"map": "All Eras",
+								"x": 1880,
+								"y": 1443
+							}
+						]
+					},
+          {
+						"name": "Forest Ruins",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Blue Pyramid",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 1000,
+								"y": 257
+							},
+							{
+								"map": "All Eras",
+								"x": 2536,
+								"y": 1282
+							}
+						]
+					},
+          {
+						"name": "Truce Mayor's House",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 378,
+								"y": 324
+							},
+							{
+								"map": "All Eras",
+								"x": 1912,
+								"y": 1348
+							}
+						]
+					},
+          {
+						"name": "Truce Inn Present",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+							{
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 416,
+								"y": 289
+							},
+							{
+								"map": "All Eras",
+								"x": 1953,
+								"y": 1313
+							}
+						]
+					},
+          {
+						"name": "Porre Mayor's House",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 337,
+								"y": 852
+							},
+							{
+								"map": "All Eras",
+								"x": 1873,
+								"y": 1877
+							}
+						]
+					},
+          {
+						"name": "Northern Ruins Present",
+						"access_rules":["$canFly, magus, frog, grandleon"],
+						"sections":
+						[
+              {
+								"name": "Upstairs",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Basement",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["frog"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 1240,
+								"y": 684
+							},
+							{
+								"map": "All Eras",
+								"x": 2776,
+								"y": 1708
+							}
+						]
+					},
+          {
+						"name": "Guardia Forest Present",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 1290
+							},
+							{
+								"map": "Present",
+								"x": 281,
+								"y": 263
+							}
+						]
+					},
+				]
+			},
+			{
+				"name": "End Of Time",
+				"color": "#482828",
+				"access_rules":
+				["gatekey", "rseriesboss", "magusboss"],
+				"children":
+				[
+					{
+						"name": "Spekkio",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Learn Magic",
+								"hosted_item": "magic"
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "End Of Time",
+								"x": 1113,
+								"y": 287
+							},
+							{
+								"map": "All Eras",
+								"x": 4185,
+								"y": 1311
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
+			

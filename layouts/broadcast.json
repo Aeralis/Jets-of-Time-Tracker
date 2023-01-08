@@ -21,9 +21,9 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "benthilt", "bentsword", "masamune",  "grandleon", "heromedal", "roboribbon"],
-							[ "gatekey", "dreamstone", "rubyknife", "prismshard", "moonstone", "jerky"],
-							[ "pendant", "clone", "ctrigger", "tomapop", "magic", "gomode"]
+							[ "benthilt", "bentsword", "masamune",  "grandleon", "heromedal", "roboribbon", "validationcat"],
+							[ "gatekey", "dreamstone", "rubyknife", "prismshard", "moonstone", "jerky", "jetsoftime"],
+							[ "pendant", "clone", "ctrigger", "tomapop", "magic", "gomode", "checkcounter"]
 						]
 					}
 				]

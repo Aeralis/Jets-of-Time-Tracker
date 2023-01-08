@@ -1,0 +1,33 @@
+{
+	"tracker_broadcast":
+	{
+		"type": "array",
+		"width": 246,
+		"height": 145,
+		"dropshadow": true,
+		"margin": "1,1",
+		"content":
+		[
+			{
+				"type": "array",
+				"orientation": "horizontal",
+				"margin": "0,0",
+				"content":
+				[
+					{
+						"type": "itemgrid",
+						"item_margin": "1,1",
+						"h_alignment": "stretch",
+						"rows":
+						[
+							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
+							[ "benthilt", "bentsword", "masamune",  "grandleon", "heromedal"],
+							[ "", "gatekey", "pendant", "prismshard", "tomapop", "jerky", "validationcat"],
+							[ "", "dreamstone", "roboribbon", "magic", "gomode", "jetsoftime", "checkcounter"]
+						]
+					}
+				]
+			}
+		]
+	}
+}
