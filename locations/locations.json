@@ -6,26 +6,27 @@
 			{
 				"name": "Prehistory",
 				"color": "#b82800",
-				"access_rules":
-				[
-					"gatekey"
-				],
+				"access_rules":["gatekey"],
 				"children":
 				[
 					{
 						"name": "Dactyl Nest",
-						"access_rules":
-						[
-							"Flag_CharLock_on,dreamstone", "Flag_CharLock_off"
-						],
 						"sections":
 						[
 							{
 								"name": "Friend to the Dactyls",
+                "access_rules": ["Flag_CharLock_on,dreamstone", "Flag_CharLock_off"],
 								"chest_unopened_img": "images/charno.png",
 								"chest_opened_img": "images/charyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 3
+              }
 						],
 						"map_locations":
 						[
@@ -43,10 +44,7 @@
 					},
 					{
 						"name": "Reptite Lair",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -58,7 +56,14 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              }
 						],
 						"map_locations":
 						[
@@ -74,12 +79,63 @@
 							}
 						]
 					},
+          {
+            "name": "Forest Maze",
+						"access_rules":[],
+						"sections":
+						[
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 9
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 543,
+								"y": 713
+							},
+							{
+								"map": "All Eras",
+								"x": 543,
+								"y": 713
+							}
+						]
+          },
+          {
+            "name": "Mystic Mountain",
+						"access_rules":[],
+						"sections":
+						[
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Prehistory",
+								"x": 391,
+								"y": 703
+							},
+							{
+								"map": "All Eras",
+								"x": 391,
+								"y": 703
+							}
+						]
+          },
 					{
 						"name": "Sun Keep",
-						"access_rules":
-						[
-							"gatekey,moonstone,[dragontankboss]"
-						],
+						"access_rules":["$canFly,gatekey,moonstone,[dragontankboss]"],
 						"sections":
 						[
 							{
@@ -113,10 +169,7 @@
 					},
 					{
 						"name": "Tyrano Castle",
-						"access_rules":
-						[
-							"dreamstone"
-						],
+						"access_rules":["dreamstone"],
 						"sections":
 						[
 							{
@@ -143,10 +196,7 @@
 			{
 				"name": "Dark Ages",
 				"color": "#c0c0c8",
-				"access_rules":
-				[
-					"gatekey", "rseriesboss", "magusboss"
-				],
+				"access_rules":["gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{
@@ -166,6 +216,34 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
+							},
+							{
+								"name": "Screen 1",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+							{
+								"name": "Screen 2",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+							},
+							{
+								"name": "Screen 3",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+							},
+							{
+								"name": "Screen 4",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
 							}
 						],
 						"map_locations":
@@ -184,10 +262,7 @@
 					},
 					{
 						"name": "Ocean Palace",
-						"access_rules":
-						[
-							"blacktyranoboss, rubyknife", "magusboss"
-						],
+						"access_rules":["blacktyranoboss, rubyknife", "magusboss"],
 						"sections":
 						[
 							{
@@ -237,7 +312,49 @@
 								"chest_unopened_img": "images/charno.png",
 								"chest_opened_img": "images/charyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Front Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Bromide Room",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Disguised Royalty",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Shrine",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Back Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+              },
+              {
+                "name": "Final Chest",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
 						],
 						"map_locations":
 						[
@@ -253,12 +370,36 @@
 							}
 						]
 					},
+          {
+						"name": "Truce Canyon",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 439,
+								"y": 205
+							},
+							{
+								"map": "All Eras",
+								"x": 1970,
+								"y": 205
+							}
+						]
+					},
 					{
 						"name": "Cursed Woods",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -281,6 +422,20 @@
 									"herosmedal"
 								],
 								"item_count": 1
+							},
+              {
+								"name": "Burrow Right Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Forest Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
 							}
 						],
 						"map_locations":
@@ -332,10 +487,7 @@
 					},
 					{
 						"name": "Sunken Desert",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -359,17 +511,22 @@
 					},
 					{
 						"name": "Fiona's Villa",
-						"access_rules":
-						[
-							"robo,retiniteboss"
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
 								"name": "Replant the Forest",
+                "access_rules": ["robo,retiniteboss"],
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
+							},
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
 							}
 						],
 						"map_locations":
@@ -388,10 +545,7 @@
 					},
 					{
 						"name": "Denadoro Mts",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -403,7 +557,42 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Entrance",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 5
+              },
+              {
+                "name": "Right Side Climb",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 6
+              },
+              {
+                "name": "Waterfall Top",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
+              {
+                "name": "Waterfall Bottom",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Left Side",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+              },
 						],
 						"map_locations":
 						[
@@ -421,10 +610,7 @@
 					},
 					{
 						"name": "Guardia Castle Past",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -436,7 +622,44 @@
 									"yakraboss"
 								],
 								"item_count": 1
-							}
+							},
+              {
+                "name": "King's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Queen's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Queen's Room",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["yakraboss"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Kitchen",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
 						],
 						"map_locations":
 						[
@@ -454,10 +677,7 @@
 					},
 					{
 						"name": "Giant's Claw",
-						"access_rules":
-						[
-							"tomaspop"
-						],
+						"access_rules":["$canFly, tomaspop"],
 						"sections":
 						[
 							{
@@ -466,6 +686,27 @@
 							},
 							{
 								"name": "Rainbow Shell",
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Entrance",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							},
+							{
+								"name": "Caverns",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+							},
+							{
+								"name": "Kino's Cell",
+                "visibility_rules": ["chronosanity"],
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
@@ -485,12 +726,39 @@
 							}
 						]
 					},
+          {
+						"name": "Magic Cave",
+						"access_rules": 
+            ["frog,masamune"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 534,
+								"y": 666
+							},
+							{
+								"map": "All Eras",
+								"x": 2072,
+								"y": 666
+							}
+						]
+					},
 					{
 						"name": "Magus' Castle",
 						"access_rules":
-						[
-							"frog,masamune"
-						],
+						["frog,masamune"],
 						"sections":
 						[
 							{
@@ -509,6 +777,159 @@
 								"map": "All Eras",
 								"x": 2208,
 								"y": 466
+							}
+						]
+					},
+					{
+						"name": "Ozzie's Fort",
+						"access_rules":["$canFly, [pendant]", "$canFly, [gatekey]"],
+						"sections":
+						[
+              {
+                "name": "Front Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 4
+              },
+              {
+                "name": "Back Half",
+                "visibility_rules": ["chronosanity"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 2
+              }
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 975,
+								"y": 400
+							},
+							{
+								"map": "All Eras",
+								"x": 2512,
+								"y": 400
+							}
+						]
+					},
+          {
+						"name": "Porre Elder's House",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 337,
+								"y": 852
+							},
+							{
+								"map": "All Eras",
+								"x": 1873,
+								"y": 844
+							}
+						]
+					},
+          {
+						"name": "Truce Inn Past",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 415,
+								"y": 290
+							},
+							{
+								"map": "All Eras",
+								"x": 1950,
+								"y": 290
+							}
+						]
+					},
+          {
+						"name": "Northern Ruins Past",
+						"access_rules":["$canFly, grandleon"],
+						"sections":
+						[
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Middle Ages",
+								"x": 1240,
+								"y": 684
+							},
+							{
+								"map": "All Eras",
+								"x": 2776,
+								"y": 684
+							}
+						]
+					},
+          {
+						"name": "Guardia Forest Past",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+              {
+								"map": "Middle Ages",
+								"x": 280,
+								"y": 265
+							},
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 265
 							}
 						]
 					}
@@ -541,32 +962,68 @@
 							},
 							{
 								"name": "Yakra XIII",
-								"access_rules":
-								[
-									"marle,prismshard"
-								],
+								"access_rules":["marle,prismshard"],
 								"hosted_item": "yakraxiiiboss"
 							},
 							{
 								"name": "King Guardia's Trial",
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
-								"access_rules":
-								[
-									"marle,prismshard"
-								],
+								"access_rules":["marle,prismshard, [pendant]", "marle,prismshard, [gatekey]"],
 								"item_count": 1
 							},
 							{
 								"name": "Melchior's Refinements",
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
-								"access_rules":
-								[
-									"marle,prismshard,sunstone"
-								],
+								"access_rules":["$canFly,marle,prismshard,sunstone"],
 								"item_count": 1
-							}
+							},
+              {
+                "name": "King's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Queen's Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Courtroom Tower",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Prison Tower",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["dragontankboss"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              },
+              {
+                "name": "Guardia Treasury",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["marle,prismshard"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 6
+              },
+              {
+                "name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+              }
 						],
 						"map_locations":
 						[
@@ -584,10 +1041,7 @@
 					},
 					{
 						"name": "Snail Stop",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -596,7 +1050,13 @@
 								"chest_opened_img": "images/kiyes.png",
 								"capture_item": true,
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Attach Epoch Wings",
+                "visibility_rules": ["epochfail"],
+                "access_rules":["jetsoftime"],
+								"hosted_item": "fixedepoch"
+              }
 						],
 						"map_locations":
 						[
@@ -614,16 +1074,28 @@
 					},
 					{
 						"name": "Heckran Cave",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
 								"name": "Heckran",
 								"hosted_item": "heckranboss"
-							}
+							},
+              {
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+							},
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
 						],
 						"map_locations":
 						[
@@ -641,10 +1113,7 @@
 					},
 					{
 						"name": "Choras Inn",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":["$canFly"],
 						"sections":
 						[
 							{
@@ -670,10 +1139,7 @@
 					},
 					{
 						"name": "Melchior's Hut",
-						"access_rules":
-						[
-							"benthilt,bentsword"
-						],
+						"access_rules":["benthilt,bentsword"],
 						"sections":
 						[
 							{
@@ -697,10 +1163,7 @@
 					},
 					{
 						"name": "Lucca's House",
-						"access_rules":
-						[
-							"heckranboss"
-						],
+						"access_rules":["heckranboss"],
 						"sections":
 						[
 							{
@@ -723,24 +1186,214 @@
 								"y": 1443
 							}
 						]
-					}
+					},
+          {
+						"name": "Forest Ruins",
+						"access_rules":
+						[
+							""
+						],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Blue Pyramid",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 1000,
+								"y": 257
+							},
+							{
+								"map": "All Eras",
+								"x": 2536,
+								"y": 1282
+							}
+						]
+					},
+          {
+						"name": "Truce Mayor's House",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 378,
+								"y": 324
+							},
+							{
+								"map": "All Eras",
+								"x": 1912,
+								"y": 1348
+							}
+						]
+					},
+          {
+						"name": "Truce Inn Present",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+							{
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 416,
+								"y": 289
+							},
+							{
+								"map": "All Eras",
+								"x": 1953,
+								"y": 1313
+							}
+						]
+					},
+          {
+						"name": "Porre Mayor's House",
+						"access_rules":[],
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 337,
+								"y": 852
+							},
+							{
+								"map": "All Eras",
+								"x": 1873,
+								"y": 1877
+							}
+						]
+					},
+          {
+						"name": "Northern Ruins Present",
+						"access_rules":["$canFly, grandleon"],
+						"sections":
+						[
+              {
+								"name": "Upstairs",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Basement",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["frog"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							},
+              {
+								"name": "Sealed Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Present",
+								"x": 1240,
+								"y": 684
+							},
+							{
+								"map": "All Eras",
+								"x": 2776,
+								"y": 1708
+							}
+						]
+					},
+          {
+						"name": "Guardia Forest Present",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+              {
+								"name": "Sealed Chest",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "All Eras",
+								"x": 1816,
+								"y": 1290
+							},
+							{
+								"map": "Present",
+								"x": 281,
+								"y": 263
+							}
+						]
+					},
 				]
 			},
 			{
 				"name": "Future",
 				"color": "#482828",
-				"access_rules":
-				[
-					"dragontankboss"
-				],
+				"access_rules":["dragontankboss"],
 				"children":
 				[
 					{
 						"name": "Arris Dome",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
@@ -752,7 +1405,22 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+              },
+              {
+                "name": "Sealed Door",
+                "visibility_rules": ["chronosanity"],
+                "access_rules": ["$canAccessSealed"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+              }
 						],
 						"map_locations":
 						[
@@ -770,10 +1438,7 @@
 					},
 					{
 						"name": "Proto Dome",
-						"access_rules":
-						[
-							"Flag_CharLock_on,rseriesboss", "Flag_CharLock_off"
-						],
+						"access_rules":["Flag_CharLock_on,rseriesboss", "Flag_CharLock_off"],
 						"sections":
 						[
 							{
@@ -799,16 +1464,27 @@
 					},
 					{
 						"name": "Factory",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":[],
 						"sections":
 						[
 							{
 								"name": "R-Series",
 								"hosted_item": "rseriesboss"
-							}
+							},
+              {
+                "name": "Left Side",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+              },
+              {
+                "name": "Right Side",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 9
+              }
 						],
 						"map_locations":
 						[
@@ -826,10 +1502,7 @@
 					},
 					{
 						"name": "Geno Dome",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":["$canFly"],
 						"sections":
 						[
 							{
@@ -841,7 +1514,21 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							}
+							},
+              {
+                "name": "First Floor",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 8
+              },
+              {
+                "name": "Second Floor",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+              }
 						],
 						"map_locations":
 						[
@@ -859,10 +1546,7 @@
 					},
 					{
 						"name": "Sun Palace",
-						"access_rules":
-						[
-							""
-						],
+						"access_rules":["$canFly"],
 						"sections":
 						[
 							{
@@ -892,10 +1576,7 @@
 					},
 					{
 						"name": "Death Peak",
-						"access_rules":
-						[
-							"clone,ctrigger"
-						],
+						"access_rules":["clone,ctrigger"],
 						"sections":
 						[
 							{
@@ -916,6 +1597,138 @@
 								"y": 551
 							}
 						]
+					},
+					{
+						"name": "Trann Dome",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+							{
+								"name": "Sealed Door",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 2
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 192,
+								"y": 550
+							},
+							{
+								"map": "All Eras",
+								"x": 3264,
+								"y": 550
+							}
+						]
+					},
+					{
+						"name": "Bangor Dome",
+						"access_rules": ["$canAccessSealed"],
+						"sections":
+						[
+							{
+								"name": "Sealed Door",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 216,
+								"y": 430
+							},
+							{
+								"map": "All Eras",
+								"x": 3288,
+								"y": 430
+							}
+						]
+					},
+					{
+						"name": "Sewers",
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 3
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 551,
+								"y": 365
+							},
+							{
+								"map": "All Eras",
+								"x": 3623,
+								"y": 365
+							}
+						]
+					},
+          {
+						"name": "Lab16",
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 4
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 263,
+								"y": 367
+							},
+							{
+								"map": "All Eras",
+								"x": 3335,
+								"y": 367
+							}
+						]
+					},
+					{
+						"name": "Lab32",
+						"sections":
+						[
+							{
+								"name": "Chests",
+                "visibility_rules": ["chronosanity"],
+								"chest_unopened_img": "images/kino.png",
+								"chest_opened_img": "images/kiyes.png",
+								"item_count": 1
+							}
+						],
+						"map_locations":
+						[
+							{
+								"map": "Future",
+								"x": 504,
+								"y": 276
+							},
+							{
+								"map": "All Eras",
+								"x": 3576,
+								"y": 276
+							}
+						]
 					}
 				]
 			},
@@ -923,9 +1736,7 @@
 				"name": "End Of Time",
 				"color": "#482828",
 				"access_rules":
-				[
-					"gatekey", "rseriesboss"
-				],
+				["gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{

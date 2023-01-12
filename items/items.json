@@ -190,6 +190,27 @@
 		"img": "images/gomode.png",
 		"codes": "go,gomode"
 	},
+  {
+		"name": "Tools",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/tools.png",
+		"codes": "tools"
+	},
+  {
+		"name": "Jets Of Time",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/epoch.png",
+		"codes": "jetsoftime"
+	},
+  {
+		"name": "Validation Cat",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/validationcat.png",
+		"codes": "cat, validationcat"
+	},
 	// Bosses
 	{
 		"name": "Yakra",
@@ -352,6 +373,40 @@
       }
     ]
   },
+  {
+    "name": "Chronosanity",
+    "type": "progressive",
+    "allow_disabled": false,
+    "initial_stage_idx": 0,
+    "loop": true,
+    "stages": [
+      {
+        "img": "images/Flag_Chronosanity_off.png",
+        "codes": "Flag_Chronosanity_off"
+      },
+      {
+        "img": "images/Flag_Chronosanity_on.png",
+        "codes": "Flag_Chronosanity_on, chronosanity"
+      }
+    ]
+  },
+  {
+    "name": "Epoch Fail",
+    "type": "progressive",
+    "allow_disabled": false,
+    "initial_stage_idx": 0,
+    "loop": true,
+    "stages": [
+      {
+        "img": "images/Flag_Epoch_Fail_off.png",
+        "codes": "Flag_Epoch_Fail_off"
+      },
+      {
+        "img": "images/Flag_Epoch_Fail_on.png",
+        "codes": "Flag_Epoch_Fail_on, epochfail"
+      }
+    ]
+  },
 	// Additonal Instructions
 	{
 		"name": "Jerky Item",
@@ -360,12 +415,33 @@
 		"img": "images/jerky.png",
 		"codes": "hiddenjerky"
 	},
+  {
+		"name": "Fixed Epoch",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/epoch.png",
+		"codes": "fixedepoch"
+	},
+  {
+		"name": "Ozzie",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/ozzie.png",
+		"codes": "ozzie"
+	},
+  {
+		"name": "Cyrus Grave",
+		"type": "toggle",
+		"loop": "true",
+		"img": "images/masamune.png",
+		"codes": "cyrusgrave"
+	},
   // Check Counter for Chronosanity
   {
     "name": "CheckCounter",
     "type": "consumable",
     "img": "images/kiyes.png",
     "codes": "checkcounter",
-    "max_quantity": 183
+    "max_quantity": 200
   }
 ]

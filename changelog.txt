@@ -1,3 +1,10 @@
+v2.1.0
+  - Updated for Jets of Time version 3.2
+  - Added Vanilla Rando variant
+  - Added Legacy of Cyrus variant
+  - Combined the map tracker and chronosanity variants
+  - Added Epoch Fail flag to all variants except Lost Worlds
+  - Added chronosanity flag to all variants
 
 v2.0.2
   - Bug fix for Ozzie's Fort access in chronosanity mode.

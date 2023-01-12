@@ -53,11 +53,29 @@ function lostWorldsMode()
 end
 
 --
+-- Check if the tracker is in Vanilla Rando mode
+--
+function vanillaRandoMode()
+
+  return string.find(Tracker.ActiveVariantUID, "vanilla")
+
+end
+
+--
+-- Check if the tracker is in Legacy of Cyrus mode
+--
+function legacyOfCyrusMode()
+
+  return string.find(Tracker.ActiveVariantUID, "legacy_of_cyrus")
+
+end
+
+--
 -- Check if the tracker is in Chronosanity mode
 --
 function chronosanityMode()
 
-  return string.find(Tracker.ActiveVariantUID, "chronosanity")
+  return Tracker:ProviderCountForCode("chronosanity") > 0
   
 end
 
@@ -93,8 +111,10 @@ function handleGoMode()
   local dreamStone = Tracker:FindObjectForCode("dreamstone")
   local rubyKnife = Tracker:FindObjectForCode("rubyknife")
   local frog = Tracker:FindObjectForCode("glenn")
+  local magus = Tracker:FindObjectForCode("janus")
   local hilt = Tracker:FindObjectForCode("benthilt")
   local blade = Tracker:FindObjectForCode("bentsword")
+  local masa2 = Tracker:FindObjectForCode("grandleon")
   local pendant = Tracker:FindObjectForCode("pendant")
   local cTrigger = Tracker:FindObjectForCode("ctrigger")
   local clone = Tracker:FindObjectForCode("clone")
@@ -104,6 +124,8 @@ function handleGoMode()
     goMode = 
 	    (dreamStone.Active and rubyKnife.Active) or -- has ruby knife and can get to Black Tyrano
 		  (cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
+  elseif legacyOfCyrusMode() then
+    goMode = frog.Active and magus.Active and hilt.Active and blade.Active and masa2.Active
   else
     goMode = 
       (gateKey.Active and dreamStone.Active and rubyKnife.Active) or -- 65 million BC -> 12000 BC -> Ocean Palace
@@ -208,8 +230,8 @@ end
 -- low then the key item has been acquired.
 --
 function handleMelchiorRefinements(segment)
-  if itemsOnlyTracking() then
-    return
+  if itemsOnlyTracking() or legacyOfCyrusMode() then
+    return 0
   end
 
   local yakraxiii = Tracker:FindObjectForCode("yakraxiiiboss")
@@ -343,13 +365,15 @@ KEY_ITEMS = {
   {value=0xD8, name="prismshard"},
   {value=0xD9, name="ctrigger"},
   {value=0x42, name="grandleon", callback=handleEquippableItem, address=0x7E2769},
+  {value=0xDA, name="tools", callback=handleItemTurnin, address=0x7F019E, flag=0x40},
   {value=0xDB, name="jerky", callback=handleItemTurnin, address=0x7F01D2, flag=0x04},
   {value=0xDC, name="dreamstone"},
   {value=0xDF, name="sunstone", callback=handleMoonstone},
   {value=0xDE, name="moonstone", callback=handleMoonstone},
   {value=0xE0, name="rubyknife", callback=handleItemTurnin, address=0x7F00F4, flag=0x80},
   {value=0xE2, name="clone"},
-  {value=0xE3, name="tomapop", callback=handleItemTurnin, address=0x7F01A3, flag=0x80}
+  {value=0xE3, name="tomapop", callback=handleItemTurnin, address=0x7F01A3, flag=0x80},
+  {value=0xE9, name="jetsoftime", callback=handleItemTurnin, address=0x7F00BA, flag=0x80}
 }
 
 --
@@ -451,7 +475,7 @@ function updateEventsAndBosses(segment)
   -- Middle Ages
   updateBoss("yakraboss", segment, 0x7F000D, 0x01)
   updateBoss("masamuneboss", segment, 0x7F00F3, 0x20)
-  updateBoss("retiniteboss", segment, 0x7F01AD, 0x04)
+  updateBoss("retiniteboss", segment, 0x7F01A3, 0x01)
   updateBoss("rusttyranoboss", segment, 0x7F01D2, 0x40)
   updateBoss("magusboss", segment, 0x7F01FF, 0x04)
   keyItemChecksDone = keyItemChecksDone + handleZenanBridge(segment)
@@ -508,6 +532,18 @@ function updateEventsAndBosses(segment)
       -- The trial is a guess. Two flags go high here and I just picked one arbitrarily
       keyItemChecksDone = keyItemChecksDone + updateEvent("@Guardia Castle Present/King Guardia's Trial", segment, 0x7F00A2, 0x80)
       keyItemChecksDone = keyItemChecksDone + handleMelchiorRefinements(segment)
+      
+      -- Checks specific to vanilla randomizer mode
+      if vanillaRandoMode() then
+        keyItemChecksDone = keyItemChecksDone + updateEvent("@Norstein Bekkler's Tent of Horrors/Clone Game", segment, 0x7F007C, 0x01)
+        keyItemChecksDone = keyItemChecksDone + updateEvent("@Northern Ruins Past/Cyrus Grave", segment, 0x7F01A3, 0x40)
+      end
+      
+      -- Checks specific to Legacy of Cyrus mode
+      if legacyOfCyrusMode() then
+        updateBoss("ozzie", segment, 0x7F01A1, 0x80)
+        updateBoss("cyrusgrave", segment, 0x7F01A3, 0x40)
+      end
     end
     
     -- Future
@@ -520,14 +556,11 @@ function updateEventsAndBosses(segment)
   CHECK_COUNTERS.base_checks = keyItemChecksDone
   
   -- End of Time
-  -- Track magic here. This is determined by whether or not any character 
-  -- except Magus is capable of using magic. This allows magic detection to 
-  -- work in Lost Worlds mode, where characters don't need to meet Spekkio.
+  -- Track magic here. This is the flag that is set after Spekkio challenges you 
+  -- to a practice fight after learning magic. 
   local magic = Tracker:FindObjectForCode("magic")
-  local spekkioByte = segment:ReadUInt8(0x7F01E0)
-  if not magic.Owner.ModifiedByUser then
-    magic.Active = (spekkioByte & 0x3F) ~= 0
-  end
+  local spekkioByte = segment:ReadUInt8(0x7F00E1)
+  magic.Active = (spekkioByte & 0x02) ~= 0
   
   -- Masamune
   -- The Masamune tracker item is activated when the player reforges the Masamune
@@ -536,12 +569,22 @@ function updateEventsAndBosses(segment)
   -- flag set high after Melchior reforges the sword.  Because it's part of event
   -- memory, check for the tracker item here.
   melchior = Tracker:FindObjectForCode("melchior")
-  melchior.Active = (segment:ReadUInt8(0x7f0103) & 0x02) ~= 0
+  melchior.Active = (segment:ReadUInt8(0x7F0103) & 0x02) ~= 0
   
-  -- Handle sealed chest tracking if the tracker is in Chronosanity mode.
-  if chronosanityMode() then
-    handleSealedChests(segment)
-  end
+  -- Validation Cat
+  -- This is a bit of a meme check.  Validation Cat refers to Crono's cat.
+  -- Petting Crono's cat in Crono's house "validates" the run.
+  local cat = Tracker:FindObjectForCode("validationcat")
+  local catByte = segment:ReadUInt8(0x7F01A6)
+  cat.Active = (catByte & 0x08) ~= 0
+  
+  -- Handle sealed chest tracking. The chest counter is on all pack variants now
+  -- so count sealed/event chests in all modes.
+  handleSealedChests(segment)
+  
+  -- Check if the Epoch is capable of flight.
+  -- This is used in the Epoch Fail mode of Vanilla Rando
+  updateEvent("@Snail Stop/Attach Epoch Wings", segment, 0x7F00BA, 0x80)
   
 end
 
@@ -660,7 +703,6 @@ function handleSealedChestLocation(segment, locationName, flags)
   
   local location = Tracker:FindObjectForCode(locationName)
   if location == nil then
-    printDebug("Location not found: " .. locationName)
     return 0
   end
   
@@ -708,9 +750,11 @@ function handleSealedChests(segment)
   -- They are handled internally via events just like sealed chests.
   -- 600 AD
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Past/Chests", {{0x7F01AC, 0x02}, {0x7F01AC, 0x08}})
+  total = total + handleSealedChestLocation(segment, "@Northern Ruins Past/Sealed Chests", {{0x7F01A6, 0x01}, {0x7F01A6, 0x02}, {0x7F01A6, 0x04}})
   -- 1000 AD
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Basement", {{0x7F01AC, 0x01}})
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Upstairs", {{0x7F01AC, 0x04}})
+  total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Sealed Chests", {{0x7F01A9, 0x20}, {0x7F01A9, 0x40}, {0x7F01A9, 0x80}})
   
   CHECK_COUNTERS.sealed_chests = total
   updateCollectionCount()
@@ -730,6 +774,12 @@ function handleChests(segment, locationName, treasureMap)
   -- Loop through each sub-location for this location
   for locationCode,treasures in pairs(treasureMap) do
     local location = Tracker:FindObjectForCode(locationName .. locationCode)
+    if location == nil then
+      -- It is possible in some modes for not all defined treasures to exist.
+      -- ie: LoC mode doesn't have Ozzie's Fort treasures.
+      -- If the location doesn't exist, just return 0
+      return 0
+    end
     
     -- Loop through and count the treasures in each subsection
     --    treasure[1] - Offset from the base treasure address
@@ -1203,11 +1253,6 @@ printDebug("Adding memory watches")
 ScriptHost:AddMemoryWatch("Party", 0x7E2980, 9, updateParty)
 ScriptHost:AddMemoryWatch("Events", 0x7F0000, 512, updateEventsAndBosses)
 ScriptHost:AddMemoryWatch("Inventory", 0x7E2400, 0xF2, updateItemsFromInventory)
+ScriptHost:AddMemoryWatch("Chests", 0x7F0000, 0x20, updateChests)
 
--- TODO - The chest memory overlaps with event memory.  Maybe combine these?
---        Maybe leave them separate so a full chest rescan isn't done for every
---        event update.
-if chronosanityMode() then
-  ScriptHost:AddMemoryWatch("Chests", 0x7F0000, 0x20, updateChests)
-end
 
