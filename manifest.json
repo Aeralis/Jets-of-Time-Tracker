@@ -1,35 +1,17 @@
 {
-	"name": "Jets of Time Tracker",
-	"game_name": "Chrono Trigger Randomizer",
-	"platform": "snes",
-	"package_version": "2.1.0",
-	"package_uid": "CT_JoT_TheBigSalarius",
-	"author": "TheBigSalarius, Aeralis & Anguirel",
-	"variants":
-	{
-		"standard":
-		{
-			"display_name": "Map Tracker"
-		},
-		"items_only":
-		{
-			"display_name": "Item Tracker"
-		},
-		"lost_worlds":
-		{
-			"display_name": "Map Tracker (Lost Worlds)"
-		},
-		"lost_world_items":
-		{
-			"display_name": "Item Tracker (Lost Worlds)"
-		},
-    "legacy_of_cyrus":
-    {
-      "display_name": "Legacy Of Cyrus"
-    },
-    "vanilla_rando":
-    {
-      "display_name": "Vanilla Rando"
-    }
-	}
+  "name": "Jets of Time Tracker",
+  "game_name": "Chrono Trigger Randomizer",
+  "platform": "snes",
+  "package_version": "2.1.1",
+  "package_uid": "CT_JoT_Tracker",
+  "author": "TheBigSalarius, Aeralis & Anguirel",
+  "variants":
+  {
+    "items_only": {"display_name": "Item Tracker"},
+    "legacy_of_cyrus": {"display_name": "Map Tracker (Legacy Of Cyrus)"},
+    "lost_world_items": {"display_name": "Item Tracker (Lost Worlds)"},
+    "lost_worlds": {"display_name": "Map Tracker (Lost Worlds)"},
+    "standard": {"display_name": "Map Tracker"},
+    "vanilla_rando": {"display_name": "Map Tracker (Vanilla Rando)"}
+  }
 }
