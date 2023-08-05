@@ -1,5 +1,4 @@
 [
-	// Characters
 	{
 		"name": "Crono",
 		"type": "toggle",
@@ -49,7 +48,6 @@
 		"img": "images/magus.png",
 		"codes": "Magus,Janus"
 	},
-	// Key Items
 	{
 		"name": "Pendant",
 		"type": "toggle",
@@ -211,7 +209,6 @@
 		"img": "images/validationcat.png",
 		"codes": "cat, validationcat"
 	},
-	// Bosses
 	{
 		"name": "Yakra",
 		"type": "toggle",
@@ -338,7 +335,6 @@
 		"img": "images/bosses/golem.png",
 		"codes": "golemboss"
 	},
-	// Flags
 	{
     "name": "Character Locks",
     "type": "progressive",
@@ -407,7 +403,6 @@
       }
     ]
   },
-	// Additonal Instructions
 	{
 		"name": "Jerky Item",
 		"type": "toggle",
@@ -436,7 +431,6 @@
 		"img": "images/masamune.png",
 		"codes": "cyrusgrave"
 	},
-  // Check Counter for Chronosanity
   {
     "name": "CheckCounter",
     "type": "consumable",

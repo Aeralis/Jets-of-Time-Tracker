@@ -3,4 +3,6 @@
 .gitattributes export-ignore
 .github export-ignore
 .gitignore export-ignore
+.luacheckrc export-ignore
 *.zip export-ignore
+tests export-ignore

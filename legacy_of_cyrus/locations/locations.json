@@ -510,7 +510,7 @@
                 "chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 3
-              },
+              }
 						],
 						"map_locations":
 						[
@@ -646,7 +646,7 @@
 					},
           {
 						"name": "Magic Cave",
-						"access_rules": 
+						"access_rules":
             ["frog,masamune"],
 						"sections":
 						[
@@ -801,7 +801,7 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 3
-							},
+							}
 						],
 						"map_locations":
 						[
@@ -983,7 +983,7 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							},
+							}
 						],
 						"map_locations":
 						[
@@ -1270,7 +1270,7 @@
 								"y": 263
 							}
 						]
-					},
+					}
 				]
 			},
 			{
@@ -1312,4 +1312,3 @@
 		]
 	}
 ]
-			

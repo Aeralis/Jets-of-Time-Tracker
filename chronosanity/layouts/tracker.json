@@ -69,7 +69,7 @@
 						    "item": "Flag_EarlyPendant_off",
 						    "scale": 0.90,
                 "margin": "0,5"
-              },
+              }
 						]
 					}
 				]
@@ -90,7 +90,7 @@
 							[ "heromedal", "benthilt", "bentsword", "masamune", "gatekey", "dreamstone" ],
 							[ "tomapop", "pendant", "prismshard", "moonstone", "jerky", "roboribbon" ],
 							[ "magic", "tools", "clone", "ctrigger", "rubyknife", "gomode" ]
-			]	
+			]
 		}
 	},
 		"tracker_default":
@@ -152,7 +152,7 @@
 								]
 							}
 						},
-						
+
 						{
 							"title": "Prehistory",
 							"content":
