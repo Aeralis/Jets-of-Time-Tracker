@@ -18,6 +18,6 @@ The Github Releases mechanism is used to manually create tags/releases for users
 and use with PopTracker. The Releases archive (via `got archive`) all non-development-only files
 into .zip and .tar.gz for download. The intention is to direct users to the Releases page.
 
-It is recommended to create tags (in the form of "v.major.minor.path") along with each release,
-corresponding to bumping the version in `manifest.json` and the `changelog.txt` file with 
-brief description of updates in this release.
+It is recommended to create tags (in the form of "vmajor.minor.patch", e.g. v2.1.1) along with
+each release, corresponding to bumping the version in `manifest.json` and the `changelog.txt`
+file with brief description of updates in this release.

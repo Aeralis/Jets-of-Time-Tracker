@@ -300,18 +300,39 @@ end
 
 --
 -- Handle items that can also show up in character's equipment slots.
--- This includes the Hero Medal and Robo's Ribbon. Masamune is handled
--- separately since it is more complicated.
+-- This includes the Hero Medal, Robo's Ribbon, and Grand Leon.
+-- Masamune is handled separately based on reforging with Melchior.
 --
 function handleEquippableItem(keyItem)
 
-  local equipmentSlot = AutoTracker:ReadU8(keyItem.address, 0)
-  local itemOwned = keyItem.found or equipmentSlot == keyItem.value
-
   local trackerItem = Tracker:FindObjectForCode(keyItem.name)
-  if trackerItem and not trackerItem.Owner.ModifiedByUser then
-    trackerItem.Active = itemOwned
+
+  if trackerItem.Owner.ModifiedByUser then
+    return
   end
+
+  if not trackerItem then
+    trackerItem.Active = false
+    return
+  end
+
+  if keyItem.found then
+    trackerItem.Active = true
+    return
+  end
+
+  -- to support Duplicate characters, need to check each character
+  local found = false
+  for pc=0,5 do
+    local address = 0x7E2650 + 0x50*pc + keyItem.offset
+    local equipmentSlot = AutoTracker:ReadU8(address, 0)
+
+    if equipmentSlot == keyItem.value then
+      found = true
+      break
+    end
+  end
+  trackerItem.Active = found
 
 end
 
@@ -358,13 +379,13 @@ end
 KEY_ITEMS = {
   {value=0x50, name="bentsword", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
   {value=0x51, name="benthilt", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
-  {value=0xB3, name="heromedal", callback=handleEquippableItem, address=0x7E276A},
-  {value=0xB8, name="roboribbon", callback=handleEquippableItem, address=0x7E271A},
+  {value=0xB3, name="heromedal", callback=handleEquippableItem, offset=0x2A},
+  {value=0xB8, name="roboribbon", callback=handleEquippableItem, offset=0x2A},
   {value=0xD6, name="pendant"},
   {value=0xD7, name="gatekey"},
   {value=0xD8, name="prismshard"},
   {value=0xD9, name="ctrigger"},
-  {value=0x42, name="grandleon", callback=handleEquippableItem, address=0x7E2769},
+  {value=0x42, name="grandleon", callback=handleEquippableItem, offset=0x29},
   {value=0xDA, name="tools", callback=handleItemTurnin, address=0x7F019E, flag=0x40},
   {value=0xDB, name="jerky", callback=handleItemTurnin, address=0x7F01D2, flag=0x04},
   {value=0xDC, name="dreamstone"},
@@ -589,7 +610,7 @@ function updateEventsAndBosses(segment)
 end
 
 --
--- Toggle a character based on whether or not he/she was found in the party.
+-- Toggle a character based on whether or not they were found in the party.
 --
 function toggleCharacter(name, found)
 
@@ -651,7 +672,7 @@ function updateParty(segment)
   end
 
   -- Character IDs:
-  -- NOTE: items.jason uses characters' real names, not defaults.
+  -- NOTE: items.json uses characters' real names, not defaults.
   -- 0 Crono
   -- 1 Nadia (Marle)
   -- 2 Lucca
