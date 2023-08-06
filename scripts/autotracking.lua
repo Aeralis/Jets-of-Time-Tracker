@@ -299,44 +299,6 @@ function handleMoonstone(keyItem)
 end
 
 --
--- Handle items that can also show up in character's equipment slots.
--- This includes the Hero Medal, Robo's Ribbon, and Grand Leon.
--- Masamune is handled separately based on reforging with Melchior.
---
-function handleEquippableItem(keyItem)
-
-  local trackerItem = Tracker:FindObjectForCode(keyItem.name)
-
-  if trackerItem.Owner.ModifiedByUser then
-    return
-  end
-
-  if not trackerItem then
-    trackerItem.Active = false
-    return
-  end
-
-  if keyItem.found then
-    trackerItem.Active = true
-    return
-  end
-
-  -- to support Duplicate characters, need to check each character
-  local found = false
-  for pc=0,5 do
-    local address = 0x7E2650 + 0x50*pc + keyItem.offset
-    local equipmentSlot = AutoTracker:ReadU8(address, 0)
-
-    if equipmentSlot == keyItem.value then
-      found = true
-      break
-    end
-  end
-  trackerItem.Active = found
-
-end
-
---
 -- Handle items that are lost on turn-in.  Address, flag attributes
 -- are used to determine if the turn-in event has occured.
 --
@@ -379,13 +341,13 @@ end
 KEY_ITEMS = {
   {value=0x50, name="bentsword", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
   {value=0x51, name="benthilt", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
-  {value=0xB3, name="heromedal", callback=handleEquippableItem, offset=0x2A},
-  {value=0xB8, name="roboribbon", callback=handleEquippableItem, offset=0x2A},
+  {value=0xB3, name="heromedal", equipable=true, offset=0x2A},
+  {value=0xB8, name="roboribbon", equipable=true, offset=0x2A},
   {value=0xD6, name="pendant"},
   {value=0xD7, name="gatekey"},
   {value=0xD8, name="prismshard"},
   {value=0xD9, name="ctrigger"},
-  {value=0x42, name="grandleon", callback=handleEquippableItem, offset=0x29},
+  {value=0x42, name="grandleon", equipable=true, offset=0x29},
   {value=0xDA, name="tools", callback=handleItemTurnin, address=0x7F019E, flag=0x40},
   {value=0xDB, name="jerky", callback=handleItemTurnin, address=0x7F01D2, flag=0x04},
   {value=0xDC, name="dreamstone"},
@@ -396,6 +358,66 @@ KEY_ITEMS = {
   {value=0xE3, name="tomapop", callback=handleItemTurnin, address=0x7F01A3, flag=0x80},
   {value=0xE9, name="jetsoftime", callback=handleItemTurnin, address=0x7F00BA, flag=0x80}
 }
+
+--
+-- Update key items based on if found in inventory or equipped.
+function updateKeyItems()
+
+  -- Loop the key items and toggle them based on whether or not they were found
+  for _,v in pairs(KEY_ITEMS) do
+    if v.callback then
+      v.callback(v)
+    else
+      local trackerItem = Tracker:FindObjectForCode(v.name)
+      if trackerItem and not trackerItem.Owner.ModifiedByUser then
+        trackerItem.Active = v.found or v.equipped
+      else
+        printDebug("Update Items: Unable to find tracker item: " .. name)
+      end
+    end
+  end
+
+  -- Check if this puts the player in Go Mode
+  handleGoMode()
+
+end
+
+--
+-- Update key items from the equipment memory segment.
+-- Handles items that can also show up in character's equipment slots.
+-- This includes the Hero Medal, Robo's Ribbon, and Grand Leon.
+-- Masamune is handled separately based on reforging with Melchior.
+
+function updateItemsFromEquipment(segment)
+
+  -- Nothing to track if we're not actively in the game
+  if not inGame() then
+    return
+  end
+
+  -- Reset all items to "not equipped"
+  for _,v in pairs(KEY_ITEMS) do
+    v.equipped = false
+  end
+
+  -- Loop through character equipment for equipable items
+  for _,v in pairs(KEY_ITEMS) do
+    if v.equipable then
+      -- to support Duplicate characters, need to check each character
+      for pc=0,6 do
+        local address = 0x7E2600 + 0x50*pc + v.offset
+        local equipmentSlot = segment:ReadUInt8(address)
+        if equipmentSlot == v.value then
+          v.equipped = true
+          break
+        end
+      end
+    end
+  end
+
+  updateKeyItems()
+
+end
 
 --
 -- Update key items from the inventory memory segment.
@@ -441,23 +463,7 @@ function updateItemsFromInventory(segment)
     end -- end key item loop
   end -- end inventory loop
 
-
-  -- Loop the key items and toggle them based on whether or not they were found
-  for _,v in pairs(KEY_ITEMS) do
-    if v.callback then
-      v.callback(v)
-    else
-      local trackerItem = Tracker:FindObjectForCode(v.name)
-      if trackerItem and not trackerItem.Owner.ModifiedByUser then
-        trackerItem.Active = v.found
-      else
-        printDebug("Update Items: Unable to find tracker item: " .. name)
-      end
-    end
-  end
-
-  -- Check if this puts the player in Go Mode
-  handleGoMode()
+  updateKeyItems()
 
 end
 
@@ -1272,3 +1278,4 @@ ScriptHost:AddMemoryWatch("Party", 0x7E2980, 9, updateParty)
 ScriptHost:AddMemoryWatch("Events", 0x7F0000, 512, updateEventsAndBosses)
 ScriptHost:AddMemoryWatch("Inventory", 0x7E2400, 0xF2, updateItemsFromInventory)
 ScriptHost:AddMemoryWatch("Chests", 0x7F0000, 0x20, updateChests)
+ScriptHost:AddMemoryWatch("Equipment", 0x7E2627, 0x1E3, updateItemsFromEquipment)

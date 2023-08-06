@@ -5,7 +5,7 @@ A [Chrono Trigger: Jets of Time](https://ctjot.com) tracker pack for [PopTracker
 ## Usage
 
 Download a .zip (or .tar.gz) from [the Releases page](
-https://github.com/coffeemancy/Jets-of-Time-Tracker/releases).
+https://github.com/Aeralis/Jets-of-Time-Tracker/releases).
 
 Extract this into your PopTracker packs directory per [PopTracker "Getting started"](
 https://github.com/black-sliver/PopTracker#getting-started).

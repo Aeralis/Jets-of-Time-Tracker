@@ -15,7 +15,7 @@ assure a measure of stability and quality with this repo.
 ## Releases
 
 The Github Releases mechanism is used to manually create tags/releases for users to download
-and use with PopTracker. The Releases archive (via `got archive`) all non-development-only files
+and use with PopTracker. The Releases archive (via `git archive`) all non-development-only files
 into .zip and .tar.gz for download. The intention is to direct users to the Releases page.
 
 It is recommended to create tags (in the form of "vmajor.minor.patch", e.g. v2.1.1) along with
