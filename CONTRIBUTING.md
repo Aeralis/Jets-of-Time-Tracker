@@ -7,10 +7,25 @@
 There are several workflows defined in `.github/workflows`:
 
 * `luacheck.yaml`: runs [`luacheck](https://luacheck.readthedocs.io/en/stable/) against .lua files
-* `jsontest.yaml`: runs this repos `tests/checkjson.py` script against .json files
+* `jsontest.yaml`: runs this repos `tests/test_json.py` script against .json files with [`pytest`](https://pytest.org)
 
 It is intended that Pull Requests pass these checks before being merged and released, to
 assure a measure of stability and quality with this repo.
+
+#### `jsontest.yaml`
+
+This workflow uses [`pytest`](https://pytest.org) to validate all .json files in this repo
+by running the tests in `tests/test_json.py`.
+
+Currently the tests make sure all .json files are loadable as valid JSON and also
+performs [JSON Schema validation](https://json-schema.org) against the PopTracker
+pack files using upstream [PopTracker JSON Schema](https://poptracker.github.io/schema/packs/).
+
+The schema validation is intended to quickly catch errors which could cause changes to break
+integration with PopTracker (or EmoTracker).
+
+Currently, strict validation is only used on items.json, manifest.json, and maps.json. Layouts
+and locations are using non-strict validation.
 
 ## Releases
 

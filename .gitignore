@@ -1,1 +1,4 @@
 *.zip
+.venv
+__pycache__
+tests/.poptracker_schemas
