@@ -12,7 +12,7 @@ import requests
 from jsonschema import validate
 
 POPTRACKER_PACK_TYPES = ['items', 'layouts', 'locations', 'manifest', 'maps']
-POPTRACKER_PACK_STRICT_TYPES = ['items', 'manifest', 'maps']
+POPTRACKER_PACK_STRICT_TYPES = ['manifest', 'maps']
 SCHEMA_CACHE_DIR = Path(Path(__file__).parent.resolve(), '.poptracker_schemas')
 STRICT_SCHEMA_CACHE_DIR = Path(SCHEMA_CACHE_DIR, 'strict')
 POPTRACKER_REMOTE_PATH = 'https://poptracker.github.io/schema/packs/'

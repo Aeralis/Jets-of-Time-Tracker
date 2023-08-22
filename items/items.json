@@ -2,108 +2,126 @@
 	{
 		"name": "Crono",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/crono.png",
 		"codes": "Crono"
 	},
 	{
 		"name": "Lucca",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/lucca.png",
 		"codes": "Lucca"
 	},
 	{
 		"name": "Nadia",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/marle.png",
 		"codes": "Marle,Nadia"
 	},
 	{
 		"name": "Glenn",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/frog.png",
 		"codes": "Frog,Glenn"
 	},
 	{
 		"name": "R66-Y",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/robo.png",
 		"codes": "Robo,R66-Y"
 	},
 	{
 		"name": "Ayla",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/ayla.png",
 		"codes": "Ayla"
 	},
 	{
 		"name": "Janus",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/magus.png",
 		"codes": "Magus,Janus"
 	},
 	{
 		"name": "Pendant",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/pendant.png",
 		"codes": "pendant"
 	},
 	{
 		"name": "Gate Key",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/gatekey.png",
 		"codes": "gatekey"
 	},
 	{
 		"name": "Magic",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/magic.png",
 		"codes": "magic"
 	},
 	{
 		"name": "Bent Hilt",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/benthilt.png",
 		"codes": "benthilt,hilt"
 	},
 	{
 		"name": "Bent Sword",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bentsword.png",
 		"codes": "bentsword,sword"
 	},
 	{
 		"name": "Hero's Medal",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/herosmedal.png",
 		"codes": "herosmedal,heromedal,medal"
 	},
 	{
 		"name": "Dreamstone",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/dreamstone.png",
 		"codes": "dreamstone,redrock"
 	},
 	{
 		"name": "Masamune",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/melchior.png",
 		"codes": "masamune, melchior"
 	},
 	{
 		"name": "Robo's Ribbon",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/robosribbon.png",
 		"codes": "robosribbon,roboribbon,ribbon,Atropos"
 	},
 	{
 		"name": "Prism Shard",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/prismshard.png",
 		"codes": "prismshard,shard"
 	},
 	{
 		"name": "Jerky",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/jerky.png",
 		"codes": "jerky"
 	},
@@ -124,168 +142,196 @@
 	{
 		"name": "Rainbow Shell",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/rainbowshell.png",
 		"codes": "rainbowshell,shell"
 	},
 	{
 		"name": "Clone",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/clone.png",
 		"codes": "clone,cronoclone"
 	},
 	{
 		"name": "C. Trigger",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/ctrigger.png",
 		"codes": "ctrigger,chronotrigger"
 	},
 	{
 		"name": "Toma's Pop",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/tomaspop.png",
 		"codes": "tomaspop,tomapop,pop,tomassoda,tomasoda,soda"
 	},
 	{
 		"name": "Grand Leon",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/masamune.png",
 		"codes": "grandleon"
 	},
 	{
 		"name": "Ruby Knife",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/rubyknife.png",
 		"codes": "rubyknife,knife"
 	},
 	{
 		"name": "Go Button",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/gomode.png",
 		"codes": "go,gomode"
 	},
   {
 		"name": "Tools",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/tools.png",
 		"codes": "tools"
 	},
   {
 		"name": "Jets Of Time",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/epoch.png",
 		"codes": "jetsoftime"
 	},
   {
 		"name": "Validation Cat",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/validationcat.png",
 		"codes": "cat, validationcat"
 	},
 	{
 		"name": "Yakra",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/yakra.png",
 		"codes": "yakraboss"
 	},
 	{
 		"name": "Yakra XIII",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/yakraxiii.png",
 		"codes": "yakraxiiiboss"
 	},
 	{
 		"name": "Dragon Tank",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/dragontank.png",
 		"codes": "dragontankboss"
 	},
 	{
 		"name": "Guardian",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/guardian.png",
 		"codes": "guardianboss"
 	},
 	{
 		"name": "R-Series",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/rseries.png",
 		"codes": "rseriesboss"
 	},
 	{
 		"name": "Heckran",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/heckran.png",
 		"codes": "heckranboss"
 	},
 	{
 		"name": "Zombor",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/zombor.png",
 		"codes": "zomborboss"
 	},
 	{
 		"name": "Retinite",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/retinite.png",
 		"codes": "retiniteboss"
 	},
 	{
 		"name": "Masa & Mune",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/masamune.png",
 		"codes": "masamuneboss"
 	},
 	{
 		"name": "Nizbel",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/nizbel.png",
 		"codes": "nizbelboss"
 	},
 	{
 		"name": "Magus",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/magus.png",
 		"codes": "magusboss"
 	},
 	{
 		"name": "Black Tyrano",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/blacktyrano.png",
 		"codes": "blacktyranoboss"
 	},
 	{
 		"name": "Rust Tyrano",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/rusttyrano.png",
 		"codes": "rusttyranoboss"
 	},
 	{
 		"name": "Giga Gaia",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/gigagaia.png",
 		"codes": "gigagaiaboss"
 	},
 	{
 		"name": "Mother Brain",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/motherbrain.png",
 		"codes": "motherbrainboss"
 	},
 	{
 		"name": "Sun of Son",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/sonofsun.png",
 		"codes": "sonofsunboss"
 	},
 	{
 		"name": "Zeal",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/zeal.png",
 		"codes": "zealboss"
 	},
 	{
 		"name": "Golem",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/bosses/golem.png",
 		"codes": "golemboss"
 	},
@@ -360,24 +406,28 @@
 	{
 		"name": "Jerky Item",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/jerky.png",
 		"codes": "hiddenjerky"
 	},
   {
 		"name": "Fixed Epoch",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/epoch.png",
 		"codes": "fixedepoch"
 	},
   {
 		"name": "Ozzie",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/ozzie.png",
 		"codes": "ozzie"
 	},
   {
 		"name": "Cyrus Grave",
 		"type": "toggle",
+		"loop": "true",
 		"img": "images/masamune.png",
 		"codes": "cyrusgrave"
 	},
