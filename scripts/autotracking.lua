@@ -20,7 +20,7 @@ CHECK_COUNTERS = {chests = 0, sealed_chests = 0, base_checks = 0}
 -- Invoked when the auto-tracker is activated/connected
 --
 function autotracker_started()
-    
+
 end
 
 --
@@ -76,7 +76,7 @@ end
 function chronosanityMode()
 
   return Tracker:ProviderCountForCode("chronosanity") > 0
-  
+
 end
 
 --
@@ -84,9 +84,9 @@ end
 --
 function inGame()
 
-  -- Check the first 2 character slots.  If both are 0 (Crono's ID) then the game 
+  -- Check the first 2 character slots.  If both are 0 (Crono's ID) then the game
   -- hasn't started yet or has been reset.
-  return not (AutoTracker:ReadU8(0x7E2980) == 0 and AutoTracker:ReadU8(0x7E2981) == 0) 
+  return not (AutoTracker:ReadU8(0x7E2980) == 0 and AutoTracker:ReadU8(0x7E2981) == 0)
 
  end
 
@@ -118,20 +118,20 @@ function handleGoMode()
   local pendant = Tracker:FindObjectForCode("pendant")
   local cTrigger = Tracker:FindObjectForCode("ctrigger")
   local clone = Tracker:FindObjectForCode("clone")
-  
-  local goMode = false
+
+  local goMode
   if lostWorldsMode() then
-    goMode = 
-	    (dreamStone.Active and rubyKnife.Active) or -- has ruby knife and can get to Black Tyrano
-		  (cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
+    goMode =
+      (dreamStone.Active and rubyKnife.Active) or -- has ruby knife and can get to Black Tyrano
+      (cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
   elseif legacyOfCyrusMode() then
     goMode = frog.Active and magus.Active and hilt.Active and blade.Active and masa2.Active
   else
-    goMode = 
+    goMode =
       (gateKey.Active and dreamStone.Active and rubyKnife.Active) or -- 65 million BC -> 12000 BC -> Ocean Palace
       (frog.Active and hilt.Active and blade.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
       (pendant.Active and cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
-  end  
+  end
   local goButton = Tracker:FindObjectForCode("gomode")
   goButton.Active = goMode
 
@@ -144,13 +144,13 @@ function updateEvent(name, segment, address, flag)
 
   local trackerItem = Tracker:FindObjectForCode(name)
   local completed = 0
-  
+
   if trackerItem then
     if trackerItem.Owner.ModifiedByUser then
-      -- early return if the item has been modified by the user. 
+      -- early return if the item has been modified by the user.
       return 0
     end
-  
+
     local value = segment:ReadUInt8(address)
     if (value & flag) ~= 0 then
       trackerItem.AvailableChestCount = 0
@@ -159,11 +159,11 @@ function updateEvent(name, segment, address, flag)
       trackerItem.AvailableChestCount = 1
     end
   else
-    printDebug("Update Event: Unable to find tracker item: " .. name)  
+    printDebug("Update Event: Unable to find tracker item: " .. name)
   end
-  
+
   return completed
-  
+
 end
 
 --
@@ -174,16 +174,16 @@ function updateBoss(name, segment, address, flag)
   local trackerItem = Tracker:FindObjectForCode(name)
   if trackerItem then
     if trackerItem.Owner.ModifiedByUser then
-      -- early return if the item has been modified by the user. 
+      -- early return if the item has been modified by the user.
       return
     end
-    
+
     local value = segment:ReadUInt8(address)
     trackerItem.Active = ((value & flag) ~= 0)
   else
-    printDebug("Update Boss: Unable to find tracker item: " .. name)  
+    printDebug("Update Boss: Unable to find tracker item: " .. name)
   end
-  
+
 end
 
 --
@@ -200,9 +200,9 @@ function handleZenanBridge(segment)
   --       There isn't a specific memory flag for Zombor's death
   updateBoss("zomborboss", segment, 0x7F0101, 0x02)
   local completed = 0
-  
+
   -- If Zombor was defeated then mark the cook's item as active regardless
-  -- of the flag's state.  Only track this if the tracker is not set to 
+  -- of the flag's state.  Only track this if the tracker is not set to
   -- "Items Only" tracking mode.
   if not itemsOnlyTracking() and not lostWorldsMode() then
     if zombor.Active then
@@ -215,14 +215,14 @@ function handleZenanBridge(segment)
       completed = updateEvent("@Zenan Bridge/Cook's Rations", segment, 0x7F00A9, 0x10)
     end
   end
-  
+
   return completed
-  
+
 end
 
 --
 -- The Melchior's Refinements key item doesn't have a simple
--- memory flag. Instead, the bit goes high when you talk to 
+-- memory flag. Instead, the bit goes high when you talk to
 -- the king after the trial and Melchior shows up, then goes
 -- back low after you talk to Melchior and obtain the key item.
 --
@@ -237,12 +237,12 @@ function handleMelchiorRefinements(segment)
   local yakraxiii = Tracker:FindObjectForCode("yakraxiiiboss")
   local melchior = Tracker:FindObjectForCode("@Guardia Castle Present/Melchior's Refinements")
   local completed = 0
-  
+
   if melchior.Owner.ModifiedByUser or itemsOnlyTracking() then
     -- Break out early if the item has been modified by the user
     return
   end
-  
+
   if yakraxiii.Active then
     local value = segment:ReadUInt8(0x7F006D)
     if (value & 0x10) == 0 then
@@ -254,23 +254,23 @@ function handleMelchiorRefinements(segment)
   else
     melchior.AvailableChestCount = 1
   end
-  
+
   return completed
-  
+
 end
 
 --
 -- Handle the moonstone/sunstone.
--- This is a progressive item and is handled differently 
+-- This is a progressive item and is handled differently
 -- from the other key items.
 --
-function handleMoonstone(keyItem) 
+function handleMoonstone(keyItem)
 
   moonstone = Tracker:FindObjectForCode("moonstone")
   currentStage = moonstone.CurrentStage
-  
+
   -- Special handling for when the moonstone has been left in sun keep
-  -- but hasn't been picked up yet.  
+  -- but hasn't been picked up yet.
   local moonstoneState = AutoTracker:ReadU8(0x7F013A, 0)
   if ((moonstoneState & 0x04) ~= 0 and
       (moonstoneState & 0x40) == 0) then
@@ -279,7 +279,7 @@ function handleMoonstone(keyItem)
     moonstone.CurrentStage = 1
     return
   end
-  
+
   if keyItem.name == "moonstone" then
     if keyItem.found then
       moonstone.CurrentStage = 1
@@ -295,35 +295,18 @@ function handleMoonstone(keyItem)
       moonstone.CurrentStage = 0
     end
   end
-  
-end
-
---
--- Handle items that can also show up in character's equipment slots.
--- This includes the Hero Medal and Robo's Ribbon. Masamune is handled
--- separately since it is more complicated.
---
-function handleEquippableItem(keyItem)
-
-  local equipmentSlot = AutoTracker:ReadU8(keyItem.address, 0)
-  local itemOwned = keyItem.found or equipmentSlot == keyItem.value
-  
-  local trackerItem = Tracker:FindObjectForCode(keyItem.name)  
-  if trackerItem and not trackerItem.Owner.ModifiedByUser then
-    trackerItem.Active = itemOwned
-  end
 
 end
 
 --
--- Handle items that are lost on turn-in.  Address, flag attributes 
+-- Handle items that are lost on turn-in.  Address, flag attributes
 -- are used to determine if the turn-in event has occured.
 --
 function handleItemTurnin(keyItem)
 
   usedItem = (AutoTracker:ReadU8(keyItem.address) & keyItem.flag) ~= 0
   itemFound = keyItem.found or usedItem
-  
+
   local trackerItem = Tracker:FindObjectForCode(keyItem.name)
   if trackerItem and not trackerItem.Owner.ModifiedByUser then
     trackerItem.Active = itemFound
@@ -332,7 +315,7 @@ function handleItemTurnin(keyItem)
 end
 
 --
--- table of key item memory values and names as 
+-- table of key item memory values and names as
 -- registered with the tracker via items.json.
 -- Some items have an additional callback field.
 -- This is a callback function for special processing.
@@ -345,8 +328,8 @@ end
 --       functions are defined or they won't trigger properly.
 --
 -- NOTE: The Ruby Knife is removed from the inventory when you reach the Mammon Machine
---       at the end of Ocean Palace.  There wasn't a convenient memory flag for that 
---       event, so instead we're checking to see if the sealed door in Zeal Palace has 
+--       at the end of Ocean Palace.  There wasn't a convenient memory flag for that
+--       event, so instead we're checking to see if the sealed door in Zeal Palace has
 --       been opened to meet the turn-in condition.
 --
 -- TODO: The sealed door to Ocean Palace was changed.  When going through Magus' Castle
@@ -358,13 +341,13 @@ end
 KEY_ITEMS = {
   {value=0x50, name="bentsword", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
   {value=0x51, name="benthilt", callback=handleItemTurnin, address=0x7F0103, flag=0x02},
-  {value=0xB3, name="heromedal", callback=handleEquippableItem, address=0x7E276A},
-  {value=0xB8, name="roboribbon", callback=handleEquippableItem, address=0x7E271A},
+  {value=0xB3, name="heromedal", equipable=true, offset=0x2A},
+  {value=0xB8, name="roboribbon", equipable=true, offset=0x2A},
   {value=0xD6, name="pendant"},
   {value=0xD7, name="gatekey"},
   {value=0xD8, name="prismshard"},
   {value=0xD9, name="ctrigger"},
-  {value=0x42, name="grandleon", callback=handleEquippableItem, address=0x7E2769},
+  {value=0x42, name="grandleon", equipable=true, offset=0x29},
   {value=0xDA, name="tools", callback=handleItemTurnin, address=0x7F019E, flag=0x40},
   {value=0xDB, name="jerky", callback=handleItemTurnin, address=0x7F01D2, flag=0x04},
   {value=0xDC, name="dreamstone"},
@@ -377,12 +360,72 @@ KEY_ITEMS = {
 }
 
 --
+-- Update key items based on if found in inventory or equipped.
+function updateKeyItems()
+
+  -- Loop the key items and toggle them based on whether or not they were found
+  for _,v in pairs(KEY_ITEMS) do
+    if v.callback then
+      v.callback(v)
+    else
+      local trackerItem = Tracker:FindObjectForCode(v.name)
+      if trackerItem and not trackerItem.Owner.ModifiedByUser then
+        trackerItem.Active = v.found or v.equipped
+      else
+        printDebug("Update Items: Unable to find tracker item: " .. name)
+      end
+    end
+  end
+
+  -- Check if this puts the player in Go Mode
+  handleGoMode()
+
+end
+
+--
+-- Update key items from the equipment memory segment.
+-- Handles items that can also show up in character's equipment slots.
+-- This includes the Hero Medal, Robo's Ribbon, and Grand Leon.
+-- Masamune is handled separately based on reforging with Melchior.
+
+function updateItemsFromEquipment(segment)
+
+  -- Nothing to track if we're not actively in the game
+  if not inGame() then
+    return
+  end
+
+  -- Reset all items to "not equipped"
+  for _,v in pairs(KEY_ITEMS) do
+    v.equipped = false
+  end
+
+  -- Loop through character equipment for equipable items
+  for _,v in pairs(KEY_ITEMS) do
+    if v.equipable then
+      -- to support Duplicate characters, need to check each character
+      for pc=0,6 do
+        local address = 0x7E2600 + 0x50*pc + v.offset
+        local equipmentSlot = segment:ReadUInt8(address)
+        if equipmentSlot == v.value then
+          v.equipped = true
+          break
+        end
+      end
+    end
+  end
+
+  updateKeyItems()
+
+end
+
+--
 -- Update key items from the inventory memory segment.
 -- Some items provide callbacks for special handling.  All other
--- items just get directly toggled on the tracker.  
--- 
+-- items just get directly toggled on the tracker.
+--
 -- NOTE: Magic is tracked with events and bosses.  The marker for
---       magic shows up with key items on the tracker, but the 
+--       magic shows up with key items on the tracker, but the
 --       "Met Spekkio" memory flag is with the rest of the event flags.
 --
 function updateItemsFromInventory(segment)
@@ -393,16 +436,16 @@ function updateItemsFromInventory(segment)
   end
 
   -- Reset all items to "not found"
-  for k,v in pairs(KEY_ITEMS) do
+  for _,v in pairs(KEY_ITEMS) do
     v.found = false
   end
 
   -- Loop through the inventory, determine which key items the player has found
   for i=0,0xF1 do
     local item = segment:ReadUInt8(0x7E2400 + i)
-    -- Loop through the table of key items and see if the current 
+    -- Loop through the table of key items and see if the current
     -- inventory slot maches any of them
-    for k,v in pairs(KEY_ITEMS) do
+    for _,v in pairs(KEY_ITEMS) do
       if type(v.value) == "number" then
         if item == v.value then
           v.found = true
@@ -411,7 +454,7 @@ function updateItemsFromInventory(segment)
         -- Loop through possible IDs for items with more than one
         -- Not used since the Masamume/Grand Leon change, but leaving this in
         -- in case it's needed in the future.
-        for k2, v2 in pairs(v.value) do
+        for _, v2 in pairs(v.value) do
           if item == v2 then
             v.found = true
           end
@@ -419,31 +462,15 @@ function updateItemsFromInventory(segment)
       end
     end -- end key item loop
   end -- end inventory loop
-  
-  
-  -- Loop the key items and toggle them based on whether or not they were found
-  for k,v in pairs(KEY_ITEMS) do
-    if v.callback then
-      v.callback(v)
-    else
-      local trackerItem = Tracker:FindObjectForCode(v.name)
-      if trackerItem and not trackerItem.Owner.ModifiedByUser then
-        trackerItem.Active = v.found
-      else
-        printDebug("Update Items: Unable to find tracker item: " .. name)
-      end
-    end
-  end
-  
-  -- Check if this puts the player in Go Mode
-  handleGoMode()
-  
+
+  updateKeyItems()
+
 end
 
 --
 -- Update events and boss kills
 --
-function updateEventsAndBosses(segment) 
+function updateEventsAndBosses(segment)
 
   -- Nothing to track if we're not actively in the game
   if not inGame() then
@@ -452,7 +479,7 @@ function updateEventsAndBosses(segment)
 
   -- Don't autotrack during gate travel:
   -- During a gate transition the memory flags holding the event
-  -- and boss data are overwritten.  After the animation, memory 
+  -- and boss data are overwritten.  After the animation, memory
   -- goes back to normal.
   s1 = segment:ReadUInt16(0x7F0000)
   s2 = segment:ReadUInt16(0x7F0002)
@@ -463,7 +490,7 @@ function updateEventsAndBosses(segment)
   -- Handle boss tracking.
   -- This is done in both Map Tracker and Item Tracker variants
   local keyItemChecksDone = 0
-  
+
   -- Prehistory
   updateBoss("nizbelboss", segment, 0x7F0105, 0x20)
   updateBoss("blacktyranoboss", segment, 0x7F00EC, 0x80)
@@ -471,7 +498,7 @@ function updateEventsAndBosses(segment)
   -- Dark Ages
   updateBoss("gigagaiaboss", segment, 0x7F0100, 0x20)
   updateBoss("golemboss", segment, 0x7F0105, 0x80)
-  
+
   -- Middle Ages
   updateBoss("yakraboss", segment, 0x7F000D, 0x01)
   updateBoss("masamuneboss", segment, 0x7F00F3, 0x20)
@@ -479,16 +506,16 @@ function updateEventsAndBosses(segment)
   updateBoss("rusttyranoboss", segment, 0x7F01D2, 0x40)
   updateBoss("magusboss", segment, 0x7F01FF, 0x04)
   keyItemChecksDone = keyItemChecksDone + handleZenanBridge(segment)
-  
+
   -- Present
   updateBoss("heckranboss", segment, 0x7F01A3, 0x08)
   updateBoss("dragontankboss", segment, 0x7F0198, 0x08)
   updateBoss("yakraxiiiboss", segment, 0x7F0050, 0x40)
-  
+
   -- Future
   updateBoss("guardianboss", segment, 0x7F00EC, 0x01)
   updateBoss("rseriesboss", segment, 0x7F0103, 0x40)
-  -- Bit 1 goes high when the fight starts, bit 2 goes high when 
+  -- Bit 1 goes high when the fight starts, bit 2 goes high when
   -- the item is collected after the fight
   updateBoss("sonofsunboss", segment, 0x7F013A, 0x02)
   updateBoss("motherbrainboss", segment, 0x7F013B, 0x10)
@@ -498,21 +525,21 @@ function updateEventsAndBosses(segment)
   -- This memory flag gets set based on what characters are in the party
   -- when you reach the summit. Check to see if any of the bottom 3 bits are set
   updateBoss("zealboss", segment, 0x7F0067, 0x07)
-  
+
   -- Only track events in the "Map Tracker" variant
   if not itemsOnlyTracking() then
     -- Prehistory
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Reptite Lair/Defeat Nizbel", segment, 0x7F0105, 0x20)
     updateEvent("@Dactyl Nest/Friend to the Dactyls", segment, 0x7F0160, 0x10)
-    
+
     -- Dark Ages
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Mt Woe/Defeat Giga Gaia", segment, 0x7F0100, 0x20) -- same as boss flag
-   
-	-- Don't check these events in Lost Worlds mode, they don't exist.
-    if not lostWorldsMode() then	
+
+    -- Don't check these events in Lost Worlds mode, they don't exist.
+    if not lostWorldsMode() then
       -- Moonstone is the only prehistory event that is not part of the Lost Worlds mode.
       updateEvent("@Sun Keep/Charge the Moonstone", segment, 0x7F013A, 0x40)
-    
+
       -- Middle Ages
       updateEvent("@Manoria Cathedral/Saved by Frog", segment, 0x7F0100, 0x01)
       updateEvent("@Guardia Castle Past/Rescue Marle", segment, 0x7F00A1, 0x04)
@@ -523,7 +550,7 @@ function updateEventsAndBosses(segment)
       -- NOTE: Rainbow Shell flag is set after warping out of the cave
       --       after interacting with the Rainbow Shell
       keyItemChecksDone = keyItemChecksDone + updateEvent("@Giant's Claw/Rainbow Shell", segment, 0x7F00A9, 0x80)
-    
+
       -- Present
       keyItemChecksDone = keyItemChecksDone + updateEvent("@Snail Stop/Buy for 9900G", segment, 0x7F01D0, 0x10)
       keyItemChecksDone = keyItemChecksDone + updateEvent("@Choras Inn/Borrow Carpenter's Tools", segment, 0x7F019E, 0x80)
@@ -532,36 +559,36 @@ function updateEventsAndBosses(segment)
       -- The trial is a guess. Two flags go high here and I just picked one arbitrarily
       keyItemChecksDone = keyItemChecksDone + updateEvent("@Guardia Castle Present/King Guardia's Trial", segment, 0x7F00A2, 0x80)
       keyItemChecksDone = keyItemChecksDone + handleMelchiorRefinements(segment)
-      
+
       -- Checks specific to vanilla randomizer mode
       if vanillaRandoMode() then
         keyItemChecksDone = keyItemChecksDone + updateEvent("@Norstein Bekkler's Tent of Horrors/Clone Game", segment, 0x7F007C, 0x01)
         keyItemChecksDone = keyItemChecksDone + updateEvent("@Northern Ruins Past/Cyrus Grave", segment, 0x7F01A3, 0x40)
       end
-      
+
       -- Checks specific to Legacy of Cyrus mode
       if legacyOfCyrusMode() then
         updateBoss("ozzie", segment, 0x7F01A1, 0x80)
         updateBoss("cyrusgrave", segment, 0x7F01A3, 0x40)
       end
     end
-    
+
     -- Future
     updateEvent("@Proto Dome/Fix Robo", segment, 0x7F00F3, 0x02)
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Arris Dome/Activate the Computer", segment, 0x7F00A4, 0x01)
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Sun Palace/Moon Stone", segment, 0x7F013A, 0x02) -- same as Son of Sun
-    keyItemChecksDone = keyItemChecksDone + updateEvent("@Geno Dome/Defeat Mother Brain", segment, 0x7F013B, 0x10) -- Same as Mother Brain 
+    keyItemChecksDone = keyItemChecksDone + updateEvent("@Geno Dome/Defeat Mother Brain", segment, 0x7F013B, 0x10) -- Same as Mother Brain
   end -- end event tracking
-  
+
   CHECK_COUNTERS.base_checks = keyItemChecksDone
-  
+
   -- End of Time
-  -- Track magic here. This is the flag that is set after Spekkio challenges you 
-  -- to a practice fight after learning magic. 
+  -- Track magic here. This is the flag that is set after Spekkio challenges you
+  -- to a practice fight after learning magic.
   local magic = Tracker:FindObjectForCode("magic")
   local spekkioByte = segment:ReadUInt8(0x7F00E1)
   magic.Active = (spekkioByte & 0x02) ~= 0
-  
+
   -- Masamune
   -- The Masamune tracker item is activated when the player reforges the Masamune
   -- after collecting the hilt and blade.  The original version of the tracker
@@ -570,26 +597,26 @@ function updateEventsAndBosses(segment)
   -- memory, check for the tracker item here.
   melchior = Tracker:FindObjectForCode("melchior")
   melchior.Active = (segment:ReadUInt8(0x7F0103) & 0x02) ~= 0
-  
+
   -- Validation Cat
   -- This is a bit of a meme check.  Validation Cat refers to Crono's cat.
   -- Petting Crono's cat in Crono's house "validates" the run.
   local cat = Tracker:FindObjectForCode("validationcat")
   local catByte = segment:ReadUInt8(0x7F01A6)
   cat.Active = (catByte & 0x08) ~= 0
-  
+
   -- Handle sealed chest tracking. The chest counter is on all pack variants now
   -- so count sealed/event chests in all modes.
   handleSealedChests(segment)
-  
+
   -- Check if the Epoch is capable of flight.
   -- This is used in the Epoch Fail mode of Vanilla Rando
   updateEvent("@Snail Stop/Attach Epoch Wings", segment, 0x7F00BA, 0x80)
-  
+
 end
 
 --
--- Toggle a character based on whether or not he/she was found in the party.
+-- Toggle a character based on whether or not they were found in the party.
 --
 function toggleCharacter(name, found)
 
@@ -607,16 +634,16 @@ end
 --
 -- NOTE: This function is not currently being used.  There is a race
 --       condition where the characters are removed before the trial
---       flag is set. If the tracker updates before the trial bit is 
---       set, the characters will still show up as removed.  I am 
+--       flag is set. If the tracker updates before the trial bit is
+--       set, the characters will still show up as removed.  I am
 --       leaving this function here until I find a reliable way to fix it.
 --       Functionally, this means that the characters in slot 2 and 3 will
 --       vanish from the tracker until they rejoin after the prison escape.
--- 
+--
 --
 -- Check to see if the player is in the trial sequence.
 -- During Crono's trial sequence in 1000AD in Guardia Castle the
--- two characters in slots 2 and 3 are removed from the party entirely.  
+-- two characters in slots 2 and 3 are removed from the party entirely.
 -- This function is used to pause character tracking during the trial to prevent
 -- the two characters from being unchecked from the tracker.
 --
@@ -628,13 +655,13 @@ end
 --   0x02 - Character has been led away to jail
 --   0x03 - Party joins back up after the escape
 --   0x04 - Party takes the portal to the future
---       
+--
 function inTrialSequence()
 
   local trialByte = AutoTracker:ReadU8(0x7F0104) & 0x07
   local trialStarted = trialByte == 2
-  local charsRejoined = trialByte > 2 
-  
+  local charsRejoined = trialByte > 2
+
   return trialStarted and not charsRejoined
 
 end
@@ -651,7 +678,7 @@ function updateParty(segment)
   end
 
   -- Character IDs:
-  -- NOTE: items.jason uses characters' real names, not defaults.
+  -- NOTE: items.json uses characters' real names, not defaults.
   -- 0 Crono
   -- 1 Nadia (Marle)
   -- 2 Lucca
@@ -678,10 +705,10 @@ function updateParty(segment)
   toggleCharacter("Glenn", (charsFound & 0x10 ~= 0))
   toggleCharacter("Ayla",  (charsFound & 0x20 ~= 0))
   toggleCharacter("Janus", (charsFound & 0x40 ~= 0))
-  
+
   -- Check if this puts the player in Go Mode
   handleGoMode()
-  
+
 end
 
 --
@@ -700,24 +727,23 @@ end
 -- Handle a single sealed chest location.
 --
 function handleSealedChestLocation(segment, locationName, flags)
-  
+
   local location = Tracker:FindObjectForCode(locationName)
   if location == nil then
     return 0
   end
-  
+
   local treasuresCollected = 0
-  local value = 0
   for _, flag in pairs(flags) do
-    value = segment:ReadUInt8(flag[1])
+    local value = segment:ReadUInt8(flag[1])
     if (value & flag[2]) ~= 0 then
       treasuresCollected = treasuresCollected + 1
     end
   end
-  
+
   location.AvailableChestCount = location.ChestCount - treasuresCollected
   return treasuresCollected
-  
+
 end
 
 --
@@ -726,16 +752,15 @@ end
 --
 function handleSealedChests(segment)
 
-  local total = 0
   ------------
   -- 600 AD --
   ------------
-  total = handleSealedChestLocation(segment, "@Porre Elder's House/Sealed Chests", {{0x7F01D3, 0x10}, {0x7F01D3, 0x20}})
+  local total = handleSealedChestLocation(segment, "@Porre Elder's House/Sealed Chests", {{0x7F01D3, 0x10}, {0x7F01D3, 0x20}})
   total = total + handleSealedChestLocation(segment, "@Truce Inn Past/Sealed Chest", {{0x7F014A, 0x80}})
   total = total + handleSealedChestLocation(segment, "@Guardia Forest Past/Sealed Chest", {{0x7F01D2, 0x80}})
   total = total + handleSealedChestLocation(segment, "@Guardia Castle Past/Sealed Chest", {{0x7F00D9, 0x02}})
   total = total + handleSealedChestLocation(segment, "@Magic Cave/Sealed Chest", {{0x7F0079, 0x01}})
-  
+
   -------------
   -- 1000 AD --
   -------------
@@ -745,7 +770,7 @@ function handleSealedChests(segment)
   total = total + handleSealedChestLocation(segment, "@Guardia Castle Present/Sealed Chest", {{0x7F00D9, 0x04}})
   total = total + handleSealedChestLocation(segment, "@Heckran Cave/Sealed Chest", {{0x7F01A0, 0x04}})
   total = total + handleSealedChestLocation(segment, "@Forest Ruins/Blue Pyramid", {{0x7F01A0, 0x01}})
-  
+
   -- The "regular" Northern Ruins chests are not normal treasure chests.
   -- They are handled internally via events just like sealed chests.
   -- 600 AD
@@ -755,11 +780,11 @@ function handleSealedChests(segment)
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Basement", {{0x7F01AC, 0x01}})
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Upstairs", {{0x7F01AC, 0x04}})
   total = total + handleSealedChestLocation(segment, "@Northern Ruins Present/Sealed Chests", {{0x7F01A9, 0x20}, {0x7F01A9, 0x40}, {0x7F01A9, 0x80}})
-  
+
   CHECK_COUNTERS.sealed_chests = total
   updateCollectionCount()
 
-end 
+end
 
 --
 -- Handle updating the chest counters for a given area.
@@ -770,7 +795,7 @@ function handleChests(segment, locationName, treasureMap)
   -- Treasure pointers are stored as offsets from this address
   local baseAddress = 0x7F0001
   local totalTreasures = 0
-  
+
   -- Loop through each sub-location for this location
   for locationCode,treasures in pairs(treasureMap) do
     local location = Tracker:FindObjectForCode(locationName .. locationCode)
@@ -780,7 +805,7 @@ function handleChests(segment, locationName, treasureMap)
       -- If the location doesn't exist, just return 0
       return 0
     end
-    
+
     -- Loop through and count the treasures in each subsection
     --    treasure[1] - Offset from the base treasure address
     --    treasure[2] - Bitmask flag for this treasure
@@ -792,54 +817,53 @@ function handleChests(segment, locationName, treasureMap)
         collectedTreasures = collectedTreasures + 1
       end
     end -- end treasure loop
-    
+
     location.AvailableChestCount = location.ChestCount - collectedTreasures
     totalTreasures = totalTreasures + collectedTreasures
-    
+
   end -- End location loop
-  
+
   return totalTreasures
-  
+
 end
 
 --
 -- Update the chests that have been collected
--- by the player.  Only chests considered for 
+-- by the player.  Only chests considered for
 -- key item placement in Chronosanity mode are
 -- tracked here.
 --
 function updateChests(segment)
-  
+
   -- Don't autotrack during gate travel:
   -- During a gate transition the memory flags holding the chest
-  -- data  are overwritten.  After the animation, memory 
+  -- data  are overwritten.  After the animation, memory
   -- goes back to normal.
   s1 = segment:ReadUInt16(0x7F0000)
   s2 = segment:ReadUInt16(0x7F0002)
   if s1 == 0x4140 and s2 == 0x4342 then
     return
   end
-  
-  -- 
+
+  --
   -- Treasures for each loction are stored as an offset
   -- from the base treasure address and a bit flag
-  -- for the specific chest. 
+  -- for the specific chest.
   --
   -- Named entries are subsections within the location.
   --
   local chestsOpened = 0
-  local chests = {}
   --------------------------
   --    65,000,000 BC     --
   --------------------------
   -- Mystic Mountains
-  chests = {
+  local chests = {
     ["Chests"] = {
       {0x13, 0x20}
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Mystic Mountain/", chests)
-  
+
   -- Forest Maze
   chests = {
     ["Chests"] = {
@@ -855,7 +879,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Forest Maze/", chests)
-  
+
   -- Dactyl Nest
   chests = {
     ["Chests"] = {
@@ -865,7 +889,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Dactyl Nest/", chests)
-  
+
   -- Reptite Lair
   chests = {
     ["Chests"] = {
@@ -874,7 +898,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Reptite Lair/", chests)
-  
+
   --------------------------
   --      12000 BC        --
   --------------------------
@@ -883,7 +907,7 @@ function updateChests(segment)
   -- Screen 2 - Western Face (0x188)
   -- Screen 3 - Lower Eastern Face (0x189)
   -- Screen 4 - Upper Eastern Face (0x18B)
-  chests = { 
+  chests = {
     ["Screen 1"] = {
       {0x1B, 0x08}
     },
@@ -907,7 +931,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Mt Woe/", chests)
-  
+
   --------------------------
   --       600 AD         --
   --------------------------
@@ -919,7 +943,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Fiona's Villa/", chests)
-  
+
   -- Truce Canyon
   chests = {
     ["Chests"] = {
@@ -946,7 +970,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Guardia Castle Past/", chests)
-  
+
   -- Manoria Cathedral
   chests = {
     ["Front Half"] = {
@@ -978,7 +1002,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Manoria Cathedral/", chests)
-  
+
   -- Cursed Woods
   chests = {
     ["Burrow Right Chest"] = {
@@ -990,7 +1014,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Cursed Woods/", chests)
-  
+
   -- Denadoro Mountains
   chests = {
     ["Entrance"] = {
@@ -1024,7 +1048,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Denadoro Mts/", chests)
-  
+
   -- Giant's Claw
   chests = {
   -- Throne room chests are shared between here and Tyrano Lair.
@@ -1046,10 +1070,10 @@ function updateChests(segment)
     },
     ["Kino's Cell"] = {
       {0x03, 0x02}  -- Kino's Cell
-    }    
+    }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Giant's Claw/", chests)
-  
+
   -- Ozzie's Fort
   chests = {
     ["Front Half"] = {
@@ -1064,11 +1088,11 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Ozzie's Fort/", chests)
-  
+
   --------------------------
   --       1000 AD        --
   --------------------------
-  -- Guardia Castle Present 
+  -- Guardia Castle Present
   chests = {
     ["King's Tower"] = {
       {0x1E, 0x08},
@@ -1094,7 +1118,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Guardia Castle Present/", chests)
-  
+
   -- Truce Mayor's House
   chests = {
     ["Chests"] = {
@@ -1103,7 +1127,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Truce Mayor's House/", chests)
-  
+
   -- Porre Mayor's House
   chests = {
     ["Chests"] = {
@@ -1111,7 +1135,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Porre Mayor's House/", chests)
-  
+
   -- Forest Ruins
   chests = {
     ["Chests"] = {
@@ -1119,7 +1143,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Forest Ruins/", chests)
-  
+
   -- Heckran's Cave
   chests = {
     ["Chests"] = {
@@ -1130,7 +1154,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Heckran Cave/", chests)
-  
+
   --------------------------
   --       2300 AD        --
   --------------------------
@@ -1143,7 +1167,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Bangor Dome/", chests)
-  
+
   -- Trann Dome
   chests = {
     ["Sealed Door"] = {
@@ -1152,23 +1176,23 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Trann Dome/", chests)
-  
-  -- Arris Dome 
+
+  -- Arris Dome
   chests = {
     ["Chests"] = {
       {0x0E, 0x02}, -- Passageway
       {0x1A, 0x01}  -- Food Storage
     },
     ["Sealed Door"] = {
-      {0x0E, 0x04}, 
+      {0x0E, 0x04},
       {0x0E, 0x08},
-      {0x0E, 0x10}, 
+      {0x0E, 0x10},
       {0x0E, 0x20}
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Arris Dome/", chests)
-  
-  -- Factory Ruins 
+
+  -- Factory Ruins
   chests = {
     ["Left Side"] = {
       {0x0F, 0x02}, -- Auxillary computer (hatch room)
@@ -1181,7 +1205,7 @@ function updateChests(segment)
       {0x0F, 0x20},
       {0x0F, 0x40},
       {0x0F, 0x80}, -- hidden chest
-      {0x10, 0x01}, 
+      {0x10, 0x01},
       {0x10, 0x02},
       {0x10, 0x04},
       {0x12, 0x08},
@@ -1190,7 +1214,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Factory/", chests)
-  
+
   -- Sewers
   chests = {
     ["Chests"] = {
@@ -1200,7 +1224,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Sewers/", chests)
-  
+
   -- Lab16
   chests = {
     ["Chests"] = {
@@ -1211,7 +1235,7 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Lab16/", chests)
-  
+
   -- Lab32
   chests = {
     ["Chests"] = {
@@ -1219,8 +1243,8 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Lab32/", chests)
-  
-  -- Geno Dome 
+
+  -- Geno Dome
   chests = {
     ["First Floor"] = {
       {0x11, 0x08}, -- Control Room (By electricity)
@@ -1240,10 +1264,10 @@ function updateChests(segment)
     }
   }
   chestsOpened = chestsOpened + handleChests(segment, "@Geno Dome/", chests)
-  
+
   CHECK_COUNTERS.chests = chestsOpened
   updateCollectionCount()
-  
+
 end
 
 --
@@ -1254,5 +1278,4 @@ ScriptHost:AddMemoryWatch("Party", 0x7E2980, 9, updateParty)
 ScriptHost:AddMemoryWatch("Events", 0x7F0000, 512, updateEventsAndBosses)
 ScriptHost:AddMemoryWatch("Inventory", 0x7E2400, 0xF2, updateItemsFromInventory)
 ScriptHost:AddMemoryWatch("Chests", 0x7F0000, 0x20, updateChests)
-
-
+ScriptHost:AddMemoryWatch("Equipment", 0x7E2627, 0x1E3, updateItemsFromEquipment)
