@@ -8,11 +8,11 @@ if string.find(Tracker.ActiveVariantUID, "items_only") then
 elseif string.find(Tracker.ActiveVariantUID, "lost_world_items") then
   Tracker:AddLayouts("lost_world_items/layouts/tracker.json")
   Tracker:AddLayouts("lost_world_items/layouts/broadcast.json")
-elseif string.find(Tracker.ActiveVariantUID, "lost_worlds") then
+elseif lostWorldsMode() then
   Tracker:AddLocations("lost_worlds/locations/locations.json")
   Tracker:AddLayouts("lost_worlds/layouts/tracker.json")
   Tracker:AddLayouts("lost_worlds/layouts/broadcast.json")
-elseif string.find(Tracker.ActiveVariantUID, "vanilla_rando") then
+elseif vanillaRandoMode() then
   Tracker:AddLocations("vanilla_rando/locations/locations.json")
   Tracker:AddLayouts("vanilla_rando/layouts/tracker.json")
   Tracker:AddLayouts("vanilla_rando/layouts/broadcast.json")

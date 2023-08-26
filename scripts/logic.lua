@@ -1,11 +1,31 @@
+-- Check if the tracker is in Chronosanity mode
+function chronosanityMode()
+  return Tracker:ProviderCountForCode("chronosanity") > 0
+end
+
+-- Check if the tracker is in Legacy of Cyrus mode
+function legacyOfCyrusMode()
+  return string.find(Tracker.ActiveVariantUID, "legacy_of_cyrus") ~= nil
+end
+
+-- Check if the tracker is in Lost Worlds mode
+function lostWorldsMode()
+  return string.find(Tracker.ActiveVariantUID, "lost_world") ~= nil
+end
+
+-- Check if the tracker is in Vanilla Rando mode
+function vanillaRandoMode()
+  return string.find(Tracker.ActiveVariantUID, "vanilla") ~= nil
+end
+
 function canAccessSealed()
   local pendant = Tracker:FindObjectForCode("pendant").Active
   local earlyPendant = Tracker:ProviderCountForCode("earlypendant") > 0
   local blackTyrano = Tracker:FindObjectForCode("blacktyranoboss").Active
   local dragonTank = Tracker:FindObjectForCode("dragontankboss").Active
   local magus = Tracker:FindObjectForCode("magusboss").Active
-  local locMode = string.find(Tracker.ActiveVariantUID, "legacy_of_cyrus")
-  local lwMode = string.find(Tracker.ActiveVariantUID, "lost_worlds")
+  local locMode = legacyOfCyrusMode()
+  local lwMode = lostWorldsMode()
 
   return ((dragonTank or (locMode and pendant)) and earlyPendant) or (pendant and (magus or blackTyrano or lwMode))
 end
@@ -16,3 +36,4 @@ function canFly()
 
   return (not epochfail) or fixedepoch
 end
+

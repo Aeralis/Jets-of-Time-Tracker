@@ -1,3 +1,5 @@
+ScriptHost:LoadScript("scripts/logic.lua")
+
 -- Configuration --------------------------------------
 AUTOTRACKER_ENABLE_DEBUG_LOGGING = false
 -------------------------------------------------------
@@ -40,42 +42,6 @@ end
 function itemsOnlyTracking()
 
   return string.find(Tracker.ActiveVariantUID, "items")
-
-end
-
---
--- Check if the tracker is in Lost Worlds mode
---
-function lostWorldsMode()
-
-  return string.find(Tracker.ActiveVariantUID, "lost_world")
-
-end
-
---
--- Check if the tracker is in Vanilla Rando mode
---
-function vanillaRandoMode()
-
-  return string.find(Tracker.ActiveVariantUID, "vanilla")
-
-end
-
---
--- Check if the tracker is in Legacy of Cyrus mode
---
-function legacyOfCyrusMode()
-
-  return string.find(Tracker.ActiveVariantUID, "legacy_of_cyrus")
-
-end
-
---
--- Check if the tracker is in Chronosanity mode
---
-function chronosanityMode()
-
-  return Tracker:ProviderCountForCode("chronosanity") > 0
 
 end
 
