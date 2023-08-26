@@ -137,7 +137,8 @@
 						[
 							{
 								"name": "Charge the Moonstone",
-								"hosted_item": "Sunstone"
+								"hosted_item": "sunstone",
+                "visibility_rules": ["$couldAccessSunKeep"]
 							}
 						],
 						"map_locations":
@@ -171,7 +172,8 @@
 						[
 							{
 								"name": "Black Tyrano",
-								"hosted_item": "blacktyranoboss"
+								"hosted_item": "blacktyranoboss",
+                                "visibility_rules": ["$couldAccessTyranoCastle"]
 							}
 						],
 						"map_locations":
@@ -264,7 +266,8 @@
 						[
 							{
 								"name": "Golem",
-								"hosted_item": "golemboss"
+								"hosted_item": "golemboss",
+                "visibility_rules": ["$couldAccessOceanPalace"]
 							}
 						],
 						"map_locations":
@@ -748,8 +751,7 @@
 					},
 					{
 						"name": "Magus' Castle",
-						"access_rules":
-						["frog,masamune"],
+						"access_rules": ["$canAccessMagusCastle"],
 						"sections":
 						[
 							{
@@ -773,9 +775,14 @@
 					},
 					{
 						"name": "Ozzie's Fort",
-						"access_rules":["$canFly, [pendant]", "$canFly, [gatekey]"],
+						"access_rules": ["$canAccessOzzieFort"],
 						"sections":
 						[
+              {
+                "name": "Ozzie",
+                "visibility_rules": ["$legacyOfCyrusMode"],
+                "hosted_item": "ozzie"
+              },
               {
                 "name": "Front Half",
                 "visibility_rules": ["chronosanity"],
@@ -865,9 +872,14 @@
 					},
           {
 						"name": "Northern Ruins Past",
-						"access_rules":["$canFly, grandleon"],
+						"access_rules":["$canAccessNorthernRuins"],
 						"sections":
 						[
+              {
+                "name": "Cyrus Grave",
+                "visibility_rules": ["$legacyOfCyrusMode"],
+                "hosted_item": "cyrusgrave"
+              },
               {
 								"name": "Chests",
                 "visibility_rules": ["chronosanity"],
@@ -945,10 +957,8 @@
 						[
 							{
 								"name": "Dragon Tank",
-								"access_rules":
-								[
-									"pendant"
-								],
+								"access_rules": ["pendant"],
+								"visibility_rules": ["$notLegacyOfCyrusMode"],
 								"hosted_item": "dragontankboss"
 							},
 							{
@@ -968,6 +978,7 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"access_rules":["$canFly,marle,prismshard,sunstone"],
+								"visibility_rules": ["$notLegacyOfCyrusMode"],
 								"item_count": 1
 							},
               {
@@ -993,7 +1004,7 @@
               },
               {
                 "name": "Prison Tower",
-                "visibility_rules": ["chronosanity"],
+                "visibility_rules": ["$notLegacyOfCyrusMode,chronosanity"],
                 "access_rules": ["dragontankboss"],
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
@@ -1303,7 +1314,7 @@
 					},
           {
 						"name": "Northern Ruins Present",
-						"access_rules":["$canFly, grandleon"],
+						"access_rules":["$canAccessNorthernRuins"],
 						"sections":
 						[
               {
@@ -1376,6 +1387,7 @@
 				"name": "Future",
 				"color": "#482828",
 				"access_rules":["dragontankboss"],
+				"visibility_rules":["$notLegacyOfCyrusMode"],
 				"children":
 				[
 					{
