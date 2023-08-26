@@ -44,7 +44,6 @@
 					},
 					{
 						"name": "Reptite Lair",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -81,7 +80,6 @@
 					},
           {
             "name": "Forest Maze",
-						"access_rules":[],
 						"sections":
 						[
               {
@@ -108,7 +106,6 @@
           },
           {
             "name": "Mystic Mountain",
-						"access_rules":[],
 						"sections":
 						[
               {
@@ -372,7 +369,6 @@
 					},
           {
 						"name": "Truce Canyon",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -399,7 +395,6 @@
 					},
 					{
 						"name": "Cursed Woods",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -487,7 +482,6 @@
 					},
 					{
 						"name": "Sunken Desert",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -511,7 +505,6 @@
 					},
 					{
 						"name": "Fiona's Villa",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -545,7 +538,6 @@
 					},
 					{
 						"name": "Denadoro Mts",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -610,7 +602,6 @@
 					},
 					{
 						"name": "Guardia Castle Past",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1041,7 +1032,6 @@
 					},
 					{
 						"name": "Snail Stop",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1074,7 +1064,6 @@
 					},
 					{
 						"name": "Heckran Cave",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1227,7 +1216,6 @@
 					},
           {
 						"name": "Truce Mayor's House",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1281,7 +1269,6 @@
 					},
           {
 						"name": "Porre Mayor's House",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1393,7 +1380,6 @@
 				[
 					{
 						"name": "Arris Dome",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1464,7 +1450,6 @@
 					},
 					{
 						"name": "Factory",
-						"access_rules":[],
 						"sections":
 						[
 							{
