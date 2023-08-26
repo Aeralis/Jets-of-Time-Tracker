@@ -5,10 +5,6 @@ ScriptHost:LoadScript("scripts/logic.lua")
 if string.find(Tracker.ActiveVariantUID, "items_only") then
   Tracker:AddLayouts("items_only/layouts/tracker.json")
   Tracker:AddLayouts("layouts/broadcast.json")
-elseif string.find(Tracker.ActiveVariantUID, "chronosanity") then
-  Tracker:AddLocations("chronosanity/locations/locations.json")
-  Tracker:AddLayouts("chronosanity/layouts/tracker.json")
-  Tracker:AddLayouts("chronosanity/layouts/broadcast.json")
 elseif string.find(Tracker.ActiveVariantUID, "lost_world_items") then
   Tracker:AddLayouts("lost_world_items/layouts/tracker.json")
   Tracker:AddLayouts("lost_world_items/layouts/broadcast.json")
