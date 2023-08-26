@@ -38,6 +38,33 @@ function canAccessSealed()
   return ((dragonTank or (locMode and pendant)) and earlyPendant) or (pendant and (magus or blackTyrano or lwMode))
 end
 
+function canAccessSunkenDesert()
+  if not vanillaRandoMode() then
+    return true
+  end
+
+  -- Vanilla rando logic
+  local pendant = Tracker:FindObjectForCode("pendant").Active
+  local gatekey = Tracker:FindObjectForCode("gatekey").Active
+  return pendant or gatekey
+end
+
+function canAccessGiantsClaw()
+  local tomaspop = Tracker:FindObjectForCode("tomaspop").Active
+  if not (canFly() and tomaspop) then
+    return false
+  end
+
+  if not vanillaRandoMode() then
+    return true
+  end
+
+  -- Vanilla rando logic
+  local pendant = Tracker:FindObjectForCode("pendant").Active
+  local gatekey = Tracker:FindObjectForCode("gatekey").Active
+  return pendant or gatekey
+end
+
 function canAccessMagusCastle()
   local frog = Tracker:FindObjectForCode("frog").Active
   local masamune = Tracker:FindObjectForCode("masamune").Active
@@ -61,6 +88,13 @@ function canAccessNorthernRuins()
     local frog = Tracker:FindObjectForCode("frog").Active
     local magus = Tracker:FindObjectForCode("magus").Active
     return frog and magus and grandleon
+  end
+
+  if vanillaRandoMode() then
+    local tools = Tracker:FindObjectForCode("tools").Active
+    local pendant = Tracker:FindObjectForCode("pendant").Active
+    local gatekey = Tracker:FindObjectForCode("gatekey").Active
+    return tools and (pendant or gatekey)
   end
 
   return grandleon

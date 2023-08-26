@@ -470,6 +470,7 @@
 					},
 					{
 						"name": "Sunken Desert",
+						"access_rules":["$canAccessSunkenDesert"],
 						"sections":
 						[
 							{
@@ -656,7 +657,7 @@
 					},
 					{
 						"name": "Giant's Claw",
-						"access_rules":["$canFly, tomaspop"],
+						"access_rules":["$canAccessGiantsClaw"],
 						"sections":
 						[
 							{
@@ -857,9 +858,16 @@
 						"sections":
 						[
               {
-                "name": "Cyrus Grave",
+                "name": "Cyrus Grave (LoC)",
                 "visibility_rules": ["$legacyOfCyrusMode"],
                 "hosted_item": "cyrusgrave"
+              },
+              {
+                "name": "Cyrus Grave",
+                "visibility_rules": ["$vanillaRandoMode"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 1
               },
               {
 								"name": "Chests",
@@ -1350,9 +1358,36 @@
 								"y": 263
 							}
 						]
-					}
-				]
-			},
+					},
+          {
+            "name": "Norstein Bekkler's Tent of Horrors",
+            "access_rules": ["ctrigger"],
+            "visibility_rules": ["$vanillaRandoMode"],
+            "sections":
+            [
+              {
+                "name": "Clone Game",
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 1
+              }
+            ],
+            "map_locations":
+            [
+              {
+                "map": "All Eras",
+                "x": 1965,
+                "y": 1240
+              },
+              {
+                "map": "Present",
+                "x": 430,
+                "y": 216
+              }
+            ]
+          }
+        ]
+      },
 			{
 				"name": "Future",
 				"color": "#482828",
