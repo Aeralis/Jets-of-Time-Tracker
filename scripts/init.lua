@@ -2,6 +2,10 @@ Tracker:AddItems("items/items.json")
 Tracker:AddMaps("maps/maps.json")
 ScriptHost:LoadScript("scripts/logic.lua")
 
+if not vanillaRandoMode() then
+  Tracker:AddLocations("locations/locations.json")
+end
+
 if string.find(Tracker.ActiveVariantUID, "items_only") then
   Tracker:AddLayouts("items_only/layouts/tracker.json")
   Tracker:AddLayouts("layouts/broadcast.json")
@@ -9,7 +13,6 @@ elseif string.find(Tracker.ActiveVariantUID, "lost_world_items") then
   Tracker:AddLayouts("lost_world_items/layouts/tracker.json")
   Tracker:AddLayouts("lost_world_items/layouts/broadcast.json")
 elseif lostWorldsMode() then
-  Tracker:AddLocations("lost_worlds/locations/locations.json")
   Tracker:AddLayouts("lost_worlds/layouts/tracker.json")
   Tracker:AddLayouts("lost_worlds/layouts/broadcast.json")
 elseif vanillaRandoMode() then
@@ -17,7 +20,6 @@ elseif vanillaRandoMode() then
   Tracker:AddLayouts("vanilla_rando/layouts/tracker.json")
   Tracker:AddLayouts("vanilla_rando/layouts/broadcast.json")
 else
-  Tracker:AddLocations("locations/locations.json")
   Tracker:AddLayouts("layouts/tracker.json")
   Tracker:AddLayouts("layouts/broadcast.json")
 end

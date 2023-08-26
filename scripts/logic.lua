@@ -17,6 +17,10 @@ function lostWorldsMode()
   return string.find(Tracker.ActiveVariantUID, "lost_world") ~= nil
 end
 
+function notLostWorldsMode()
+  return not lostWorldsMode()
+end
+
 -- Check if the tracker is in Vanilla Rando mode
 function vanillaRandoMode()
   return string.find(Tracker.ActiveVariantUID, "vanilla") ~= nil
@@ -85,14 +89,12 @@ function couldAccessOceanPalace()
   return not legacyOfCyrusMode()
 end
 
-
-
 function couldAccessTyranoCastle()
   return not legacyOfCyrusMode()
 end
 
 function couldAccessSunKeep()
-  return not legacyOfCyrusMode()
+  return not (legacyOfCyrusMode() or lostWorldsMode())
 end
 
 function canFly()

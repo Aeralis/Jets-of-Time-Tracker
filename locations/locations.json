@@ -195,15 +195,11 @@
 			{
 				"name": "Dark Ages",
 				"color": "#c0c0c8",
-				"access_rules":["gatekey", "rseriesboss", "magusboss"],
+				"access_rules":["$lostWorldsMode", "gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{
 						"name": "Mt Woe",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -289,18 +285,11 @@
 			{
 				"name": "Middle Ages",
 				"color": "#306848",
-				"access_rules":
-				[
-					""
-				],
+				"access_rules": ["$notLostWorldsMode"],
 				"children":
 				[
 					{
 						"name": "Manoria Cathedral",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -452,10 +441,6 @@
 					},
 					{
 						"name": "Zenan Bridge",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -814,10 +799,6 @@
 					},
           {
 						"name": "Porre Elder's House",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
               {
@@ -941,18 +922,11 @@
 			{
 				"name": "Present",
 				"color": "#609040",
-				"access_rules":
-				[
-					""
-				],
+				"access_rules": ["$notLostWorldsMode"],
 				"children":
 				[
 					{
 						"name": "Guardia Castle Present",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -1189,10 +1163,6 @@
 					},
           {
 						"name": "Forest Ruins",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -1386,7 +1356,7 @@
 			{
 				"name": "Future",
 				"color": "#482828",
-				"access_rules":["dragontankboss"],
+				"access_rules":["$lostWorldsMode", "dragontankboss"],
 				"visibility_rules":["$notLegacyOfCyrusMode"],
 				"children":
 				[
@@ -1732,16 +1702,11 @@
 			{
 				"name": "End Of Time",
 				"color": "#482828",
-				"access_rules":
-				["gatekey", "rseriesboss", "magusboss"],
+				"access_rules": ["$notLostWorldsMode", "gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{
 						"name": "Spekkio",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
