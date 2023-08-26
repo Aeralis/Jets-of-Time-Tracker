@@ -44,7 +44,6 @@
 					},
 					{
 						"name": "Reptite Lair",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -81,7 +80,6 @@
 					},
           {
             "name": "Forest Maze",
-						"access_rules":[],
 						"sections":
 						[
               {
@@ -108,7 +106,6 @@
           },
           {
             "name": "Mystic Mountain",
-						"access_rules":[],
 						"sections":
 						[
               {
@@ -140,7 +137,8 @@
 						[
 							{
 								"name": "Charge the Moonstone",
-								"hosted_item": "Sunstone"
+								"hosted_item": "sunstone",
+                "visibility_rules": ["$couldAccessSunKeep"]
 							}
 						],
 						"map_locations":
@@ -174,7 +172,8 @@
 						[
 							{
 								"name": "Black Tyrano",
-								"hosted_item": "blacktyranoboss"
+								"hosted_item": "blacktyranoboss",
+                                "visibility_rules": ["$couldAccessTyranoCastle"]
 							}
 						],
 						"map_locations":
@@ -196,15 +195,11 @@
 			{
 				"name": "Dark Ages",
 				"color": "#c0c0c8",
-				"access_rules":["gatekey", "rseriesboss", "magusboss"],
+				"access_rules":["$lostWorldsMode", "gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{
 						"name": "Mt Woe",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -267,7 +262,8 @@
 						[
 							{
 								"name": "Golem",
-								"hosted_item": "golemboss"
+								"hosted_item": "golemboss",
+                "visibility_rules": ["$couldAccessOceanPalace"]
 							}
 						],
 						"map_locations":
@@ -289,18 +285,11 @@
 			{
 				"name": "Middle Ages",
 				"color": "#306848",
-				"access_rules":
-				[
-					""
-				],
+				"access_rules": ["$notLostWorldsMode"],
 				"children":
 				[
 					{
 						"name": "Manoria Cathedral",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -372,7 +361,6 @@
 					},
           {
 						"name": "Truce Canyon",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -399,7 +387,6 @@
 					},
 					{
 						"name": "Cursed Woods",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -454,10 +441,6 @@
 					},
 					{
 						"name": "Zenan Bridge",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -487,7 +470,7 @@
 					},
 					{
 						"name": "Sunken Desert",
-						"access_rules":[],
+						"access_rules":["$canAccessSunkenDesert"],
 						"sections":
 						[
 							{
@@ -511,7 +494,6 @@
 					},
 					{
 						"name": "Fiona's Villa",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -545,7 +527,6 @@
 					},
 					{
 						"name": "Denadoro Mts",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -610,7 +591,6 @@
 					},
 					{
 						"name": "Guardia Castle Past",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -677,7 +657,7 @@
 					},
 					{
 						"name": "Giant's Claw",
-						"access_rules":["$canFly, tomaspop"],
+						"access_rules":["$canAccessGiantsClaw"],
 						"sections":
 						[
 							{
@@ -757,8 +737,7 @@
 					},
 					{
 						"name": "Magus' Castle",
-						"access_rules":
-						["frog,masamune"],
+						"access_rules": ["$canAccessMagusCastle"],
 						"sections":
 						[
 							{
@@ -782,9 +761,14 @@
 					},
 					{
 						"name": "Ozzie's Fort",
-						"access_rules":["$canFly, [pendant]", "$canFly, [gatekey]"],
+						"access_rules": ["$canAccessOzzieFort"],
 						"sections":
 						[
+              {
+                "name": "Ozzie",
+                "visibility_rules": ["$legacyOfCyrusMode"],
+                "hosted_item": "ozzie"
+              },
               {
                 "name": "Front Half",
                 "visibility_rules": ["chronosanity"],
@@ -816,10 +800,6 @@
 					},
           {
 						"name": "Porre Elder's House",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
               {
@@ -874,9 +854,21 @@
 					},
           {
 						"name": "Northern Ruins Past",
-						"access_rules":["$canFly, grandleon"],
+						"access_rules":["$canAccessNorthernRuins"],
 						"sections":
 						[
+              {
+                "name": "Cyrus Grave (LoC)",
+                "visibility_rules": ["$legacyOfCyrusMode"],
+                "hosted_item": "cyrusgrave"
+              },
+              {
+                "name": "Cyrus Grave",
+                "visibility_rules": ["$vanillaRandoMode"],
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 1
+              },
               {
 								"name": "Chests",
                 "visibility_rules": ["chronosanity"],
@@ -938,26 +930,17 @@
 			{
 				"name": "Present",
 				"color": "#609040",
-				"access_rules":
-				[
-					""
-				],
+				"access_rules": ["$notLostWorldsMode"],
 				"children":
 				[
 					{
 						"name": "Guardia Castle Present",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
 								"name": "Dragon Tank",
-								"access_rules":
-								[
-									"pendant"
-								],
+								"access_rules": ["pendant"],
+								"visibility_rules": ["$notLegacyOfCyrusMode"],
 								"hosted_item": "dragontankboss"
 							},
 							{
@@ -977,6 +960,7 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"access_rules":["$canFly,marle,prismshard,sunstone"],
+								"visibility_rules": ["$notLegacyOfCyrusMode"],
 								"item_count": 1
 							},
               {
@@ -1002,7 +986,7 @@
               },
               {
                 "name": "Prison Tower",
-                "visibility_rules": ["chronosanity"],
+                "visibility_rules": ["$notLegacyOfCyrusMode,chronosanity"],
                 "access_rules": ["dragontankboss"],
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
@@ -1041,7 +1025,6 @@
 					},
 					{
 						"name": "Snail Stop",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1074,7 +1057,6 @@
 					},
 					{
 						"name": "Heckran Cave",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1189,10 +1171,6 @@
 					},
           {
 						"name": "Forest Ruins",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
@@ -1227,7 +1205,6 @@
 					},
           {
 						"name": "Truce Mayor's House",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1281,7 +1258,6 @@
 					},
           {
 						"name": "Porre Mayor's House",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1316,7 +1292,7 @@
 					},
           {
 						"name": "Northern Ruins Present",
-						"access_rules":["$canFly, grandleon"],
+						"access_rules":["$canAccessNorthernRuins"],
 						"sections":
 						[
               {
@@ -1382,18 +1358,45 @@
 								"y": 263
 							}
 						]
-					}
-				]
-			},
+					},
+          {
+            "name": "Norstein Bekkler's Tent of Horrors",
+            "access_rules": ["ctrigger"],
+            "visibility_rules": ["$vanillaRandoMode"],
+            "sections":
+            [
+              {
+                "name": "Clone Game",
+                "chest_unopened_img": "images/kino.png",
+                "chest_opened_img": "images/kiyes.png",
+                "item_count": 1
+              }
+            ],
+            "map_locations":
+            [
+              {
+                "map": "All Eras",
+                "x": 1965,
+                "y": 1240
+              },
+              {
+                "map": "Present",
+                "x": 430,
+                "y": 216
+              }
+            ]
+          }
+        ]
+      },
 			{
 				"name": "Future",
 				"color": "#482828",
-				"access_rules":["dragontankboss"],
+				"access_rules":["$lostWorldsMode", "dragontankboss"],
+				"visibility_rules":["$notLegacyOfCyrusMode"],
 				"children":
 				[
 					{
 						"name": "Arris Dome",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1464,7 +1467,6 @@
 					},
 					{
 						"name": "Factory",
-						"access_rules":[],
 						"sections":
 						[
 							{
@@ -1735,16 +1737,11 @@
 			{
 				"name": "End Of Time",
 				"color": "#482828",
-				"access_rules":
-				["gatekey", "rseriesboss", "magusboss"],
+				"access_rules": ["$notLostWorldsMode", "gatekey", "rseriesboss", "magusboss"],
 				"children":
 				[
 					{
 						"name": "Spekkio",
-						"access_rules":
-						[
-							""
-						],
 						"sections":
 						[
 							{
