@@ -118,7 +118,6 @@ function canAccessOzzieFort()
   return pendant or gatekey
 end
 
-
 function couldAccessOceanPalace()
   return not legacyOfCyrusMode()
 end
