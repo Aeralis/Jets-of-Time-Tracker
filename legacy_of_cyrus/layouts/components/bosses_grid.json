@@ -1,0 +1,41 @@
+{
+  "bosses_grid": {
+    "type": "array",
+    "orientation": "vertical",
+    "margin": "0,0",
+    "content": [
+      {
+        "type": "array",
+        "orientation": "horizontal",
+        "margin": "0,0",
+        "content": [
+          {
+            "type": "itemgrid",
+            "h_alignment": "center",
+            "item_margin": "1,1",
+            "rows": [
+              [
+                "yakraboss",
+                "yakraxiiiboss",
+                "zomborboss",
+                "retiniteboss",
+                "heckranboss"
+              ],
+              [
+                "rusttyranoboss",
+                "masamuneboss",
+                "nizbelboss",
+                "gigagaiaboss"
+              ],
+              [
+                "magusboss",
+                "cyrusgrave",
+                "ozzie"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

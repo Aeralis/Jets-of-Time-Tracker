@@ -20,7 +20,23 @@ POPTRACTER_REMOTE_STRICT_PATH = urljoin(POPTRACKER_REMOTE_PATH, 'strict/')
 
 @pytest.fixture(scope='session')
 def jsonfiles() -> List[Path]:
-    return [path for path in Path('.').rglob('*.json')]
+    return [
+        path for path in Path('.').rglob('*.json')
+        if path.parts[0] not in ['.venv', 'tests']
+    ]
+
+@pytest.fixture(scope='session')
+def formatted_jsonfiles(jsonfiles) -> List[Path]:
+    # exclude older paths and gradually update to new formatting
+    # to avoid having large git diffs
+    excluded_paths = [
+        'items/',
+        'locations/',
+    ]
+    return [
+        p for p in jsonfiles
+        if not any(str(p).startswith(ep) for ep in excluded_paths)
+    ]
 
 @pytest.fixture(scope='session')
 def pack_files() -> Dict[str, List[Path]]:
@@ -105,4 +121,20 @@ def test_pack_strict_schema_validation(pack_type, poptracker_schemas, pack_files
             validate(json.load(jsonfile.open()), schema)
         except Exception as ex:
             err = f'Failed to strict JSON schema validate file: {jsonfile}'
+            raise ValueError(err) from ex
+
+def test_json_file_style(formatted_jsonfiles):
+    '''Check all formatted json files are formatted per json.tool.'''
+    for jsonfile in formatted_jsonfiles:
+        text = jsonfile.read_text()
+        loaded_json = json.loads(text)
+        formatted_output = json.dumps(loaded_json, indent=2) + '\n'
+        try:
+            assert text == formatted_output
+        except AssertionError as ex:
+            err = (
+                f'JSON file {jsonfile} is not formatted correctly.\n'
+                f'Fix by formatting with:\n'
+                f'  python -m json.tool --indent=2 {jsonfile} {jsonfile}\n\n'
+            )
             raise ValueError(err) from ex

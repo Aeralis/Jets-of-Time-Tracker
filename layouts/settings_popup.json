@@ -1,0 +1,68 @@
+{
+  "options_grid": {
+    "type": "array",
+    "orientation": "vertical",
+    "margin": "0,0",
+    "content": [
+      {
+        "type": "array",
+        "orientation": "horizontal",
+        "margin": "0,0",
+        "content": [
+          {
+            "type": "array",
+            "h_alignment": "center",
+            "item_margin": "1,1",
+            "content": []
+          }
+        ]
+      }
+    ]
+  },
+  "settings_popup": {
+    "type": "container",
+    "background": "#101010",
+    "content": {
+      "type": "dock",
+      "dropshadow": true,
+      "content": [
+        {
+          "type": "dock",
+          "dock": "bottom",
+          "h_alignment": "stretch",
+          "content": [
+            {
+              "type": "tabbed",
+              "tabs": [
+                {
+                  "title": "Flags",
+                  "content": {
+                    "type": "array",
+                    "orientation": "horizontal",
+                    "content": [
+                      {
+                        "type": "layout",
+                        "key": "flags_grid"
+                      },
+                      {
+                        "type": "layout",
+                        "key": "extra_flags_grid"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "Options",
+                  "content": {
+                    "type": "layout",
+                    "key": "options_grid"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

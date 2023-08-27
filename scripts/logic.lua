@@ -26,6 +26,11 @@ function vanillaRandoMode()
   return string.find(Tracker.ActiveVariantUID, "vanilla") ~= nil
 end
 
+-- Check if the tracker variant is set to Items Only.
+function itemsOnlyTracking()
+  return string.find(Tracker.ActiveVariantUID, "items_only") ~= nil
+end
+
 function canAccessSealed()
   local pendant = Tracker:FindObjectForCode("pendant").Active
   local earlyPendant = Tracker:ProviderCountForCode("earlypendant") > 0

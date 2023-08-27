@@ -1,28 +1,51 @@
-Tracker:AddItems("items/items.json")
-Tracker:AddMaps("maps/maps.json")
 ScriptHost:LoadScript("scripts/logic.lua")
 
-Tracker:AddLocations("locations/locations.json")
+--
+-- Adds components used by tracker for items, bosses, flags, etc.
+--
+function addComponents()
 
-if string.find(Tracker.ActiveVariantUID, "items_only") then
-  Tracker:AddLayouts("items_only/layouts/tracker.json")
-  Tracker:AddLayouts("layouts/broadcast.json")
-elseif string.find(Tracker.ActiveVariantUID, "lost_world_items") then
-  Tracker:AddLayouts("lost_world_items/layouts/tracker.json")
-  Tracker:AddLayouts("lost_world_items/layouts/broadcast.json")
-elseif lostWorldsMode() then
-  Tracker:AddLayouts("lost_worlds/layouts/tracker.json")
-  Tracker:AddLayouts("lost_worlds/layouts/broadcast.json")
-elseif vanillaRandoMode() then
-  Tracker:AddLayouts("vanilla_rando/layouts/tracker.json")
-  Tracker:AddLayouts("vanilla_rando/layouts/broadcast.json")
-else
-  Tracker:AddLayouts("layouts/tracker.json")
-  Tracker:AddLayouts("layouts/broadcast.json")
+  -- relative component paths
+  -- NOTE: PopTracker will prefix components automatically with variant name
+  -- and prefer those, but if they don't exist, will fall back to
+  -- using paths relative to pack root directory
+  local components = {}
+  components["items_grid"] = "layouts/components/items_grid.json"
+  components["bosses_grid"] = "layouts/components/bosses_grid.json"
+  components["flags_grid"] = "layouts/components/flags_grid.json"
+  components["extra_flags_grid"] = "layouts/components/extra_flags_grid.json"
+
+  for _, v in pairs(components) do Tracker:AddLayouts(v) end
+
 end
 
+--
+-- Adds main tracker and broadcast layouts based on mode and variant.
+--
+function addTrackerLayouts()
+
+  local layouts = {}
+  layouts["tracker"] = "layouts/tracker.json"
+  layouts["broadcast"] = "layouts/broadcast.json"
+  layouts["settings_popup"] = "layouts/settings_popup.json"
+
+  if itemsOnlyTracking() then
+    layouts["tracker"] = "items_only/layouts/tracker.json"
+  end
+
+  for _, v in pairs(layouts) do Tracker:AddLayouts(v) end
+
+end
+
+-- Configure tracker
+Tracker:AddItems("items/items.json")
+Tracker:AddMaps("maps/maps.json")
+Tracker:AddLocations("locations/locations.json")
+addComponents()
+addTrackerLayouts()
+
 if _VERSION == "Lua 5.3" then
-    ScriptHost:LoadScript("scripts/autotracking.lua")
+  ScriptHost:LoadScript("scripts/autotracking.lua")
 else
-    print("Auto-tracker is unsupported by your tracker version")
+  print("Auto-tracker is unsupported by your tracker version")
 end

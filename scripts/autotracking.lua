@@ -37,15 +37,6 @@ function printDebug(message)
 end
 
 --
--- Check if the tracker variant is set to Items Only.
---
-function itemsOnlyTracking()
-
-  return string.find(Tracker.ActiveVariantUID, "items")
-
-end
-
---
 -- Check if the game is currently running
 --
 function inGame()

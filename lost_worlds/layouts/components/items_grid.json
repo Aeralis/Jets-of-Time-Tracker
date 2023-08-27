@@ -1,0 +1,41 @@
+{
+  "items_grid": {
+    "type": "array",
+    "orientation": "vertical",
+    "margin": "0,0",
+    "content": [
+      {
+        "type": "array",
+        "orientation": "horizontal",
+        "margin": "0,0",
+        "content": [
+          {
+            "type": "itemgrid",
+            "h_alignment": "center",
+            "item_margin": "1,1",
+            "rows": [
+              [
+                "crono",
+                "lucca",
+                "marle",
+                "frog",
+                "robo",
+                "ayla",
+                "magus"
+              ],
+              [
+                "pendant",
+                "clone",
+                "ctrigger",
+                "dreamstone",
+                "rubyknife",
+                "gomode",
+                "checkcounter"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
