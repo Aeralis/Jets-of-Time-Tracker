@@ -14,16 +14,23 @@ https://github.com/black-sliver/PopTracker#getting-started).
 
 This tracker pack includes several variants:
 
-* Item Tracker: item-only tracker for Standard mode
-* Item Tracker (Lost Worlds): item-only tracker for Lost Worlds mode
 * Map Tracker: item and map tracker for Standard mode
+* Item Tracker: item-only tracker for Standard mode
 * Map Tracker (Legacy of Cyrus): item and map tracker for Legacy of Cyrus mode
+* Item Tracker (Legacy of Cyrus): item-only tracker for Legacy of Cyrus mode
 * Map Tracker (Lost Worlds): item and map tracker for Lost Worlds mode
+* Item Tracker (Lost Worlds): item-only tracker for Lost Worlds mode
+* Map Tracker (Ice Age): item and map tracker for Ice Age mode
+* Item Tracker (Ice Age): item-only tracker for Ice Age mode
 * Map Tracker (Vanilla Rando): item and map tracker for Vanilla Rando mode
+* Item Tracker (Vanilla Rando): item-only tracker for Vanilla Rando mode
 
-Map Tracker variants allow for setting additional flags, such as Chronosanity
-and Epoch Fail. They also support "Broadcast View" (opens another smaller window
-with just the items).
+Each pack supports a "Broadcast View" which opens another smaller window
+with just the items, suitable for streaming.
+
+Additional flags (such as Chronosanity, Epoch Fail, etc.) can be enabled in
+the "Settings" popup. Most of these will only affect map trackers (adding
+additional spots to check or changing logic for location accessibility).
 
 ### Autotracking
 

@@ -24,6 +24,12 @@
     "lost_worlds_items_only": {
       "display_name": "Item Tracker (Lost Worlds)"
     },
+    "mode_ice_age": {
+      "display_name": "Map Tracker (Ice Age)"
+    },
+    "mode_ice_age_items_only": {
+      "display_name": "Item Tracker (Ice Age)"
+    },
     "vanilla_rando": {
       "display_name": "Map Tracker (Vanilla Rando)"
     },

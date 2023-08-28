@@ -4,49 +4,49 @@
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/crono.png",
-		"codes": "Crono"
+		"codes": "Crono,crono"
 	},
 	{
 		"name": "Lucca",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/lucca.png",
-		"codes": "Lucca"
+		"codes": "Lucca,lucca"
 	},
 	{
 		"name": "Nadia",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/marle.png",
-		"codes": "Marle,Nadia"
+		"codes": "Marle,Nadia,marle,nadia"
 	},
 	{
 		"name": "Glenn",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/frog.png",
-		"codes": "Frog,Glenn"
+		"codes": "Frog,Glenn,frog,glenn"
 	},
 	{
 		"name": "R66-Y",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/robo.png",
-		"codes": "Robo,R66-Y"
+		"codes": "Robo,R66-Y,robo"
 	},
 	{
 		"name": "Ayla",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/ayla.png",
-		"codes": "Ayla"
+		"codes": "Ayla,ayla"
 	},
 	{
 		"name": "Janus",
 		"type": "toggle",
 		"loop": "true",
 		"img": "images/magus.png",
-		"codes": "Magus,Janus"
+		"codes": "Magus,Janus,magus,janus"
 	},
 	{
 		"name": "Pendant",

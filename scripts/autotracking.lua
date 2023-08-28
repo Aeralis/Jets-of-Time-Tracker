@@ -64,30 +64,35 @@ function inGame()
 --
 function handleGoMode()
 
-  local gateKey = Tracker:FindObjectForCode("gatekey")
-  local dreamStone = Tracker:FindObjectForCode("dreamstone")
-  local rubyKnife = Tracker:FindObjectForCode("rubyknife")
-  local frog = Tracker:FindObjectForCode("glenn")
-  local magus = Tracker:FindObjectForCode("janus")
-  local hilt = Tracker:FindObjectForCode("benthilt")
-  local blade = Tracker:FindObjectForCode("bentsword")
-  local masa2 = Tracker:FindObjectForCode("grandleon")
-  local pendant = Tracker:FindObjectForCode("pendant")
-  local cTrigger = Tracker:FindObjectForCode("ctrigger")
-  local clone = Tracker:FindObjectForCode("clone")
+  local gateKey = Tracker:FindObjectForCode("gatekey").Active
+  local dreamStone = Tracker:FindObjectForCode("dreamstone").Active
+  local rubyKnife = Tracker:FindObjectForCode("rubyknife").Active
+  local frog = Tracker:FindObjectForCode("glenn").Active
+  local magus = Tracker:FindObjectForCode("janus").Active
+  local hilt = Tracker:FindObjectForCode("benthilt").Active
+  local blade = Tracker:FindObjectForCode("bentsword").Active
+  local pendant = Tracker:FindObjectForCode("pendant").Active
+  local cTrigger = Tracker:FindObjectForCode("ctrigger").Active
+  local clone = Tracker:FindObjectForCode("clone").Active
 
   local goMode
   if lostWorldsMode() then
     goMode =
-      (dreamStone.Active and rubyKnife.Active) or -- has ruby knife and can get to Black Tyrano
-      (cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
+      (dreamStone and rubyKnife) or -- has ruby knife and can get to Black Tyrano
+      (cTrigger and clone) -- Death Peak -> Black Omen
   elseif legacyOfCyrusMode() then
-    goMode = frog.Active and magus.Active and hilt.Active and blade.Active and masa2.Active
+    local masa2 = Tracker:FindObjectForCode("grandleon").Active
+    goMode = frog and magus and hilt and blade and masa2
+  elseif iceAgeMode() then
+    local ayla = Tracker:FindObjectForCode("ayla").Active
+    local dactylChar =
+      Tracker:FindObjectForCode("@Dactyl Nest/Friend to the Dactyls").AvailableChestCount == 0
+    goMode = ayla and dactylChar and gateKey and dreamStone
   else
     goMode =
-      (gateKey.Active and dreamStone.Active and rubyKnife.Active) or -- 65 million BC -> 12000 BC -> Ocean Palace
-      (frog.Active and hilt.Active and blade.Active) or -- Magus' Castle -> 12000 BC -> Ocean Palace
-      (pendant.Active and cTrigger.Active and clone.Active) -- Death Peak -> Black Omen
+      (gateKey and dreamStone and rubyKnife) or -- 65 million BC -> 12000 BC -> Ocean Palace
+      (frog and hilt and blade) or -- Magus' Castle -> 12000 BC -> Ocean Palace
+      (pendant and cTrigger and clone) -- Death Peak -> Black Omen
   end
   local goButton = Tracker:FindObjectForCode("gomode")
   goButton.Active = goMode
@@ -452,6 +457,12 @@ function updateEventsAndBosses(segment)
   updateBoss("nizbelboss", segment, 0x7F0105, 0x20)
   updateBoss("blacktyranoboss", segment, 0x7F00EC, 0x80)
 
+  event = updateEvent("@Dactyl Nest/Friend to the Dactyls", segment, 0x7F0160, 0x10)
+  if event and iceAgeMode() then
+    -- Getting the character at Dactyl Nest can trigger Go Mode for Ice Age
+    handleGoMode()
+  end
+
   -- Dark Ages
   updateBoss("gigagaiaboss", segment, 0x7F0100, 0x20)
   updateBoss("golemboss", segment, 0x7F0105, 0x80)
@@ -487,7 +498,6 @@ function updateEventsAndBosses(segment)
   if not itemsOnlyTracking() then
     -- Prehistory
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Reptite Lair/Defeat Nizbel", segment, 0x7F0105, 0x20)
-    updateEvent("@Dactyl Nest/Friend to the Dactyls", segment, 0x7F0160, 0x10)
 
     -- Dark Ages
     keyItemChecksDone = keyItemChecksDone + updateEvent("@Mt Woe/Defeat Giga Gaia", segment, 0x7F0100, 0x20) -- same as boss flag

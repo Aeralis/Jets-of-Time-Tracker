@@ -195,7 +195,7 @@
 			{
 				"name": "Dark Ages",
 				"color": "#c0c0c8",
-				"access_rules":["$lostWorldsMode", "gatekey", "rseriesboss", "magusboss"],
+				"access_rules":["$canAccessDarkAges"],
 				"children":
 				[
 					{
@@ -708,8 +708,7 @@
 					},
           {
 						"name": "Magic Cave",
-						"access_rules":
-            ["frog,masamune"],
+						"access_rules": ["$notIceAgeMode,frog,masamune"],
 						"sections":
 						[
               {
