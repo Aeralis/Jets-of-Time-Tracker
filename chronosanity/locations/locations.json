@@ -605,7 +605,7 @@
                 "chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 3
-              },
+              }
 						],
 						"map_locations":
 						[
@@ -666,10 +666,10 @@
               },
               {
                 "name": "Sealed Chest",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -744,7 +744,7 @@
 					},
           {
 						"name": "Magic Cave",
-						"access_rules": 
+						"access_rules":
             [
               "frog,masamune"
             ],
@@ -752,10 +752,10 @@
 						[
               {
 								"name": "Sealed Chest",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -855,10 +855,10 @@
 						[
               {
 								"name": "Sealed Chests",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -882,10 +882,10 @@
 					},
           {
 						"name": "Truce Inn Past",
-						"access_rules": 
+						"access_rules":
             [
-              "dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+              "dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
             ],
 						"sections":
@@ -944,8 +944,8 @@
 						"name": "Guardia Forest Past",
 						"access_rules":
 						[
-							"dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+							"dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
 						],
 						"sections":
@@ -1060,10 +1060,10 @@
               },
               {
                 "name": "Sealed Chest",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -1135,16 +1135,16 @@
 							},
               {
 								"name": "Sealed Chest",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 1
-							},
+							}
 						],
 						"map_locations":
 						[
@@ -1261,10 +1261,10 @@
 							},
               {
 								"name": "Blue Pyramid",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -1319,8 +1319,8 @@
 						"name": "Truce Inn Present",
 						"access_rules":
             [
-              "dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+              "dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
             ],
 						"sections":
@@ -1364,8 +1364,8 @@
 								"name": "Sealed Chests",
                 "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -1427,8 +1427,8 @@
 						"name": "Guardia Forest Present",
 						"access_rules":
 						[
-							"dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+							"dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
 						],
 						"sections":
@@ -1491,10 +1491,10 @@
               },
               {
                 "name": "Sealed Door",
-                "access_rules": 
+                "access_rules":
                 [
-                  "dragontankboss, earlypendant", 
-                  "pendant, blacktyranoboss", 
+                  "dragontankboss, earlypendant",
+                  "pendant, blacktyranoboss",
                   "pendant, magusboss"
                 ],
 								"chest_unopened_img": "images/kino.png",
@@ -1693,8 +1693,8 @@
 						"name": "Trann Dome",
 						"access_rules":
 						[
-							"dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+							"dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
 						],
 						"sections":
@@ -1724,8 +1724,8 @@
 						"name": "Bangor Dome",
 						"access_rules":
 						[
-							"dragontankboss, earlypendant", 
-              "pendant, blacktyranoboss", 
+							"dragontankboss, earlypendant",
+              "pendant, blacktyranoboss",
               "pendant, magusboss"
 						],
 						"sections":
@@ -1869,4 +1869,3 @@
 		]
 	}
 ]
-			

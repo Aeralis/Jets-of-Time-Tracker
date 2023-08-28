@@ -1,0 +1,9 @@
+* text=auto
+*.png -text
+CONTRIBUTING.md export-ignore
+.gitattributes export-ignore
+.github export-ignore
+.gitignore export-ignore
+.luacheckrc export-ignore
+tests export-ignore
+*.zip export-ignore
