@@ -1,9 +1,13 @@
 * text=auto
 *.png -text
 CONTRIBUTING.md export-ignore
+.flake8 export-ignore
 .gitattributes export-ignore
 .github export-ignore
 .gitignore export-ignore
 .luacheckrc export-ignore
+.markdownlint.yaml export-ignore
+pyproject.toml export-ignore
 tests export-ignore
+tools export-ignore
 *.zip export-ignore

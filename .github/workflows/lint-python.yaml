@@ -1,11 +1,11 @@
 ---
-name: Test JSON files
+name: Lint python files
 on:
   push:
     paths:
-      - .github/workflows/jsontest.yaml
-      - '**.json'
-      - tests/
+      - .github/workflows/lint-python.yaml
+      - '**.py'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +21,6 @@ jobs:
       - name: Install test dependencies
         run: |
           pip install -r tests/requirements.txt
-      - name: Check JSON files
+      - name: Flake8
         run: |
-          pytest -v tests/json/
+          flake8 .

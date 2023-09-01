@@ -6,6 +6,12 @@
     "img": "images/maps/alleras.png"
   },
   {
+    "name": "All Eras (Vertical)",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/alleras-vertical.png"
+  },
+  {
     "name": "Prehistory",
     "location_size": 40,
     "location_border_thickness": 5,
