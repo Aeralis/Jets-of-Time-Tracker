@@ -1,5 +1,5 @@
 {
-  "extra_flags_grid": {
+  "options_grid": {
     "type": "array",
     "orientation": "horizontal",
     "margin": "0, 0",

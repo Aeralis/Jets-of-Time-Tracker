@@ -1,11 +1,4 @@
 {
-  "tracker_capture_item": {
-    "type": "container",
-    "content": {
-      "type": "layout",
-      "key": "items_grid"
-    }
-  },
   "tracker_default": {
     "type": "container",
     "width": 470,
@@ -20,14 +13,14 @@
             "type": "layout",
             "dropshadow": true,
             "dock": "left",
-            "margin": 1,
+            "margin": "1",
             "key": "items_grid"
           },
           {
             "type": "layout",
             "dropshadow": true,
             "dock": "left",
-            "margin": 1,
+            "margin": "1",
             "key": "bosses_grid"
           }
         ]

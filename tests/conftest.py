@@ -4,6 +4,23 @@ from typing import Dict
 import pytest
 
 
+def pytest_addoption(parser):
+    parser.addoption('--debug-tests', help='print debugging info inline with tests', action='store_true')
+
+
+@pytest.fixture
+def print_debug(capsys, request):
+    '''Prints test debugging info inline with tests when --debug-tests passed to pytest.'''
+    if request.config.getoption('--debug-tests'):
+
+        def _print(*args, **kwargs):
+            with capsys.disabled():
+                print(*args, **kwargs)
+
+        return _print
+    return print
+
+
 @pytest.fixture(scope='session')
 def paths() -> Dict[str, Path]:
     paths = {'tests': Path(__file__).parent.resolve()}
@@ -13,8 +30,8 @@ def paths() -> Dict[str, Path]:
     caches = {'cache': Path(paths['tests'], '.cache')}
     caches.update(
         {
-            'poptracker_schemas': Path(caches['cache'], 'poptracker_schemas'),
-            'poptracker_schemas_strict': Path(caches['cache'], 'poptracker_schemas_strict'),
+            'emotracker': Path(caches['cache'], 'emotracker_schemas'),
+            'poptracker': Path(caches['cache'], 'poptracker_schemas'),
         }
     )
     for cache in caches.values():

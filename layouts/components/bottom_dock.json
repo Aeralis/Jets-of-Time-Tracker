@@ -1,0 +1,43 @@
+{
+  "bottom_dock": {
+    "type": "dock",
+    "content": [
+      {
+        "type": "group",
+        "header": "Items",
+        "dock": "left",
+        "h_alignment": "center",
+        "header_content": {
+          "type": "button_popup",
+          "style": "settings",
+          "popup_background": "#101010",
+          "layout": "settings_popup"
+        },
+        "content": {
+          "type": "layout",
+          "key": "items_grid"
+        }
+      },
+      {
+        "type": "group",
+        "header": "Bosses",
+        "dock": "left",
+        "h_alignment": "center",
+        "content": {
+          "type": "layout",
+          "key": "bosses_grid"
+        }
+      },
+      {
+        "type": "group",
+        "header": "Flags",
+        "dock": "left",
+        "h_alignment": "left",
+        "content": {
+          "type": "layout",
+          "key": "flags_grid"
+        }
+      }
+    ]
+  }
+}

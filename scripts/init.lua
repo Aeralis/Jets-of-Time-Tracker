@@ -1,21 +1,39 @@
+function getTrackerClient()
+  if PopVersion then
+    return {PopTracker=true}
+  end
+  return {EmoTracker=true}
+end
+
+TrackerClient = getTrackerClient()
+
+if TrackerClient.PopTracker then
+  print("Detected PopTracker: " .. PopVersion)
+else
+  print("Assuming EmoTracker")
+end
+
 ScriptHost:LoadScript("scripts/logic.lua")
 
 --
 -- Adds components used by tracker for items, bosses, flags, etc.
 --
 function addComponents()
-
-  -- relative component paths
-  -- NOTE: PopTracker will prefix components automatically with variant name
+  -- NOTE: Tracker will prefix components automatically with variant name
   -- and prefer those, but if they don't exist, will fall back to
   -- using paths relative to pack root directory
-  local components = {}
-  components["items_grid"] = "layouts/components/items_grid.json"
-  components["bosses_grid"] = "layouts/components/bosses_grid.json"
-  components["flags_grid"] = "layouts/components/flags_grid.json"
-  components["extra_flags_grid"] = "layouts/components/extra_flags_grid.json"
 
-  for _, v in pairs(components) do Tracker:AddLayouts(v) end
+  print("Adding Components...")
+
+  -- NOTE: Load order matters because Tracker cannot handle
+  -- forward references consistently, so must load things first before can reference
+  Tracker:AddLayouts("layouts/components/items_grid.json")
+  Tracker:AddLayouts("layouts/components/bosses_grid.json")
+  Tracker:AddLayouts("layouts/components/flags_grid.json")
+  Tracker:AddLayouts("layouts/components/extra_flags_grid.json")
+  Tracker:AddLayouts("layouts/components/options_grid.json")
+  Tracker:AddLayouts("layouts/components/settings_popup.json")
+  Tracker:AddLayouts("layouts/components/bottom_dock.json")
 
 end
 
@@ -24,20 +42,22 @@ end
 --
 function addTrackerLayouts()
 
-  local layouts = {}
-  layouts["tracker"] = "layouts/tracker.json"
-  layouts["broadcast"] = "layouts/broadcast.json"
-  layouts["settings_popup"] = "layouts/settings_popup.json"
+  print("Adding Layouts...")
+
+  Tracker:AddLayouts("layouts/capture.json")
 
   if itemsOnlyTracking() then
-    layouts["tracker"] = "items_only/layouts/tracker.json"
+    Tracker:AddLayouts("items_only/layouts/tracker.json")
+  else
+    Tracker:AddLayouts("layouts/tracker.json")
   end
 
-  for _, v in pairs(layouts) do Tracker:AddLayouts(v) end
+  Tracker:AddLayouts("layouts/broadcast.json")
 
 end
 
 -- Configure tracker
+print("Configurating tracker...")
 Tracker:AddItems("items/items.json")
 Tracker:AddMaps("maps/maps.json")
 Tracker:AddLocations("locations/locations.json")
@@ -45,6 +65,7 @@ addComponents()
 addTrackerLayouts()
 
 if _VERSION == "Lua 5.3" then
+  print("Setting up autotracking...")
   ScriptHost:LoadScript("scripts/autotracking.lua")
 else
   print("Auto-tracker is unsupported by your tracker version")

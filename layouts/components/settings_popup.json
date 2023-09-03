@@ -1,0 +1,52 @@
+{
+  "settings_popup": {
+    "type": "container",
+    "background": "#101010",
+    "min_width": 260,
+    "min_height": 200,
+    "content": {
+      "type": "dock",
+      "dropshadow": true,
+      "min_width": 260,
+      "content": [
+        {
+          "type": "dock",
+          "dock": "bottom",
+          "min_width": 260,
+          "min_height": 200,
+          "content": [
+            {
+              "type": "tabbed",
+              "min_width": 260,
+              "min_height": 200,
+              "h_alignment": "left",
+              "tabs": [
+                {
+                  "title": "Flags",
+                  "content": {
+                    "type": "layout",
+                    "key": "flags_grid"
+                  }
+                },
+                {
+                  "title": "Extras",
+                  "content": {
+                    "type": "layout",
+                    "key": "extra_flags_grid"
+                  }
+                },
+                {
+                  "title": "Options",
+                  "content": {
+                    "type": "layout",
+                    "key": "options_grid"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
