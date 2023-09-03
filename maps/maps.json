@@ -1,44 +1,50 @@
 [
-	{
-		"name": "All Eras",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/alleras.png"
-	},
-	{
-		"name": "Prehistory",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/prehistory.png"
-	},
-	{
-		"name": "Dark Ages",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/darkages.png"
-	},
-	{
-		"name": "Middle Ages",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/middleages.png"
-	},
-	{
-		"name": "Present",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/present.png"
-	},
-	{
-		"name": "Future",
-		"location_size": 40,
-		"location_border_thickness": 5,
-		"img": "images/maps/future.png"
-	},
-	{
-		"name": "End Of Time",
-		"location_size": 40,
-		"location_border_thickness": 4,
-		"img": "images/maps/endoftime.png"
-	}
+  {
+    "name": "All Eras",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/alleras.png"
+  },
+  {
+    "name": "All Eras (Vertical)",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/alleras-vertical.png"
+  },
+  {
+    "name": "Prehistory",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/prehistory.png"
+  },
+  {
+    "name": "Dark Ages",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/darkages.png"
+  },
+  {
+    "name": "Middle Ages",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/middleages.png"
+  },
+  {
+    "name": "Present",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/present.png"
+  },
+  {
+    "name": "Future",
+    "location_size": 40,
+    "location_border_thickness": 5,
+    "img": "images/maps/future.png"
+  },
+  {
+    "name": "End Of Time",
+    "location_size": 40,
+    "location_border_thickness": 4,
+    "img": "images/maps/endoftime.png"
+  }
 ]

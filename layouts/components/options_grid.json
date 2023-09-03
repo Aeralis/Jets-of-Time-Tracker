@@ -1,0 +1,15 @@
+{
+  "options_grid": {
+    "type": "array",
+    "orientation": "horizontal",
+    "margin": "0, 0",
+    "content": [
+      {
+        "type": "array",
+        "h_alignment": "center",
+        "item_margin": "1, 1",
+        "content": []
+      }
+    ]
+  }
+}

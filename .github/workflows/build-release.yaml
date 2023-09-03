@@ -1,0 +1,24 @@
+---
+name: Build Release
+on:
+  push:
+    branches:
+      - main
+      - master
+      - beta_integration
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build release
+        run: |
+          ./tools/release.sh
+      - name: Archive release
+        uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: |
+            *.zip
+          if-no-files-found: error

@@ -1,3 +1,10 @@
+v2.2.0
+  - Add support for Ice Age mode
+  - Add support for vertical tracker orientation
+
+v2.1.1
+  - Fixed tracking equipped items to work with Duplicate Characters.
+
 v2.1.0
   - Updated for Jets of Time version 3.2
   - Added Vanilla Rando variant

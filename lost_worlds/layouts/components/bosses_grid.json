@@ -1,0 +1,29 @@
+{
+  "bosses_grid": {
+    "type": "array",
+    "orientation": "horizontal",
+    "margin": "0,0",
+    "content": [
+      {
+        "type": "itemgrid",
+        "h_alignment": "center",
+        "item_margin": "1,1",
+        "rows": [
+          [
+            "rseriesboss",
+            "gigagaiaboss",
+            "guardianboss",
+            "motherbrainboss",
+            "nizbelboss"
+          ],
+          [
+            "sonofsunboss",
+            "blacktyranoboss",
+            "zealboss",
+            "golemboss"
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,65 +1,30 @@
 {
-	"shared_item_grid":
-	{
-		"type": "array",
-		"orientation": "vertical",
-		"margin": "0,0",
-		"content":
-		[
-			{
-				"type": "array",
-				"orientation": "horizontal",
-				"margin": "0,0",
-				"content":
-				[
-					{
-						"type": "itemgrid",
-						"h_alignment": "center",
-						"item_margin": "1,1",
-						"rows":
-						[
-              [ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "benthilt", "bentsword", "masamune",  "grandleon", "heromedal", "roboribbon"],
-							[ "gatekey", "dreamstone", "rubyknife", "prismshard", "moonstone", "jerky"],
-							[ "pendant", "clone", "ctrigger", "tomapop", "magic", "gomode"]
-						]
-					},
-					{
-						"type": "itemgrid",
-						"h_alignment": "center",
-						"item_margin": "1,1",
-						"rows":
-						[
-							[ "yakraboss", "yakraxiiiboss", "dragontankboss","zomborboss", "retiniteboss", "heckranboss" ],
-							[ "blacktyranoboss", "rusttyranoboss", "guardianboss", "rseriesboss", "masamuneboss", "nizbelboss" ],
-							[ "magusboss", "gigagaiaboss", "motherbrainboss", "sonofsunboss","zealboss", "golemboss" ]
-						]
-					}
-				]
-			}
-		]
-	},
-	"tracker_capture_item":
-	{
-		"type": "container",
-		"content":
-		{
-			"type": "layout",
-			"key": "shared_item_grid"
-		}
-	},
-	"tracker_default":
-	{
-		"type": "container",
-		"width": 470,
-		"height": 155,
-		"background": "#101010",
-		"content":
-		{
-			"type": "layout",
-			"dropshadow": true,
-			"margin": 1,
-			"key": "shared_item_grid"
-		}
-	}
+  "tracker_default": {
+    "type": "container",
+    "width": 470,
+    "height": 155,
+    "background": "#101010",
+    "content": [
+      {
+        "type": "dock",
+        "dock": "left",
+        "content": [
+          {
+            "type": "layout",
+            "dropshadow": true,
+            "dock": "left",
+            "margin": "1",
+            "key": "items_grid"
+          },
+          {
+            "type": "layout",
+            "dropshadow": true,
+            "dock": "left",
+            "margin": "1",
+            "key": "bosses_grid"
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,0 +1,25 @@
+# Job for testing build release changes on PRs.
+# NOTE: This file should be kept aligned with .github/workflows/build-release.yaml!
+---
+name: Test Build Release
+on:
+  push:
+    paths:
+      - .github/workflows/build-release-test.yaml
+      - tools/release.sh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build release
+        run: |
+          ./tools/release.sh
+      - name: Archive release
+        uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: |
+            *.zip
+          if-no-files-found: error
