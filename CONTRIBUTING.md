@@ -21,6 +21,19 @@ automatically add the "All Eras" coordinates, overwriting the locations file:
 ./tools/normalize-locations.py -xi locations/locations.json
 ```
 
+### Release Automation
+
+The `tools/release.sh` tool can be used to build a zip file suitable for PopTracker/EmoTracker.
+
+It builds a zip file which follows the exclusion rules per `.gitattributes` (like how
+`git archive` does), however, it also dereferences all symlinks, making copies of their linked
+files. It verifies the created artifact is a valid zip file.
+
+By default, it creates a zip file containing the short hash reference of the git ref it was
+built from. For release candidates and releases, a specific output file name can be specified.
+
+Usage details can be found by running `./tools/release.sh -h`.
+
 ## Development
 
 For development, it is recommended to install python (3.11+) and lua with your system package manager.
@@ -40,6 +53,8 @@ There are several workflows defined in `.github/workflows`:
 
 * `luacheck.yaml`: runs [`luacheck`](https://luacheck.readthedocs.io/en/stable/) against .lua files
 * `jsontest.yaml`: runs [`pytest`](https://pytest.org) on tests in `tests/json/` against .json files
+* `lint-python.yaml`: runs [`flake8`](https://flake8.pycqa.org) against .py files
+* `build-release.yaml`: builds a release zip using `tools/release.sh`
 
 It is intended that Pull Requests pass these checks before being merged and released, to
 assure a measure of stability and quality with this repo.
@@ -70,16 +85,36 @@ have correct absolute map locations (e.g. for the "All Eras" map) based on each 
 coordinate. The `tools/normalize-locations.py` tool can produce a file which should pass
 these tests (the tests actually invoke this tools `--check` mode).
 
+#### `build-release.yaml`
+
+This workflow uses `tools/release.sh` to build a release zip, which would be suitable
+for direct use by PopTracker/EmoTracker.
+
+It uses a GitHub Actions to [store workflow data as an artifact](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts).
+These temporary workflow artifacts are stored on GitHub for 90 days.
+
+When releasing a release candidate or release, the zip file built by this workflow
+can be downloaded, renamed, and uploaded and attached as part of the
+[Github Release](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts). Unlike
+the temporary artifacts created during the workflow, these will remain available to download from GitHub until manually
+deleted by a project maintainer.
+
 ## Releases
 
 The Github Releases mechanism is used to manually create tags/releases for users to download
 and use with PopTracker. The Releases archives all non-development-only files into .zip and
 .tar.gz for download using `git archive` (files can be excluded in `.gitattributes`).
-The intention is to direct users to the Releases page.
+However, that file is not directly usable in PopTracker/EmoTracker.
+
+The `tools/release.sh` script (described above) is used to create zip files which can be
+used directly in PopTracker/EmoTracker. The zip created with this script can be manually
+attached to Github Releases to provide a convenient means of distribution for PopTracker
+users and for EmoTracker users wishing to test newer updates (before rolling them out
+to the EmoTracker registry so they are downloaded in the app directly.)
 
 It is recommended to create tags (in the form of "vmajor.minor.patch", e.g. v2.1.1) along with
 each release, corresponding to bumping the version in `manifest.json` and the `changelog.txt`
-file with brief description of updates in this release. Test versions can use a "release candidate"
+file with brief description of end-user-impacting updates in this release. Test versions can use a "release candidate"
 suffix (e.g. v.2.1.1-rc0). Releases/tags are intended to be immutable (not overwritten).
 
 ### Local Release Artifacts
