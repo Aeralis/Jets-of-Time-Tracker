@@ -18,8 +18,9 @@
 						"item_margin": "1,1",
 						"rows":
 						[
-							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ]
+							[ "crono", "lucca", "marle", "frog", "robo", "ayla", "magus" ],
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", , "gomode" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon", , "checkcounter" ]
 						]
 					},
 					{
@@ -90,8 +91,9 @@
 			"item_margin": "1,1",
 			"rows":
 			[
-							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "crono", "lucca", "marle", "frog", "robo", "ayla", "magus" ],
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", , "gomode" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon", , "checkcounter" ]
 			]	
 		}
 	},

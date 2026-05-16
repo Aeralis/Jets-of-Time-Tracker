@@ -18,8 +18,9 @@
 						"item_margin": "1,1",
 						"rows":
 						[
-							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "crono", "lucca", "marle", "frog", "robo", "ayla", "magus" ],
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", "blank", "gomode" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon", "blank", "checkcounter" ]
 						]
 					},
 					{
@@ -49,7 +50,7 @@
 	{
 		"type": "container",
 		"width": 470,
-		"height": 90,
+		"height": 120,
 		"background": "#101010",
 		"content":
 		{

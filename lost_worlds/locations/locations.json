@@ -135,7 +135,7 @@
 						"name": "Tyrano Castle",
 						"access_rules":
 						[
-							"dreamstone"
+							"dreamstone, rubyknife"
 						],
 						"sections":
 						[
@@ -322,7 +322,7 @@
 						"name": "Factory",
 						"access_rules":
 						[
-							""
+							"Flag_CharLock_on", "chronosanity"
 						],
 						"sections":
 						[
@@ -484,6 +484,13 @@
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
 								"item_count": 3
+							},
+							{
+								"name": "Portal to Fair",
+                "visibility_rules": [""],
+								"chest_unopened_img": "images/gato.png",
+								"chest_opened_img": "images/gato.png",
+								"item_count": 1
 							}
 						],
 						"map_locations":
