@@ -140,7 +140,7 @@
 						[
 							{
 								"name": "Charge the Moonstone",
-								"hosted_item": "Sunstone"
+								"hosted_item": "sunstone"
 							}
 						],
 						"map_locations":
@@ -976,7 +976,7 @@
 								"name": "Melchior's Refinements",
 								"chest_unopened_img": "images/kino.png",
 								"chest_opened_img": "images/kiyes.png",
-								"access_rules":["$canFly,marle,prismshard,sunstone"],
+								"access_rules":["$canFly,marle,prismshard,sunstone,yakraxiiiboss"],
 								"item_count": 1
 							},
               {
@@ -1772,3 +1772,4 @@
 	}
 ]
 			
+

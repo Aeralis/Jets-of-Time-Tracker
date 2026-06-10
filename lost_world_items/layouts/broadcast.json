@@ -3,7 +3,7 @@
 	{
 		"type": "array",
 		"width": 246,
-		"height": 80,
+		"height": 120,
 		"dropshadow": true,
 		"margin": "1,1",
 		"content":
@@ -21,7 +21,8 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon" ]
 						]
 					}
 				]

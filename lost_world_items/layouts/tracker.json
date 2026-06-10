@@ -19,7 +19,8 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon" ]
 						]
 					},
 					{
@@ -49,7 +50,7 @@
 	{
 		"type": "container",
 		"width": 470,
-		"height": 90,
+		"height": 120,
 		"background": "#101010",
 		"content":
 		{

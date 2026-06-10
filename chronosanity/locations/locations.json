@@ -151,7 +151,7 @@
 						[
 							{
 								"name": "Charge the Moonstone",
-								"hosted_item": "Sunstone"
+								"hosted_item": "sunstone"
 							}
 						],
 						"map_locations":
@@ -1022,7 +1022,7 @@
 								"chest_opened_img": "images/kiyes.png",
 								"access_rules":
 								[
-									"marle,prismshard,sunstone"
+									"marle,prismshard,sunstone,yakraxiiiboss"
 								],
 								"item_count": 1
 							},

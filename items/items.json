@@ -348,7 +348,7 @@
     "stages": [
       {
         "img": "images/Flag_CharLock_on.png",
-        "codes": "Flag_CharLock_on,"
+        "codes": "Flag_CharLock_on"
       },
       {
         "img": "images/Flag_CharLock_off.png",

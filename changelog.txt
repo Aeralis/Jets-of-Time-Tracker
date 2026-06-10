@@ -1,3 +1,14 @@
+v2.2.0
+  - Updated manifest with modern uid/version fields.
+  - Kept package_uid for backward compatibility with older tracker hosts.
+  - Improved EmoTracker 3.x autotracker compatibility and stability.
+  - Hardened autotracking against host API differences and missing tracker objects.
+  - Fixed variant detection for Lost Worlds, Legacy of Cyrus, Chronosanity, and items-only layouts.
+  - Lost Worlds: Tyrano Castle now requires both Dreamstone and Ruby Knife.
+  - Lost Worlds: added Portal to Fair section with Gato icon.
+  - Lost Worlds and Lost Worlds Items layouts now show Grand Leon, Hero's Medal, Robo's Ribbon, and Check Counter.
+  - Fixed Character Locks flag code token formatting.
+
 v2.1.0
   - Updated for Jets of Time version 3.2
   - Added Vanilla Rando variant

@@ -19,7 +19,8 @@
 						"rows":
 						[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ]
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon" ]
 						]
 					},
 					{
@@ -91,7 +92,8 @@
 			"rows":
 			[
 							[ "crono", "lucca", "marle", "frog", "robo","ayla", "magus" ],
-							[ "pendant", "clone", "ctrigger", "dreamstone", "rubyknife", "gomode" ]
+							[ "clone", "ctrigger", "dreamstone", "rubyknife", "gomode", "checkcounter" ],
+							[ "pendant", "grandleon", "heromedal", "roboribbon" ]
 			]	
 		}
 	},

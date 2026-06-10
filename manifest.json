@@ -1,9 +1,11 @@
 {
 	"name": "Jets of Time Tracker",
+	"uid": "CT_JoT_TheBigSalarius",
 	"game_name": "Chrono Trigger Randomizer",
 	"platform": "snes",
-	"package_version": "2.1.0",
 	"package_uid": "CT_JoT_TheBigSalarius",
+	"version": "2.2.0",
+	"package_version": "2.2.0",
 	"author": "TheBigSalarius, Aeralis & Anguirel",
 	"variants":
 	{
